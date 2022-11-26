@@ -138,6 +138,8 @@ const Main = () => {
               <Text>{item.brand}</Text>
               <Text>{item.color}</Text>
               <Text>RS: {item.price}</Text>
+
+
             </TouchableOpacity>
             <Button mode='outlined'  style={{position:'absolute',bottom:7,left:80,}} onPress={()=>setcart([...cart,item])}>+</Button>
 

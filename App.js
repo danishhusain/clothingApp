@@ -8,16 +8,14 @@ import HomeScreen from './src/Screens/HomeScreen'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Profile from './src/Bottom/Profile'
 import CartContextProvider from './src/Context/CartContext'
+import MyAddress from './src/Screens/MyAddress'
 
 const App = () => {
 
   return (
     
     <CartContextProvider>
-  
     <HomeScreen />
-    {/* <AppNavigator/> */}
-  
     </CartContextProvider>
   )
 }
