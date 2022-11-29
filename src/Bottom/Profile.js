@@ -1,17 +1,18 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { Button, IconButton, } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Offers from '../Screens/Offers'
 import MyOrders from '../Screens/MyOrders'
+import { useNavigation } from '@react-navigation/native'
 import MyAddress from '../Screens/MyAddress'
+import Addaddress from '../Screens/AddAddress'
 
 
+const Profile = () => {
 
-const Profile = ({navigation}) => {
-
+ const navigation=useNavigation();
  
-  
   return (
 
     <View style={{ flex: 1,  }}>
@@ -30,18 +31,18 @@ const Profile = ({navigation}) => {
       <Text style={{fontSize:20,color:'black',fontWeight:'600',alignSelf:'center'}}>Danish</Text>
       <View style={{flex:1}}>
       <TouchableOpacity style={{borderBottomWidth:0.2,height:40,width:'90%',left:10,top:10,marginTop:10}}
-      onPress={()=>{navigation.navigate(MyAddress)}}>
+      onPress={()=>navigation.navigate(MyAddress)}>
         <Text>My Address</Text>
       </TouchableOpacity>
       <TouchableOpacity style={{borderBottomWidth:0.2,height:40,width:'90%',left:10,top:10,marginTop:10}}
-      onPress={()=>{navigation.navigate(MyOrders)}}>
+      onPress={()=>navigation.navigate(MyOrders)}>
         <Text>My Orders</Text>
       </TouchableOpacity>
       <TouchableOpacity style={{borderBottomWidth:0.2,height:40,width:'90%',left:10,top:10,marginTop:10}}
-      onPress={()=>{navigation.navigate(Offers)}}>
+      onPress={()=>navigation.navigate(Offers)}>
         <Text>Offers</Text>
       </TouchableOpacity>
-      <Button onPress={()=>{console.log("set")}}>height</Button>
+      
 
       </View>
       

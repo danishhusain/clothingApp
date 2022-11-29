@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { IconButton, Button, MD3ColorsF } from 'react-native-paper'
-import { color } from 'react-native-reanimated'
 import Wishlist from '../Bottom/Wishlist'
 import Main from '../Bottom/Main'
 import Search from '../Bottom/Search'
@@ -13,7 +12,7 @@ import { CartContext } from '../Context/CartContext'
 const HomeScreen = () => {
   const [selectedTab, setSelectedTab] = useState(0)
   const {cart}=useContext(CartContext)
-  const {wishlist}=useContext(CartContext)
+  const {wishlist,setWishlist}=useContext(CartContext)
 
 
 
@@ -53,7 +52,7 @@ const HomeScreen = () => {
 
         <View >
         <View style={{ backgroundColor: 'red', position:'absolute',right:1 ,top:1,borderRadius:25,alignSelf:'center'}}>
-          <Text style={{ fontSize: 16, color: '#fff' }}>{cart.length}</Text></View>
+          <Text style={{ fontSize: 16, color: '#fff' }}>{wishlist.length}</Text></View>
 
         <IconButton icon="heart"
           onPress={() => setSelectedTab(3)}

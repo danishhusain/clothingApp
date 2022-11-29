@@ -7,9 +7,12 @@ import SignIn from './Screens/SignIn';
 import HomeScreen from './Screens/HomeScreen';
 import SplashScreen from './Screens/SplashScreen';
 import Loader from './Common/Loader';
-import MyAddress from './Screens/MyAddress';
 import MyOrders from './Screens/MyOrders';
 import Offers from './Screens/Offers';
+import MyAddress from './Screens/MyAddress';
+import Addaddress from './Screens/AddAddress';
+
+
 
 
 
@@ -26,8 +29,12 @@ function AppNavigator() {
         <Stack.Screen name="MyAddress" component={MyAddress} options={{ headerShown: false }} />
         <Stack.Screen name="MyOrders" component={MyOrders} options={{ headerShown: false }} />
         <Stack.Screen name="Offers" component={Offers} options={{ headerShown: false }} />
+        <Stack.Screen name="Addaddress" component={Addaddress} options={{ headerShown: false }} />
+       
+       
+        
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> 
   );
 }
 

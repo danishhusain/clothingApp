@@ -41,19 +41,21 @@ const SignIn = ({ navigation }) => {
 
     } else {
       setBadconfirmpassward(false)
+      saveData()
+
     }
-  
-    saveData()  
+
   }
   const saveData = async () => {
     // console.log("ok")
-    if (badname === false && bademail === false && badpassward === false && badconfirmpassward === false){
-      await AsyncStorage.setItem('Name',name)
-      await AsyncStorage.setItem('Email',email)
-      await AsyncStorage.setItem('Passward',passward)
+    if (badname === false && bademail === false && badpassward === false && badconfirmpassward === false) {
+      await AsyncStorage.setItem('Name', name)
+      await AsyncStorage.setItem('Email', email)
+      await AsyncStorage.setItem('Passward', passward)
       navigation.goBack();
     }
-}
+  }
+
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
 
@@ -84,6 +86,8 @@ const SignIn = ({ navigation }) => {
         <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline' }}
           value={email}
           onPress={() => navigation.goBack()}>Alredy have Account</Text>
+
+
       </View>
     </View>
 

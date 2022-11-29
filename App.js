@@ -9,13 +9,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import Profile from './src/Bottom/Profile'
 import CartContextProvider from './src/Context/CartContext'
 import MyAddress from './src/Screens/MyAddress'
+import Addaddress from './src/Screens/AddAddress'
+
 
 const App = () => {
 
   return (
     
     <CartContextProvider>
-    <HomeScreen />
+    {/* <HomeScreen /> */}
+    {/* <LogIn/> */}
+    <AppNavigator/>
+    {/* <Profile/> */}
+    {/* <MyAddress/> */}
+    {/* <Addaddress/> */}
+
     </CartContextProvider>
   )
 }

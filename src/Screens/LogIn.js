@@ -34,7 +34,7 @@ const LogIn = ({ navigation }) => {
 
       setTimeout(() => {
         getData();
-      }, 3000);
+      }, 500);
 
     }
 
