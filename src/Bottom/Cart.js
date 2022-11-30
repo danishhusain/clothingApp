@@ -32,6 +32,7 @@ const CartCard = ({ val }) => {
         <TouchableOpacity style={{ marginRight: 10 }}>
           <Button  style={{ fontSize: 18, fontWeight: '500',}} onPress={() => remove()}>Remove</Button>
         </TouchableOpacity>
+       
 
       </ScrollView>
 

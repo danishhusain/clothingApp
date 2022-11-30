@@ -5,7 +5,7 @@ export const CartContext = createContext()
 export default function CartContextProvider({ children }) {
   const [cart, setcart] = useState([])
   const [wishlist, setWishlist] = useState([])
-  const [city, setCity] = useState([])
+  const [city, setCity] = useState("")
   const [building, setBuilding] = useState("")
   const [pincode, setPincode] = useState("")
   const [address, setAddress] = useState("")

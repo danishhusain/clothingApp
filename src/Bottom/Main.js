@@ -38,7 +38,7 @@ const jeans = [
   { brand: "Denim", color: "green", price: "1200", code: "j7" },
   { brand: "Denim", color: "green", price: "1200", code: "j8" },
   { brand: "Denim", color: "green", price: "1200", code: "j9" },
-  {brand:  "Denim", color: "green", price: "1200", code: "j10"},
+  { brand: "Denim", color: "green", price: "1200", code: "j10" },
   { brand: "Denim", color: "green", price: "1200", code: "j11" },
 ]
 const jacket = [
@@ -100,6 +100,8 @@ const hoodie = [
 
 const Main = () => {
   const [category, setCategory] = useState(0)
+  const [iconSelected, setIconSelected] = useState(false)
+  // const [firstTimepress, setFirstTimePress] = useState(false)
   const { cart, setcart } = useContext(CartContext)
   const { wishlist, setWishlist } = useContext(CartContext)
 
@@ -127,13 +129,20 @@ const Main = () => {
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/tshirt.webp")} />
 
-            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, elevation: 10 }} onPress={() => setWishlist([...wishlist, item])}>
+            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
+              onPress={() => {
+                setWishlist([...wishlist, item])
+                // setFirstTimePress(true)
+                setIconSelected(item.code)
+              }}>
               <IconButton icon="heart"
-                iconColor='#000'
+
+                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
                 size={20}
               >
               </IconButton>
             </TouchableOpacity>
+
             <Text>{item.brand}</Text>
             <Text>{item.color}</Text>
             <Text>RS: {item.price}</Text>
@@ -151,9 +160,14 @@ const Main = () => {
         renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
           <TouchableOpacity onPress={() => console.log("pressed")}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/jeans.webp")} />
-            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, elevation: 10 }} onPress={() => setWishlist([...wishlist, item])}>
+            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
+              onPress={() =>
+                setWishlist([...wishlist, item],
+                  setIconSelected(item.code)
+                )}>
               <IconButton icon="heart"
-                iconColor='#000'
+                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+
                 size={20}
               ></IconButton>
             </TouchableOpacity>
@@ -172,9 +186,14 @@ const Main = () => {
         renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/jacket.webp")} />
-            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, elevation: 10 }} onPress={() => setWishlist([...wishlist, item])}>
+            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
+              onPress={() =>
+                setWishlist([...wishlist, item],
+                  setIconSelected(item.code)
+                )}>
               <IconButton icon="heart"
-                iconColor='#000'
+                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+
                 size={20}
               ></IconButton>
             </TouchableOpacity>
@@ -194,9 +213,14 @@ const Main = () => {
         renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/shirt.webp")} />
-            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, elevation: 10 }} onPress={() => setWishlist([...wishlist, item])}>
+            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
+              onPress={() =>
+                setWishlist([...wishlist, item],
+                  setIconSelected(item.code)
+                )}>
               <IconButton icon="heart"
-                iconColor='#000'
+                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+
                 size={20}
               ></IconButton>
             </TouchableOpacity>
@@ -216,9 +240,14 @@ const Main = () => {
         renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/lower.webp")} />
-            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, elevation: 10 }} onPress={() => setWishlist([...wishlist, item])}>
+            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
+              onPress={() =>
+                setWishlist([...wishlist, item],
+                  setIconSelected(item.code)
+                )}>
               <IconButton icon="heart"
-                iconColor='#000'
+                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+
                 size={20}
               ></IconButton>
             </TouchableOpacity>
@@ -238,9 +267,14 @@ const Main = () => {
         renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/hoodie.webp")} />
-            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, elevation: 5 }} onPress={() => setWishlist([...wishlist, item])}>
+            <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
+              onPress={() =>
+                setWishlist([...wishlist, item],
+                  setIconSelected(item.code)
+                )}>
               <IconButton icon="heart"
-                iconColor='#000'
+                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+
                 size={20}
               ></IconButton>
             </TouchableOpacity>

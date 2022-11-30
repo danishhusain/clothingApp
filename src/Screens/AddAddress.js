@@ -1,15 +1,17 @@
 import { View, Text } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import { Button, TextInput } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
 import MyAddress from './MyAddress'
 import HomeScreen from './HomeScreen'
 import Main from '../Bottom/Main'
+import { pinchHandlerName } from 'react-native-gesture-handler/lib/typescript/handlers/PinchGestureHandler'
 
 
-
-const Addaddress = () => {
+const Addaddress = ({route}) => {
+  const { refresh } = route.params;
+ 
   const navigation = useNavigation();
 
   const [city, setCity] = useState("")
@@ -21,7 +23,16 @@ const Addaddress = () => {
   const [showCity, setShowCity] = useState("")
   const [showBuilding, setShowBuilding] = useState("")
   const [showPincode, setShowPincode] = useState("")
+  const [adstate,setAdstate]=useState([])
+const data={
+  "city":city,
+"building":building,
+"pincode":pincode
+}
+const getAddress=async()=>{
+  let  data=await AsyncStorage.getItem("Address")
 
+  setAdstate([JSON.parse(data)])  }  
 
   const Validation = (txt) => {
     if (city.length == 0) {
@@ -39,29 +50,23 @@ const Addaddress = () => {
     } else {
       setBadPincode(false)
       saveAddress();
-
     }
-
-
   }
   const saveAddress = async () => {
     if (badcity === false && badbuilding === false && badpincode === false) {
-      // await AsyncStorage.setItem('CITY', city)
-      // await AsyncStorage.setItem('BUILDING', building)
-      // await AsyncStorage.setItem('PINCODE', pincode)
-
-      // console.log("city",{city},"building",{building},"pincode",{pincode} )
-
-      // console.log("city", city)
-      // console.log("building",building)
-      // console.log("pincode",pincode)
+      if(adstate!=null){
+      await AsyncStorage.setItem('Address',JSON.stringify( [...adstate,data]))}
+      else{
+        await AsyncStorage.setItem('Address',JSON.stringify( [data]))
+      }
       navigation.goBack()
-      
-    
+      refresh()
 
     }
   }
+  useEffect(()=>{getAddress()
 
+  },[])
 
   return (
     <View style={{ flex: 1, }}>
@@ -76,7 +81,7 @@ const Addaddress = () => {
 
 
 
-      <View style={{ marginHorizontal: 10, justifyContent: 'space-between', marginTop: '35%' }}>
+      <View style={{ marginHorizontal: 10, justifyContent: 'space-between', }}>
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter city name"} left={<TextInput.Icon icon={"home"} />}
           value={city}
           onChangeText={(txt) => setCity(txt)} />
@@ -94,6 +99,8 @@ const Addaddress = () => {
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Save Address</Button>
 
       </View>
+
+      
 
     </View>
   )
