@@ -23,12 +23,12 @@ const CartWishlist = ({ val }) => {
       width: '100%', height: 70, justifyContent: 'space-between',
       alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2,
     }}>
-      <ScrollView style={{ width: '100%', backgroundColor: 'grey' }} >
+      <ScrollView style={{ width: '100%', backgroundColor: `#6a5acd` }} >
 
-        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', width: '100%' }}>Brand:-{val.brand}</Text>
-        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 5 }}>Color:-{val.color}</Text>
-        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', bottom: 5 }}>Price:-{val.price}</Text>
-        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', bottom: 5, right: 5 }}>code:-{val.code}</Text>
+        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', width: '100%',color:'white' }}>Brand:-{val.brand}</Text>
+        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 5,color:'white' }}>Color:-{val.color}</Text>
+        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', bottom: 5,color:'white' }}>Price:-{val.price}</Text>
+        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', bottom: 5, right: 5, color:'white'}}>code:-{val.code}</Text>
 
         <TouchableOpacity style={{ position: 'absolute', bottom: 25, alignSelf: 'center', borderRadius: 30, }}
           onPress={() => {
@@ -44,7 +44,7 @@ const CartWishlist = ({ val }) => {
         </TouchableOpacity>
 
         <TouchableOpacity style={{ marginRight: 10 }}>
-          <Button style={{ fontSize: 18, fontWeight: '500', }} onPress={() => console.log("wish")}>Add Cart</Button>
+          <Button textColor='white' style={{ fontSize: 18, fontWeight: '500', }} onPress={() => console.log("wish")}>Add Cart</Button>
         </TouchableOpacity>
 
       </ScrollView>
@@ -60,12 +60,14 @@ const Wishlist = () => {
   const { wishlist, setWishlist } = useContext(CartContext)
 
   return (
-    <View style={{ flex: 1, borderBottomWidth: 0.2, borderBottomColor: '#000' }}>
+    <View style={{ flex: 1, borderBottomWidth: 0.2, borderBottomColor: '#000', }}>
 
-      <View style={{ felx:1,borderBottomWidth: 0.2, borderBottomColor: '#000', backgroundColor: 'red' }}>
-        <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', position: 'absolute', left: 1, top: 1 }}>Wishlist</Text>
-        <Button style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 1, top: 10, paddingTop: 20 }} onPress={() => setWishlist([])}>Clear Wishlist</Button>
+      <View style={{ felx:1,borderBottomWidth: 0.2, borderBottomColor: '#000',backgroundColor:'#000' }}>
+      {/* <View style={{ backgroundColor:'#000' }}> */}
+        <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', position: 'absolute', left: 1, top: 1 ,color:`#6a5acd`,fontWeight:'600'}}>Wishlist</Text>
+        <Button style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 1, top: 10, paddingTop: 20,color:`#6a5acd` }} onPress={() => setWishlist([])}>Clear Wishlist</Button>
       </View>
+      {/* </View> */}
 
 
         <FlatList

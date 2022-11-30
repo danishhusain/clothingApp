@@ -6,11 +6,10 @@ import { useNavigation } from '@react-navigation/native'
 import MyAddress from './MyAddress'
 import HomeScreen from './HomeScreen'
 import Main from '../Bottom/Main'
-import { pinchHandlerName } from 'react-native-gesture-handler/lib/typescript/handlers/PinchGestureHandler'
 
 
-const Addaddress = ({route}) => {
-  const { refresh } = route.params;
+const Addaddress = () => {
+  // const { refresh } = route.params;
  
   const navigation = useNavigation();
 
@@ -20,10 +19,8 @@ const Addaddress = ({route}) => {
   const [badcity, setBadCity] = useState(false)
   const [badbuilding, setBadBuilding] = useState(false)
   const [badpincode, setBadPincode] = useState(false)
-  const [showCity, setShowCity] = useState("")
-  const [showBuilding, setShowBuilding] = useState("")
-  const [showPincode, setShowPincode] = useState("")
   const [adstate,setAdstate]=useState([])
+
 const data={
   "city":city,
 "building":building,
@@ -32,7 +29,7 @@ const data={
 const getAddress=async()=>{
   let  data=await AsyncStorage.getItem("Address")
 
-  setAdstate([JSON.parse(data)])  }  
+  setAdstate(JSON.parse(data))  }  
 
   const Validation = (txt) => {
     if (city.length == 0) {
@@ -59,14 +56,13 @@ const getAddress=async()=>{
       else{
         await AsyncStorage.setItem('Address',JSON.stringify( [data]))
       }
+      // refresh(getAddress())
+      getAddress()
       navigation.goBack()
-      refresh()
 
     }
   }
-  useEffect(()=>{getAddress()
-
-  },[])
+  
 
   return (
     <View style={{ flex: 1, }}>

@@ -111,21 +111,24 @@ const Main = () => {
     // <ScrollView>
     <View style={{ flex: 1, }}>
       <Header />
-      <Image source={require('../Images/banner1.jpg')} style={{ width: '100%', height: 250, borderRadius: 20 }} />
+      <Image source={require('../Images/slide1.webp')} style={{ width: '100%', height: 250, borderRadius: 20 }} />
 
-      <View>
+      <View style={{ }}>
         <FlatList
           data={product}
           horizontal
-          renderItem={({ item }) => <Button style={{ margin: 5 }} mode='outlined'
-            disabled={category == item.id ? true : false} onPress={() => setCategory(item.id)}>{item.title}</Button>}
+          renderItem={({ item }) => <Button  style={{ margin: 5 }} mode='contained'
+          disabled={category == item.id ? true : false} 
+          // iconColor={ategory == item.id ? "blue" : `#000`} 
+          // textColor={'white'} 
+          onPress={() => setCategory(item.id)}>{item.title}</Button>}
         />
       </View>
 
       {category == 0 && <FlatList
-        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap", }}
+        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap",left:13 }}
         data={tshirt}
-        renderItem={({ item }) => <View style={{ marginHorizontal: 15, backgroundColor: 'white', width: '100%', }}>
+        renderItem={({ item }) => <View style={{ marginHorizontal: 15, backgroundColor:'#B0A0FF',borderRadius:10 }}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/tshirt.webp")} />
 
@@ -143,21 +146,21 @@ const Main = () => {
               </IconButton>
             </TouchableOpacity>
 
-            <Text>{item.brand}</Text>
-            <Text>{item.color}</Text>
-            <Text>RS: {item.price}</Text>
+            <Text style={{left:5,color:'white'}}>{item.brand}</Text>
+            <Text style={{left:5,color:'white'}}>{item.color}</Text>
+            <Text style={{left:5,color:'white'}}>RS: {item.price}</Text>
           </TouchableOpacity>
 
-          <Button mode='outlined' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
+          <Button mode='contained' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
 
 
         </View>}
 
       />}
       {category == 1 && <FlatList
-        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" }}
+        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap",left:13}}
         data={jeans}
-        renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
+        renderItem={({ item }) => <View style={{ marginHorizontal: 15 ,backgroundColor:'#B0A0FF',borderRadius:10}}>
           <TouchableOpacity onPress={() => console.log("pressed")}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/jeans.webp")} />
             <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
@@ -171,19 +174,19 @@ const Main = () => {
                 size={20}
               ></IconButton>
             </TouchableOpacity>
-            <Text>{item.brand}</Text>
-            <Text>{item.color}</Text>
-            <Text>RS: {item.price}</Text>
+            <Text style={{left:5,color:'white'}}>{item.brand}</Text>
+            <Text style={{left:5,color:'white'}}>{item.color}</Text>
+            <Text style={{left:5,color:'white'}}>RS: {item.price}</Text>
           </TouchableOpacity>
-          <Button mode='outlined' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
+          <Button mode='contained' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
 
 
         </View>}
       />}
       {category == 2 && <FlatList
-        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" }}
+        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" ,left:13}}
         data={jacket}
-        renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
+        renderItem={({ item }) => <View style={{ marginHorizontal: 15 ,backgroundColor:'#B0A0FF',borderRadius:10}}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/jacket.webp")} />
             <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
@@ -198,19 +201,19 @@ const Main = () => {
               ></IconButton>
             </TouchableOpacity>
 
-            <Text>{item.brand}</Text>
-            <Text>{item.color}</Text>
-            <Text>RS: {item.price}</Text>
+            <Text style={{left:5,color:'white'}}>{item.brand}</Text>
+            <Text style={{left:5,color:'white'}}>{item.color}</Text>
+            <Text style={{left:5,color:'white'}}>RS: {item.price}</Text>
           </TouchableOpacity>
-          <Button mode='outlined' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
+          <Button mode='contained' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
 
 
         </View>}
       />}
       {category == 3 && <FlatList
-        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" }}
+        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" ,left:13}}
         data={shirt}
-        renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
+        renderItem={({ item }) => <View style={{ marginHorizontal: 15 ,backgroundColor:'#B0A0FF',borderRadius:10}}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/shirt.webp")} />
             <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
@@ -225,19 +228,19 @@ const Main = () => {
               ></IconButton>
             </TouchableOpacity>
 
-            <Text>{item.brand}</Text>
-            <Text>{item.color}</Text>
-            <Text>RS: {item.price}</Text>
+            <Text style={{left:5,color:'white'}}>{item.brand}</Text>
+            <Text style={{left:5,color:'white'}}>{item.color}</Text>
+            <Text style={{left:5,color:'white'}}>RS: {item.price}</Text>
           </TouchableOpacity>
-          <Button mode='outlined' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
+          <Button mode='contained' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
 
 
         </View>}
       />}
       {category == 4 && <FlatList
-        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" }}
+        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap",left:13 }}
         data={lower}
-        renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
+        renderItem={({ item }) => <View style={{ marginHorizontal: 15,backgroundColor:'#B0A0FF',borderRadius:10 }}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/lower.webp")} />
             <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
@@ -252,19 +255,19 @@ const Main = () => {
               ></IconButton>
             </TouchableOpacity>
 
-            <Text>{item.brand}</Text>
-            <Text>{item.color}</Text>
-            <Text>RS: {item.price}</Text>
+            <Text  style={{left:5,color:'white'}}>{item.brand}</Text>
+            <Text style={{left:5,color:'white'}}>{item.color}</Text>
+            <Text style={{left:5,color:'white'}}>RS: {item.price}</Text>
           </TouchableOpacity>
-          <Button mode='outlined' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
+          <Button mode='contained' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
 
 
         </View>}
       />}
       {category == 5 && <FlatList
-        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap" }}
+        contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap",left:13 }}
         data={hoodie}
-        renderItem={({ item }) => <View style={{ marginHorizontal: 15 }}>
+        renderItem={({ item }) => <View style={{ marginHorizontal: 15 ,backgroundColor:'#B0A0FF',borderRadius:10}}>
           <TouchableOpacity onPress={() => { console.log("main") }}>
             <Image style={{ height: 160, width: 160 }} source={require("../Images/hoodie.webp")} />
             <TouchableOpacity style={{ position: 'absolute', top: 0, right: 0, borderRadius: 30, }}
@@ -279,11 +282,11 @@ const Main = () => {
               ></IconButton>
             </TouchableOpacity>
 
-            <Text>{item.brand}</Text>
-            <Text>{item.color}</Text>
-            <Text>RS: {item.price}</Text>
+            <Text style={{left:5,color:'white'}}>{item.brand}</Text>
+            <Text style={{left:5,color:'white'}}>{item.color}</Text>
+            <Text style={{left:5,color:'white'}}>RS: {item.price}</Text>
           </TouchableOpacity>
-          <Button mode='outlined' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
+          <Button mode='contained' style={{ position: 'absolute', bottom: 7, left: 80, }} onPress={() => setcart([...cart, item])}>+</Button>
 
 
         </View>}

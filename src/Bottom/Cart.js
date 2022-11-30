@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { CartContext } from '../Context/CartContext'
-import { Button } from 'react-native-paper'
+import { Button,IconButton } from 'react-native-paper'
 import Header from '../Common/Header'
 
 
@@ -22,15 +22,15 @@ const CartCard = ({ val }) => {
 
     <View style={{
       width: '100%', height: 70, justifyContent: 'space-between',
-      alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2,}}>
-      <ScrollView style={{ width: '100%', backgroundColor: 'grey' }} >
+      alignItems: 'center', flexDirection: 'row', }}>
+      <ScrollView style={{ width: '100%', backgroundColor: `#6a5acd`,marginVertical:2 }} >
 
-        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', width: '100%' }}>Brand:-{val.brand}</Text>
-        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 5 }}>Color:-{val.color}</Text>
-        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', bottom: 5 }}>Price:-{val.price}</Text>
-        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', bottom: 5,right:5 }}>code:-{val.code}</Text>
-        <TouchableOpacity style={{ marginRight: 10 }}>
-          <Button  style={{ fontSize: 18, fontWeight: '500',}} onPress={() => remove()}>Remove</Button>
+        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', width: '100%', color:'white'}}>Brand:-{val.brand}</Text>
+        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 5, color:'white'}}>Color:-{val.color}</Text>
+        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', bottom: 5 ,color:'white'}}>Price:-{val.price}</Text>
+        <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', bottom: 5,right:5 ,color:'white'}}>code:-{val.code}</Text>
+        <TouchableOpacity style={{ marginRight: 10, }}>
+          <IconButton icon={'delete'}  iconColor={'white'} style={{ alignSelf:'center',}} onPress={() => remove()}/>
         </TouchableOpacity>
        
 
@@ -47,10 +47,11 @@ const Cart = () => {
 // alert(cart)
 // console.log(cart)
   return (
-    <View style={{ flex: 1, }}>
-      <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', position: 'absolute', left: 1, top: 1 }}>Your Cart</Text>
-      <Button  style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 1, top: 10, paddingTop: 20 }} onPress={() => setcart([])}>Clear Cart</Button>
-
+    <View style={{ flex: 1,}}>
+      
+      <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', position: 'absolute', left: 1, top: 1,color:`#6a5acd`,fontWeight:'600' }}>Your Cart</Text>
+      <Button  style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 1, top: 10, paddingTop: 20,color:`#6a5acd`,fontWeight:'600' }} onPress={() => setcart([])}>Clear Cart</Button>
+  
       <FlatList
         data={cart}
         renderItem={({ item }) => <CartCard val={item} />}
