@@ -11,6 +11,8 @@ import MyOrders from './Screens/MyOrders';
 import Offers from './Screens/Offers';
 import MyAddress from './Screens/MyAddress';
 import Addaddress from './Screens/AddAddress';
+import LogoutScreen from './Screens/LogoutScreen';
+import TotalOrder from './Screens/TotalOrder';
 
 
 
@@ -30,6 +32,8 @@ function AppNavigator() {
         <Stack.Screen name="MyOrders" component={MyOrders} options={{ headerShown: false }} />
         <Stack.Screen name="Offers" component={Offers} options={{ headerShown: false }} />
         <Stack.Screen name="Addaddress" component={Addaddress} options={{ headerShown: false }} />
+        <Stack.Screen name="LogoutScreen" component={LogoutScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="TotalOrder" component={TotalOrder} options={{ headerShown: false }} />
        
        
         

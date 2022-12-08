@@ -10,6 +10,7 @@ import Profile from './src/Bottom/Profile'
 import CartContextProvider from './src/Context/CartContext'
 import MyAddress from './src/Screens/MyAddress'
 import Addaddress from './src/Screens/AddAddress'
+import { StatusBar } from 'react-native'
 
 
 const App = () => {

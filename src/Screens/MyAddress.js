@@ -15,15 +15,19 @@ import { FlatList } from 'react-native-gesture-handler'
 
 
 const MyAddress = () => {
-  const [adData, setAdData] = useState([])
-  // const{adData,setAdData}=useContext(CartContext)
+  // const [adData, setAdData] = useState([])
+  const{adData,setAdData}=useContext(CartContext)
   const navigation = useNavigation()
   const isFocused = useIsFocused()
 
-  const Delete = () => {
-    return (
-      adData !== adData
-    )
+  const Delete = async () => {
+    try {
+      await AsyncStorage.removeItem("Address");
+      return true;
+    }
+    catch (exception) {
+      return false;
+    }
   }
 
   const getAddress = async () => {
@@ -36,6 +40,7 @@ const MyAddress = () => {
   }, [isFocused])
 
   console.log('maindata', adData)
+  // console.log('maindata', getAddress())
   return (
     <View style={{ flex: 1 }}>
 
@@ -48,17 +53,18 @@ const MyAddress = () => {
       </View>
 
       <View style={{ flex: 1, borderBottomWidth: 0.2, borderBottomColor: '#000' }}>
+
         {adData && <FlatList
           data={adData}
           renderItem={({ item }) =>
-            <View style={{ width: '100%', backgroundColor: 'grey' }}>
+            <View style={{ width: '100%', backgroundColor: '#B0A0FF' }}>
 
-              <Text style={{ color: "black", fontSize: 16 }}>City:{item.city}</Text>
-              <Text style={{ color: "black", fontSize: 16 }}>Building:{item.building}</Text>
-              <Text style={{ color: "black", fontSize: 16 }}>Pincode:{item.pincode}</Text>
-              <Button mode='outlined' textColor='white' style={{ position: 'absolute', right: 1, top: 10 }}
+              <Text style={{ color: "white", fontSize: 16,paddingLeft:5 }}>City:{item.city}</Text>
+              <Text style={{ color: "white", fontSize: 16,paddingLeft:5 }}>Building:{item.building}</Text>
+              <Text style={{ color: "white", fontSize: 16,paddingLeft:5 }}>Pincode:{item.pincode}</Text>
+              <IconButton  icon={'delete'} iconColor={'white'} style={{ position: 'absolute', right: 1, top: 10 }}
                 onPress={() => Delete()}
-              >Delete</Button>
+              >Delete</IconButton>
 
             </View>
           }

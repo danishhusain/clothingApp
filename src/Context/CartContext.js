@@ -10,6 +10,8 @@ export default function CartContextProvider({ children }) {
   const [pincode, setPincode] = useState("")
   const [address, setAddress] = useState("")
   const [adstate,setAdstate]=useState([])
+  const [adData, setAdData] = useState([])
+
 
 
   return (
@@ -19,7 +21,8 @@ export default function CartContextProvider({ children }) {
        city, setCity,
        building, setBuilding,
        pincode, setPincode,
-       adstate,setAdstate
+       adstate,setAdstate,
+       adData, setAdData
 
     }}>
       {children}

@@ -12,8 +12,8 @@ import { mdiMagnify, mdiHomeSearchOutline } from '@mdi/js';
 
 const HomeScreen = () => {
   const [selectedTab, setSelectedTab] = useState(0)
-  const {cart}=useContext(CartContext)
-  const {wishlist,setWishlist}=useContext(CartContext)
+  const { cart } = useContext(CartContext)
+  const { wishlist, setWishlist } = useContext(CartContext)
 
 
 
@@ -34,7 +34,7 @@ const HomeScreen = () => {
         >
         </IconButton>
 
-        <IconButton icon= "magnify"
+        <IconButton icon="magnify"
           iconColor={selectedTab == 1 ? "blue" : `#f0f8ff`}
           size={25}
           onPress={() => setSelectedTab(1)}
@@ -42,14 +42,16 @@ const HomeScreen = () => {
         </IconButton>
 
 
-        <View style={{backgroundColor:'#FFF',borderRadius:25}}>
-        <View style={{ backgroundColor: 'red', position:'absolute',right:1 ,top:1,borderRadius:25,alignSelf:'center'}}>
-        <Badge size={18} >{cart.length}</Badge>
-        </View>
+        <View style={{ backgroundColor: '#FFF', borderRadius: 25 }}>
+          <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
+            {cart.length == 0 ? null :
+              <Badge size={18} >{cart.length}</Badge>
+            }
+          </View>
 
 
 
-          <IconButton icon="cart"  iconColor={selectedTab == 2 ? "blue" : `#000`} onPress={() => setSelectedTab(2)}
+          <IconButton icon="cart" iconColor={selectedTab == 2 ? "blue" : `#000`} onPress={() => setSelectedTab(2)}
             size={25} >
           </IconButton>
 
@@ -57,16 +59,18 @@ const HomeScreen = () => {
 
 
         <View >
-        <View style={{ backgroundColor: 'red', position:'absolute',right:1 ,top:1,borderRadius:25,alignSelf:'center'}}>
-        <Badge size={18} >{wishlist.length}</Badge>
+          <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
+          {wishlist.length == 0 ? null :
+            <Badge size={18} >{wishlist.length}</Badge>
+          }
 
           </View>
 
-        <IconButton icon="heart"
-          onPress={() => setSelectedTab(3)}
-          iconColor={selectedTab == 3 ? "blue" : `#f0f8ff`}
-          size={25}  >
-        </IconButton>
+          <IconButton icon="heart"
+            onPress={() => setSelectedTab(3)}
+            iconColor={selectedTab == 3 ? "blue" : `#f0f8ff`}
+            size={25}  >
+          </IconButton>
         </View>
 
         <IconButton icon="account"
