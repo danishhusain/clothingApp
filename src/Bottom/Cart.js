@@ -17,7 +17,8 @@ const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 const CartCard = ({ val }) => {
   const navigation = useNavigation()
   const { cart, setcart } = useContext(CartContext)
-  const {DetailsCartItem,setDetailsCartItem}=useContext(CartContext)
+  // const {DetailsCartItem,setDetailsCartItem}=useContext(CartContext)
+  const [DetailsCartItem, setDetailsCartItem] = useState([])
 
 
   const remove = () => {
@@ -35,26 +36,27 @@ const CartCard = ({ val }) => {
 
     }}>
 
-      <ScrollView style={{ width: '100%', backgroundColor: `#6a5acd`, marginVertical: 1, }} >
+      <ScrollView style={{ width: '100%', backgroundColor: '#B0A0FF', marginVertical: 1, }} >
         <View style={{ justifyContent: 'center', alignContent: 'center', }}>
           <TouchableOpacity onPress={() => {
-            navigation.navigate(DetailsCart)
-            // setDetailsCartItem(val)
+            navigation.navigate('DetailsCart'),
+              setDetailsCartItem(cart)
+
           }} >
             <Image style={{ height: 100, width: 100 }} source={require('../Images/tshirt.webp')} />
           </TouchableOpacity>
-          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', left: 120, top: 10, color: 'white', }}>Brand:-{val.brand}</Text> 
-          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', left: 120, top: 30, color: 'white', }}>Color:-{val.color}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', left: 120, top: 50, color: 'white', }}>code:-{val.code}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '800', color: '#000', position: 'absolute', left: 120, top: 70, color: 'white', }}>Price:-{val.price}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 10, color: '#000', }}>Brand:-{val.brand}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 30, color: '#000', }}>Color:-{val.color}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 50, color: '#000', }}>code:-{val.code}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '500', color: '#000', position: 'absolute', left: 120, top: 70, color: '#000', }}>Price:-{val.price}</Text>
           <IconButton icon={'delete'} iconColor={'white'} onPress={() => remove()}
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
 
+          <Button textColor='blue' style={{ fontSize: 16, fontWeight: '600',  position: 'absolute', right: 10, bottom: 3,  }} onPress={() => {setcart([...cart]),navigation.navigate(TotalOrder)}}>Buy</Button>
 
         </View>
       </ScrollView>
-      {/* <Button mode='contained' onPress={()=>navigation.navigate(TotalOrder)}>Place Order</Button> */}
 
 
     </View>
@@ -79,7 +81,7 @@ const Cart = () => {
     getAddress()
   }, [isFocused])
 
-  console.log('maindata', CartAddress)
+  // console.log('maindata', CartAddress)
   return (
     <View style={{ flex: 1, }}>
 
@@ -107,7 +109,7 @@ const Cart = () => {
         </View>
       </View>
 
-{/* Flatlist */}
+      {/* Flatlist */}
       <View style={{ flex: 1, }}>
         <FlatList
           data={cart}
@@ -118,8 +120,8 @@ const Cart = () => {
       </View>
 
 
-{/* button */}
-      <View style={{ flex: .17,marginTop:3.5 }}>
+      {/* button */}
+      <View style={{ flex: .17, marginTop: 3.5 }}>
         <Button mode='contained' onPress={() => navigation.navigate(TotalOrder)}>Place Order</Button>
       </View>
 

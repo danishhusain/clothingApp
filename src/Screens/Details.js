@@ -6,7 +6,8 @@ import { Button, IconButton } from 'react-native-paper'
 import { useNavigation, useIsFocused } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Addaddress from '../Screens/AddAddress'
-import buyNow from './buyNow'
+import buyNow from './BuyNow'
+import TotalOrder from './TotalOrder'
 
 
 
@@ -27,7 +28,7 @@ const Details = ({ value }) => {
         getAddress()
     }, [isFocused])
 
-    console.log("d", ItemDetail)
+    console.log("data", ItemDetail)
     console.log("A", DetailAddress)
 
     return (
@@ -103,7 +104,7 @@ const Details = ({ value }) => {
             {/* <View style={{ flex: 1 }}></View> */}
             <View style={{ paddingVertical: 4, flexDirection: 'row', justifyContent: 'space-around', }}>
                 <Button mode='contained'>Add Cart</Button>
-                <Button mode='contained' onPress={() => navigation.navigate(buyNow)}>Buy Now</Button>
+                <Button mode='contained' onPress={() => navigation.navigate(TotalOrder)}>Buy Now</Button>
             </View>
         </View>
     )

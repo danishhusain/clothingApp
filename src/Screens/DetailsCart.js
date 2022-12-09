@@ -117,11 +117,21 @@
 
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { useContext } from 'react'
+import { CartContext } from '../Context/CartContext'
 
 const DetailsCart = () => {
+    // const { DetailsCartItem, setDetailsCartItem } = useContext(CartContext)
+    const { cart, setcart } = useContext(CartContext)
+
+console.log("Data 1",cart[0])
+
+
+
   return (
     <View>
       <Text>DetailsCartt</Text>
+    
     </View>
   )
 }
