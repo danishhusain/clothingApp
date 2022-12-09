@@ -12,7 +12,7 @@ import { mdiMagnify, mdiHomeSearchOutline } from '@mdi/js';
 
 const HomeScreen = () => {
   const [selectedTab, setSelectedTab] = useState(0)
-  const { cart } = useContext(CartContext)
+  const { cart,setCart } = useContext(CartContext)
   const { wishlist, setWishlist } = useContext(CartContext)
 
 

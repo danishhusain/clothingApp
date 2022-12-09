@@ -5,14 +5,20 @@ import { Button, IconButton } from 'react-native-paper'
 import { CartContext } from '../Context/CartContext'
 import { product, tshirt, jeans, jacket, shirt, lower, hoodie } from '../DataBase/Api'
 import { ImageSlider } from "react-native-image-slider-banner";
+import { useNavigation } from '@react-navigation/native'
+import Details from '../Screens/Details'
+import { Item } from 'react-native-paper/lib/typescript/components/Drawer/Drawer'
+
 
 
 
 const Main = () => {
+  const navigation = useNavigation()
   const [category, setCategory] = useState(0)
   const [iconSelected, setIconSelected] = useState(false)
   const { cart, setcart } = useContext(CartContext)
   const { wishlist, setWishlist } = useContext(CartContext)
+  const {ItemDetail,setItemDetail}=useContext(CartContext)
 
 
 
@@ -23,7 +29,7 @@ const Main = () => {
         <View>
           <Header />
         </View>
-        <View style={{ }}>
+        <View style={{}}>
           {/* <ImageSlider
             data={[
               { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5a5uCP-n4teeW2SApcIqUrcQApev8ZVCJkA&usqp=CAU' },
@@ -35,7 +41,7 @@ const Main = () => {
             closeIconColor="#fff"
             showHeader={false}
           /> */}
-        <Image source={require('../Images/slide1.webp')} style={{ width: '100%', height: 250, borderRadius: 20 }} />
+          <Image source={require('../Images/slide1.webp')} style={{ width: '100%', height: 250, borderRadius: 20 }} />
 
         </View>
 
@@ -49,7 +55,7 @@ const Main = () => {
           />
         </View>
 
-        {/* <View style={{  backgroundColor: 'red',flex: 1, }}> */}
+        {/* <View style={{  backgroundColor: 'red',flex: 1,flexDirection:'row',justifyContent:'space-between' }}> */}
         {category == 0 &&
           <FlatList
             contentContainerStyle={{
@@ -62,8 +68,10 @@ const Main = () => {
             }}
             data={tshirt}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={() => { console.log('item.url') }}>
-                <Image style={{ height: 200, width: 200 }}  source={require('../Images/tshirt.webp')}/>
+              <TouchableOpacity  onPress={() => {navigation.navigate(Details),
+              setItemDetail(item)
+              }}  >
+                <Image style={{ height: 195, width: 195 }} source={require('../Images/tshirt.webp')}/>
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -86,6 +94,8 @@ const Main = () => {
               </View>
             </View>}
           />}
+          {/* </View> */}
+
         {category == 1 &&
           <FlatList
             contentContainerStyle={{
@@ -98,8 +108,10 @@ const Main = () => {
             }}
             data={jeans}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={() => { console.log("main") }}>
-                <Image style={{ height: 200, width: 200 }} source={require("../Images/jeans.webp")} />
+              <TouchableOpacity onPress={() => {navigation.navigate(Details),
+              setItemDetail(item)
+              }}>
+                <Image style={{  height: 195, width: 195 }} source={require("../Images/jeans.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -132,8 +144,10 @@ const Main = () => {
             }}
             data={jacket}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={() => { console.log("main") }}>
-                <Image style={{ height: 200, width: 200 }} source={require("../Images/jacket.webp")} />
+              <TouchableOpacity onPress={(props) => {navigation.navigate(Details),
+              setItemDetail(item)
+              }} >
+                <Image style={{ height: 195, width: 195  }} source={require("../Images/jacket.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -166,8 +180,10 @@ const Main = () => {
             }}
             data={shirt}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={() => { console.log("main") }}>
-                <Image style={{ height: 200, width: 200 }} source={require("../Images/shirt.webp")} />
+              <TouchableOpacity onPress={(props) => {navigation.navigate(Details),
+              setItemDetail(item)
+              }} >
+                <Image style={{  height: 195, width: 195 }} source={require("../Images/shirt.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -200,8 +216,10 @@ const Main = () => {
             }}
             data={lower}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={() => { console.log("main") }}>
-                <Image style={{ height: 200, width: 200 }} source={require("../Images/lower.webp")} />
+              <TouchableOpacity onPress={(props) => {navigation.navigate(Details),
+              setItemDetail(item)
+              }} >
+                <Image style={{  height: 195, width: 195 }} source={require("../Images/lower.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -234,8 +252,10 @@ const Main = () => {
             }}
             data={hoodie}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={() => { console.log("main") }}>
-                <Image style={{ height: 200, width: 200 }} source={require("../Images/hoodie.webp")} />
+              <TouchableOpacity onPress={(props) => {navigation.navigate(Details),
+              setItemDetail(item)
+              }} >
+                <Image style={{  height: 195, width: 195  }} source={require("../Images/hoodie.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"

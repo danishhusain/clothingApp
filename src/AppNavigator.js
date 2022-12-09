@@ -13,6 +13,10 @@ import MyAddress from './Screens/MyAddress';
 import Addaddress from './Screens/AddAddress';
 import LogoutScreen from './Screens/LogoutScreen';
 import TotalOrder from './Screens/TotalOrder';
+import Details from './Screens/Details';
+import buyNow from './Screens/buyNow';
+import DetailsCart from './Screens/DetailsCart';
+
 
 
 
@@ -23,9 +27,9 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
+        {/* <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
         <Stack.Screen name="LogIn" component={LogIn} options={{ headerShown: false }} />
-        <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
+        <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} /> */}
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Loader" component={Loader} options={{ headerShown: false }} />
         <Stack.Screen name="MyAddress" component={MyAddress} options={{ headerShown: false }} />
@@ -34,6 +38,9 @@ function AppNavigator() {
         <Stack.Screen name="Addaddress" component={Addaddress} options={{ headerShown: false }} />
         <Stack.Screen name="LogoutScreen" component={LogoutScreen} options={{ headerShown: false }} />
         <Stack.Screen name="TotalOrder" component={TotalOrder} options={{ headerShown: false }} />
+        <Stack.Screen name="Details" component={Details} options={{ headerShown: false }} />
+        <Stack.Screen name="DetailsCart" component={DetailsCart} options={{ headerShown: false }} />
+        <Stack.Screen name="buyNow" component={buyNow} options={{ headerShown: false }} />
        
        
         
