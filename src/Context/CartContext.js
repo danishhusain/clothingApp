@@ -12,6 +12,8 @@ export default function CartContextProvider({ children }) {
   const [adstate, setAdstate] = useState([])
   const [adData, setAdData] = useState([])
   const [ItemDetail, setItemDetail] = useState([])
+  const [CartAddress, setCartAddress] = useState([])
+
   const [ DetailAddress, setDetailAddress ] = useState([])
 
 
@@ -28,7 +30,8 @@ export default function CartContextProvider({ children }) {
       adstate, setAdstate,
       adData, setAdData,
       ItemDetail, setItemDetail,
-      DetailAddress, setDetailAddress
+      DetailAddress, setDetailAddress,
+      CartAddress, setCartAddress
     }}>
       {children}
     </CartContext.Provider>

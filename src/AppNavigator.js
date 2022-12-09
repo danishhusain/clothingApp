@@ -14,8 +14,9 @@ import Addaddress from './Screens/AddAddress';
 import LogoutScreen from './Screens/LogoutScreen';
 import TotalOrder from './Screens/TotalOrder';
 import Details from './Screens/Details';
-import buyNow from './Screens/buyNow';
 import DetailsCart from './Screens/DetailsCart';
+import BuyScreen from './Screens/BuyScreen';
+
 
 
 
@@ -40,7 +41,7 @@ function AppNavigator() {
         <Stack.Screen name="TotalOrder" component={TotalOrder} options={{ headerShown: false }} />
         <Stack.Screen name="Details" component={Details} options={{ headerShown: false }} />
         <Stack.Screen name="DetailsCart" component={DetailsCart} options={{ headerShown: false }} />
-        <Stack.Screen name="buyNow" component={buyNow} options={{ headerShown: false }} />
+        <Stack.Screen name="BuyScreen" component={BuyScreen} options={{ headerShown: false }} />
        
        
         

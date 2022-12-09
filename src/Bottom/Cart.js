@@ -9,6 +9,8 @@ import Addaddress from '../Screens/AddAddress'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Details from '../Screens/Details'
 import DetailsCart from '../Screens/DetailsCart'
+import BuyScreen from '../Screens/BuyScreen'
+
 
 
 
@@ -53,7 +55,7 @@ const CartCard = ({ val }) => {
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
 
-          <Button textColor='blue' style={{ fontSize: 16, fontWeight: '600',  position: 'absolute', right: 10, bottom: 3,  }} onPress={() => {setcart([...cart]),navigation.navigate(TotalOrder)}}>Buy</Button>
+          <Button textColor='blue' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart]), navigation.navigate(TotalOrder) }}>Buy</Button>
 
         </View>
       </ScrollView>
@@ -119,10 +121,17 @@ const Cart = () => {
 
       </View>
 
+      {/* Total Balance */}
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, marginHorizontal: 5 }}>
+        {/* <Text style={{color:'blue',fontWeight:'800'}}>Sub-Total: </Text> */}
+        <Text style={{ fontSize: 20, color: 'blue' }}>Total: 1000</Text>
+      </View>
+
 
       {/* button */}
-      <View style={{ flex: .17, marginTop: 3.5 }}>
-        <Button mode='contained' onPress={() => navigation.navigate(TotalOrder)}>Place Order</Button>
+      <View style={{ flex: .17, marginTop: 3.5, marginHorizontal: 5 }}>
+
+        <Button mode='contained' onPress={() => navigation.navigate(BuyScreen)}>Place Order</Button>
       </View>
 
     </View>

@@ -6,7 +6,7 @@ import { Button, IconButton } from 'react-native-paper'
 import { useNavigation, useIsFocused } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Addaddress from '../Screens/AddAddress'
-import buyNow from './BuyNow'
+import BuyScreen from './BuyScreen'
 import TotalOrder from './TotalOrder'
 
 
