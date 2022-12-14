@@ -15,8 +15,8 @@ import { FlatList } from 'react-native-gesture-handler'
 
 
 const MyAddress = () => {
-  // const [adData, setAdData] = useState([])
-  const{adData,setAdData}=useContext(CartContext)
+  const [adData, setAdData] = useState([])
+  // const{adData,setAdData}=useContext(CartContext)
   const navigation = useNavigation()
   const isFocused = useIsFocused()
 
@@ -39,8 +39,7 @@ const MyAddress = () => {
     getAddress()
   }, [isFocused])
 
-  console.log('maindata', adData)
-  // console.log('maindata', getAddress())
+console.log('<<',adData)
   return (
     <View style={{ flex: 1 }}>
 
@@ -57,7 +56,7 @@ const MyAddress = () => {
         {adData && <FlatList
           data={adData}
           renderItem={({ item }) =>
-            <View style={{ width: '100%', backgroundColor: '#B0A0FF' }}>
+            <View style={{ width: '100%', backgroundColor: '#B0A0FF' ,borderBottomWidth:1,borderBottomColor:'white'}}>
 
               <Text style={{ color: "white", fontSize: 16,paddingLeft:5 }}>City:{item.city}</Text>
               <Text style={{ color: "white", fontSize: 16,paddingLeft:5 }}>Building:{item.building}</Text>

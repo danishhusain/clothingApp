@@ -13,7 +13,7 @@ import TotalOrder from './TotalOrder'
 
 
 const Details = ({ value }) => {
-    const { ItemDetail, setItemDetail } = useContext(CartContext)
+    const { ItemDetail,} = useContext(CartContext)
     // const { Addaddress, seAddaddress } = useContext(CartContext)
     const [DetailAddress, setDetailAddress] = useState([])
     const navigation = useNavigation()

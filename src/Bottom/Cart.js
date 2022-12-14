@@ -10,17 +10,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import Details from '../Screens/Details'
 import DetailsCart from '../Screens/DetailsCart'
 import BuyScreen from '../Screens/BuyScreen'
+import { set } from 'react-native-reanimated'
 
 
 
 
-const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
+
 
 const CartCard = ({ val }) => {
   const navigation = useNavigation()
-  const { cart, setcart } = useContext(CartContext)
+  const { cart, setcart ,   setItemDetail} = useContext(CartContext)
   // const {DetailsCartItem,setDetailsCartItem}=useContext(CartContext)
   const [DetailsCartItem, setDetailsCartItem] = useState([])
+  
 
 
   const remove = () => {
@@ -30,6 +32,7 @@ const CartCard = ({ val }) => {
     )
     setcart(arr)
   }
+  // console.log(val.price,typeof val.price)
   return (
     <View style={{
       width: '100%',
@@ -40,11 +43,7 @@ const CartCard = ({ val }) => {
 
       <ScrollView style={{ width: '100%', backgroundColor: '#B0A0FF', marginVertical: 1, }} >
         <View style={{ justifyContent: 'center', alignContent: 'center', }}>
-          <TouchableOpacity onPress={() => {
-            navigation.navigate('DetailsCart'),
-              setDetailsCartItem(cart)
-
-          }} >
+          <TouchableOpacity onPress={() => {navigation.navigate(Details),   setItemDetail(val)}} >
             <Image style={{ height: 100, width: 100 }} source={require('../Images/tshirt.webp')} />
           </TouchableOpacity>
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 10, color: '#000', }}>Brand:-{val.brand}</Text>
@@ -55,7 +54,7 @@ const CartCard = ({ val }) => {
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
 
-          <Button textColor='blue' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart]), navigation.navigate(TotalOrder) }}>Buy</Button>
+          <Button textColor='blue' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart,val]), navigation.navigate(BuyScreen)}}>Buy</Button>
 
         </View>
       </ScrollView>
@@ -71,7 +70,8 @@ const Cart = () => {
   const { cart, setcart } = useContext(CartContext)
   const navigation = useNavigation()
   const isFocused = useIsFocused()
-  const [CartAddress, setCartAddress] = useState([])
+  const [CartAddress, setCartAddress] = useState()
+  const [totalprice,setTotalprice]=useState()
   // const{adData,setAdData}=useContext(CartContext)
 
 
@@ -82,7 +82,20 @@ const Cart = () => {
   useEffect(() => {
     getAddress()
   }, [isFocused])
-
+useEffect(()=>{
+  getTotal()
+},[cart])
+  const getTotal=()=>{
+    let total=0
+    if(cart){
+    for(i=0;i<cart.length;i++){
+// console.log(cart.p)
+        total=total+parseInt( cart[i].price)
+        
+    }}
+    // console.log('>>>',total)
+    setTotalprice(total)
+  }
   // console.log('maindata', CartAddress)
   return (
     <View style={{ flex: 1, }}>
@@ -99,9 +112,11 @@ const Cart = () => {
           <IconButton icon={'map-marker-outline'} iconColor={'#fff'}
             style={{}}
           />
-          <FlatList data={CartAddress}
+          {/* <FlatList data={CartAddress}
             renderItem={({ item }) => <Text style={{ fontWeight: '500', fontSize: 16, color: "white", }}>Deliver to:- {item.city} , {item.pincode}</Text>
-            } />
+            } /> */}
+            {CartAddress ?<Text style={{ fontWeight: '500', fontSize: 16, color: "white",right:160 }}>Deliver to:- {CartAddress[0].city}</Text>:null}
+
         </View>
 
         <View>
@@ -124,7 +139,7 @@ const Cart = () => {
       {/* Total Balance */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, marginHorizontal: 5 }}>
         {/* <Text style={{color:'blue',fontWeight:'800'}}>Sub-Total: </Text> */}
-        <Text style={{ fontSize: 20, color: 'blue' }}>Total: 1000</Text>
+        <Text style={{ fontSize: 20, color: 'blue' }}>Total: {totalprice}</Text>
       </View>
 
 

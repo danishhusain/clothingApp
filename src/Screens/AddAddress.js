@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, Alert } from 'react-native'
 import React, { useState ,useEffect} from 'react'
 import { Button, TextInput } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -9,7 +9,7 @@ import Main from '../Bottom/Main'
 
 
 const Addaddress = () => {
-  // const { refresh } = route.params;
+
  
   const navigation = useNavigation();
 
@@ -51,18 +51,19 @@ const getAddress=async()=>{
   }
   const saveAddress = async () => {
     if (badcity === false && badbuilding === false && badpincode === false) {
-      if(adstate!=null){
-      await AsyncStorage.setItem('Address',JSON.stringify( [...adstate,data]))}
-      else{
-        await AsyncStorage.setItem('Address',JSON.stringify( [data]))
-      }
-      // refresh(getAddress())
-      getAddress()
+   if(adstate!=null){
+        await AsyncStorage.setItem('Address',JSON.stringify( [data,...adstate]))
+   }else{
+    await AsyncStorage.setItem('Address',JSON.stringify( [data]))
+   }
+   
       navigation.goBack()
 
     }
   }
-  
+  useEffect(()=>{
+    getAddress()
+  },[])
 
   return (
     <View style={{ flex: 1, }}>

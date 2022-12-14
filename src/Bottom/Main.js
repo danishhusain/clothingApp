@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import Details from '../Screens/Details'
 import { Item } from 'react-native-paper/lib/typescript/components/Drawer/Drawer'
 import TotalOrder from '../Screens/TotalOrder'
+import BuyScreen from '../Screens/BuyScreen'
 
 
 
@@ -19,7 +20,7 @@ const Main = () => {
   const [iconSelected, setIconSelected] = useState(false)
   const { cart, setcart } = useContext(CartContext)
   const { wishlist, setWishlist } = useContext(CartContext)
-  const {ItemDetail,setItemDetail}=useContext(CartContext)
+  const {setItemDetail}=useContext(CartContext)
 
 
 
@@ -92,7 +93,7 @@ const Main = () => {
                 {/* <Image source={{uri:'item.URL'}} style={{height: 200, width: 200, borderRadius: 37.5 }} /> */}
 
                 <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => navigation.navigate(TotalOrder)}>Buy</Button>
+                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
               </View>
             </View>}
           />}
@@ -131,7 +132,7 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
                 <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Buy</Button>
+                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
               </View>
             </View>}
           />}
@@ -168,7 +169,7 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
                 <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Buy</Button>
+                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
               </View>
             </View>}
           />}
@@ -205,7 +206,7 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
                 <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Buy</Button>
+                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
               </View>
             </View>}
           />}
@@ -242,7 +243,7 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
                 <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Buy</Button>
+                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
               </View>
             </View>}
           />}
@@ -279,7 +280,7 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
                 <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Buy</Button>
+                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
               </View>
             </View>}
           />}
