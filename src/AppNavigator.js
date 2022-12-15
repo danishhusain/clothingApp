@@ -16,6 +16,8 @@ import TotalOrder from './Screens/TotalOrder';
 import Details from './Screens/Details';
 import DetailsCart from './Screens/DetailsCart';
 import BuyScreen from './Screens/BuyScreen';
+import RadioButton from './TestAnything/RadioButton';
+import RadioButtonFc from './TestAnything/RadioButton';
 
 
 
@@ -42,6 +44,7 @@ function AppNavigator() {
         <Stack.Screen name="Details" component={Details} options={{ headerShown: false }} />
         <Stack.Screen name="DetailsCart" component={DetailsCart} options={{ headerShown: false }} />
         <Stack.Screen name="BuyScreen" component={BuyScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="RadioButtonFc" component={RadioButtonFc} options={{ headerShown: false }} />
        
        
         

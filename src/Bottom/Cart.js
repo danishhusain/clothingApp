@@ -112,9 +112,7 @@ useEffect(()=>{
           <IconButton icon={'map-marker-outline'} iconColor={'#fff'}
             style={{}}
           />
-          {/* <FlatList data={CartAddress}
-            renderItem={({ item }) => <Text style={{ fontWeight: '500', fontSize: 16, color: "white", }}>Deliver to:- {item.city} , {item.pincode}</Text>
-            } /> */}
+        
             {CartAddress ?<Text style={{ fontWeight: '500', fontSize: 16, color: "white",right:160 }}>Deliver to:- {CartAddress[0].city}</Text>:null}
 
         </View>

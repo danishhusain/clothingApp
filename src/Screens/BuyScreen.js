@@ -6,19 +6,47 @@ import { CartContext } from '../Context/CartContext'
 import { useState, useEffect } from 'react'
 import { useNavigation, useIsFocused } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import RazorpayCheckout from 'react-native-razorpay';
+import RadioButton from '../TestAnything/RadioButton'
+import RadioButtonFc from '../TestAnything/RadioButton'
 
 
 const BuyScreen = ({ item }) => {
-    
+
     const navigation = useNavigation()
     const isFocused = useIsFocused()
     const [CartAddress, setCartAddress] = useState([])
+    // const { CartAddress, setCartAddress } = useContext(CartContext)
     const { cart, setcart } = useContext(CartContext)
-    
+
+
+    let makePayment = () => {
+        var options = {
+            description: 'Credits towards consultation',
+            image: 'https://i.imgur.com/3g7nmJC.png',
+            currency: 'INR',
+            key: 'rzp_test_QkaN6JxYa9IMvg', // Your api key
+            amount: '5000',
+            name: 'Danish',
+            prefill: {
+                email: 'void@razorpay.com',
+                contact: '9191919191',
+                name: 'Razorpay Software'
+            },
+            theme: { color: '#F37254' }
+        }
+        RazorpayCheckout.open(options).then((data) => {
+            // handle success
+            alert(`Success: ${data.razorpay_payment_id}`);
+        }).catch((error) => {
+            // handle failure
+            alert(`Error: ${error.code} | ${error.description}`);
+        });
+    }
 
 
     const lastCartItem = cart[cart.length - 1]
-    console.log(">>", lastCartItem)
+    // console.log(">>", lastCartItem)
     const getAddress = async () => {
         let bdata = await AsyncStorage.getItem("Address")
         setCartAddress(JSON.parse(bdata))
@@ -26,7 +54,9 @@ const BuyScreen = ({ item }) => {
     useEffect(() => {
         getAddress()
     }, [isFocused])
-    console.log(">>",CartAddress[0])
+
+
+    // console.log(">>>", CartAddress[0])
 
     return (
         <View style={{ flex: 1 }}>
@@ -36,12 +66,13 @@ const BuyScreen = ({ item }) => {
                 {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 10, paddingTop: 20, fontWeight: '600' }} onPress={() => console.log("hi")}>Clear Cart</Button> */}
             </View>
 
-            {/* Short Detail */}  
-            <View style={{ flex: 5 }}>
+            {/* Short Detail */}
+            <View style={{ flex: .5, }}>
                 <ScrollView>
-                    <Image style={{ height: 250, width: "100%" }} source={require('../Images/tshirt.webp')} />
-                    <Text>{lastCartItem.ItemName}</Text>
-                    <Text>Code:- {lastCartItem.code}</Text>
+                    <Image style={{ height: 250, width: "100%", paddingLeft: 5 }} source={require('../Images/tshirt.webp')} />
+                    <Text style={{ fontSize: 20, fontWeight: '800', paddingLeft: 5 }}>{lastCartItem.ItemName}</Text>
+                    <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Code:- {lastCartItem.code}</Text>
+                    <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Quantity:- </Text>
 
                 </ScrollView>
             </View >
@@ -51,24 +82,22 @@ const BuyScreen = ({ item }) => {
                 <IconButton icon={'map-marker-outline'} iconColor={'#fff'}
                     style={{}}
                 />
-                {/* <FlatList data={CartAddress}
-                    renderItem={({ item }) => <Text style={{ fontWeight: '500', fontSize: 16, color: "white", }}>Deliver to:- {item.city} , {item.pincode}, {item.building}</Text>
-                    } /> */}
-            {CartAddress ?<Text style={{ fontWeight: '500', fontSize: 16, color: "white",right:240 }}>Deliver to:- {CartAddress[0].city}</Text>:null}
-
+                {/* <RadioButtonFc /> */}
+                {/* <Text style={{ right: 40 }}>{CartAddress[1].city}</Text> */}
             </View>
             {/* Estimated Delivery */}
-            <View style={{ flex: 1, backgroundColor: `blue` }}>
-                <Text style={{ fontSize: 18 }}>Estimated Delivery 2,3 days</Text>
+            <View style={{ flex: 0.5, paddingLeft: 5 }}>
+                <Text style={{ fontSize: 18, color: 'blue' }}>Estimated Delivery 2,3 days</Text>
 
             </View>
             {/* Total Price */}
-            <View style={{ flex: 1, backgroundColor: `green` }}>
-                <Text>₹ {lastCartItem.price}</Text>
+            <View style={{}}>
+                <Text style={{ fontSize: 22, fontWeight: '800', paddingLeft: 5, color: 'blue', }}>₹ {lastCartItem.price}</Text>
             </View>
             {/* Button */}
             <View style={{ width: '90%', alignSelf: 'center', }}>
-                <Button mode='contained' buttonColor='green' style={{ marginVertical: 5 }} >Make Payment</Button>
+                <Button mode='contained' buttonColor='green' style={{ marginVertical: 5 }} onPress={() => makePayment()} >Make Payment</Button>
+                {/* <Button mode='contained' buttonColor='green' style={{ marginVertical: 5 }} onPress={() => navigation.navigate(RadioButton)} >Make Payment</Button> */}
             </View>
         </View>
     )
