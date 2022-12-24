@@ -104,7 +104,7 @@ const Details = ({ value }) => {
             {/* <View style={{ flex: 1 }}></View> */}
             <View style={{ paddingVertical: 4, flexDirection: 'row', justifyContent: 'space-around', }}>
                 <Button mode='contained'>Add Cart</Button>
-                <Button mode='contained' onPress={() => navigation.navigate(TotalOrder)}>Buy Now</Button>
+                <Button mode='contained' onPress={() => navigation.navigate(BuyScreen)}>Buy Now</Button>
             </View>
         </View>
     )

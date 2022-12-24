@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 import { IconButton, Button, TextInput, } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-
+import {  statusCodes } from '@react-native-google-signin/google-signin';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("")
@@ -17,7 +19,7 @@ const SignIn = ({ navigation }) => {
 
 
 
-
+// validation
   const Validation = (txt) => {
     if (name.length == 0) {
       setbadName(true)
@@ -42,10 +44,13 @@ const SignIn = ({ navigation }) => {
     } else {
       setBadconfirmpassward(false)
       saveData()
+      // AuthsignIn()
+
 
     }
 
   }
+  // save in async storage
   const saveData = async () => {
     // console.log("ok")
     if (badname === false && bademail === false && badpassward === false && badconfirmpassward === false) {
@@ -53,8 +58,35 @@ const SignIn = ({ navigation }) => {
       await AsyncStorage.setItem('Email', email)
       await AsyncStorage.setItem('Passward', passward)
       navigation.goBack();
+      // AuthsignIn()
+
     }
   }
+
+  // GoogleSignin.configure({
+  //   webClientId: '662105668477-jg2e8sg8vfvph07meoof2ap6fpntpmqe.apps.googleusercontent.com',
+  // });
+
+  // AuthsignIn = async () => {
+  //   try {
+  //     await GoogleSignin.hasPlayServices();
+  //     await GoogleSignin.signOut()
+  //     const userInfo = await GoogleSignin.signIn();
+  //     // this.setState({ userInfo });
+  //     console.log("UserInfo",userInfo)
+  //   } catch (error) {
+  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+  //       // user cancelled the login flow
+  //     } else if (error.code === statusCodes.IN_PROGRESS) {
+  //       // operation (e.g. sign in) is in progress already
+  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+  //       // play services not available or outdated
+  //     } else {
+  //       // some other error happened
+  //     }
+  //   }
+  //   // console.log(">")
+  // };
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -86,7 +118,6 @@ const SignIn = ({ navigation }) => {
         <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline' }}
           value={email}
           onPress={() => navigation.goBack()}>Alredy have Account</Text>
-
 
       </View>
     </View>

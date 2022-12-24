@@ -11,6 +11,9 @@ import Details from '../Screens/Details'
 import DetailsCart from '../Screens/DetailsCart'
 import BuyScreen from '../Screens/BuyScreen'
 import { set } from 'react-native-reanimated'
+import RazorpayCheckout from 'react-native-razorpay';
+
+
 
 
 
@@ -19,10 +22,10 @@ import { set } from 'react-native-reanimated'
 
 const CartCard = ({ val }) => {
   const navigation = useNavigation()
-  const { cart, setcart ,   setItemDetail} = useContext(CartContext)
+  const { cart, setcart, setItemDetail } = useContext(CartContext)
   // const {DetailsCartItem,setDetailsCartItem}=useContext(CartContext)
   const [DetailsCartItem, setDetailsCartItem] = useState([])
-  
+
 
 
   const remove = () => {
@@ -43,7 +46,7 @@ const CartCard = ({ val }) => {
 
       <ScrollView style={{ width: '100%', backgroundColor: '#B0A0FF', marginVertical: 1, }} >
         <View style={{ justifyContent: 'center', alignContent: 'center', }}>
-          <TouchableOpacity onPress={() => {navigation.navigate(Details),   setItemDetail(val)}} >
+          <TouchableOpacity onPress={() => { navigation.navigate(Details), setItemDetail(val) }} >
             <Image style={{ height: 100, width: 100 }} source={require('../Images/tshirt.webp')} />
           </TouchableOpacity>
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 10, color: '#000', }}>Brand:-{val.brand}</Text>
@@ -54,7 +57,7 @@ const CartCard = ({ val }) => {
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
 
-          <Button textColor='blue' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart,val]), navigation.navigate(BuyScreen)}}>Buy</Button>
+          <Button textColor='blue' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart, val]), navigation.navigate(BuyScreen) }}>Buy</Button>
 
         </View>
       </ScrollView>
@@ -71,10 +74,34 @@ const Cart = () => {
   const navigation = useNavigation()
   const isFocused = useIsFocused()
   const [CartAddress, setCartAddress] = useState()
-  const [totalprice,setTotalprice]=useState()
+  const [totalprice, setTotalprice] = useState()
   // const{adData,setAdData}=useContext(CartContext)
 
 
+  let makePayment = () => {
+    var options = {
+      description: 'Credits towards consultation',
+      image: 'https://i.imgur.com/3g7nmJC.png',
+      currency: 'INR',
+      key: 'rzp_test_vsfrhBmZ90xJFJ', // Your api key
+      amount: (totalprice) * 100,
+      name: 'Danish',
+      prefill: {
+        email: 'danisharab2000@gmail.com',
+        contact: '8934971231',
+        name: 'Razorpay Software'
+      },
+      theme: { color: '#F37254' }
+    }
+    RazorpayCheckout.open(options).then((data) => {
+      // handle success
+      alert(`Success: ${data.razorpay_payment_id}`);
+    }).catch((error) => {
+      // handle failure
+      // alert(`Error: ${error.code} | ${error.description}`);
+      Alert.alert(`Payment Cancelled`);
+    });
+  }
   const getAddress = async () => {
     let cdata = await AsyncStorage.getItem("Address")
     setCartAddress(JSON.parse(cdata))
@@ -82,17 +109,18 @@ const Cart = () => {
   useEffect(() => {
     getAddress()
   }, [isFocused])
-useEffect(()=>{
-  getTotal()
-},[cart])
-  const getTotal=()=>{
-    let total=0
-    if(cart){
-    for(i=0;i<cart.length;i++){
-// console.log(cart.p)
-        total=total+parseInt( cart[i].price)
-        
-    }}
+  useEffect(() => {
+    getTotal()
+  }, [cart])
+  const getTotal = () => {
+    let total = 0
+    if (cart) {
+      for (i = 0; i < cart.length; i++) {
+        // console.log(cart.p)
+        total = total + parseInt(cart[i].price)
+
+      }
+    }
     // console.log('>>>',total)
     setTotalprice(total)
   }
@@ -112,8 +140,8 @@ useEffect(()=>{
           <IconButton icon={'map-marker-outline'} iconColor={'#fff'}
             style={{}}
           />
-        
-            {CartAddress ?<Text style={{ fontWeight: '500', fontSize: 16, color: "white",right:160 }}>Deliver to:- {CartAddress[0].city}</Text>:null}
+
+          {CartAddress ? <Text style={{ fontWeight: '500', fontSize: 16, color: "white", right: 160 }}>Deliver to:- {CartAddress[0].city}</Text> : null}
 
         </View>
 
@@ -129,7 +157,7 @@ useEffect(()=>{
         <FlatList
           data={cart}
           renderItem={({ item }) => <CartCard val={item} />}
-          contentContainerStyle={{ flexDirection: 'column', flexWrap: "wrap", }}
+          contentContainerStyle={{ flexDirection: 'column',  }}
         />
 
       </View>
@@ -142,9 +170,9 @@ useEffect(()=>{
 
 
       {/* button */}
-      <View style={{ flex: .17, marginTop: 3.5, marginHorizontal: 5 }}>
+      <View style={{ flex: .17, marginTop: 3.5, marginHorizontal: 5, paddingBottom: 4 }}>
 
-        <Button mode='contained' onPress={() => navigation.navigate(BuyScreen)}>Place Order</Button>
+        <Button mode='contained' onPress={() => {makePayment()}}>Place Order</Button>
       </View>
 
     </View>

@@ -12,7 +12,7 @@ import { mdiMagnify, mdiHomeSearchOutline } from '@mdi/js';
 
 const HomeScreen = () => {
   const [selectedTab, setSelectedTab] = useState(0)
-  const { cart,setCart } = useContext(CartContext)
+  const { cart, setCart } = useContext(CartContext)
   const { wishlist, setWishlist } = useContext(CartContext)
 
 
@@ -20,8 +20,10 @@ const HomeScreen = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      {selectedTab == 0 ? (<Main />) : selectedTab == 1 ? (<Search />) : selectedTab == 2 ? (<Cart />) : selectedTab == 3 ? (<Wishlist />) : (<Profile />)}
+      {/* <View style={{ flex: 1 }}> */}
+        {selectedTab == 0 ? (<Main />) : selectedTab == 1 ? (<Search />) : selectedTab == 2 ? (<Cart />) : selectedTab == 3 ? (<Wishlist />) : (<Profile />)}
 
+      {/* </View> */}
       <View style={{
         flex: 1, position: 'absolute', bottom: 0, flexDirection: 'row',
         justifyContent: 'space-evenly', width: "100%", elevation: 1, backgroundColor: `#6a5acd`
@@ -60,9 +62,9 @@ const HomeScreen = () => {
 
         <View >
           <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
-          {wishlist.length == 0 ? null :
-            <Badge size={18} >{wishlist.length}</Badge>
-          }
+            {wishlist.length == 0 ? null :
+              <Badge size={18} >{wishlist.length}</Badge>
+            }
 
           </View>
 

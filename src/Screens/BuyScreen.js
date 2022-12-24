@@ -7,8 +7,7 @@ import { useState, useEffect } from 'react'
 import { useNavigation, useIsFocused } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import RazorpayCheckout from 'react-native-razorpay';
-import RadioButton from '../TestAnything/RadioButton'
-import RadioButtonFc from '../TestAnything/RadioButton'
+
 
 
 const BuyScreen = ({ item }) => {
@@ -20,17 +19,19 @@ const BuyScreen = ({ item }) => {
     const { cart, setcart } = useContext(CartContext)
 
 
-    let makePayment = () => {
+     let makePayment = () => {
+
+
         var options = {
             description: 'Credits towards consultation',
             image: 'https://i.imgur.com/3g7nmJC.png',
             currency: 'INR',
-            key: 'rzp_test_QkaN6JxYa9IMvg', // Your api key
-            amount: '5000',
+            key: 'rzp_test_vsfrhBmZ90xJFJ', // Your api key
+            amount: (lastCartItem.price) * 100,
             name: 'Danish',
             prefill: {
-                email: 'void@razorpay.com',
-                contact: '9191919191',
+                email: 'danisharab2000@gmail.com',
+                contact: '8934971231',
                 name: 'Razorpay Software'
             },
             theme: { color: '#F37254' }
@@ -40,7 +41,8 @@ const BuyScreen = ({ item }) => {
             alert(`Success: ${data.razorpay_payment_id}`);
         }).catch((error) => {
             // handle failure
-            alert(`Error: ${error.code} | ${error.description}`);
+            // alert(`Error: ${error.code} | ${error.description}`);
+            Alert.alert(`Payment Cancelled`);
         });
     }
 

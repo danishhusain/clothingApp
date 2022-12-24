@@ -26,7 +26,7 @@ const Main = () => {
 
 
   return (
-    <View style={{ flex: 1, }}>
+    <View style={{ flex: 1,paddingBottom:53.5}}>
       <ScrollView>
         <View>
           <Header />
@@ -131,7 +131,7 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.brand}</Text>
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
+                <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setWishlist([...cart, item])}>Cart</Button>
                 <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
               </View>
             </View>}

@@ -18,6 +18,7 @@ import DetailsCart from './Screens/DetailsCart';
 import BuyScreen from './Screens/BuyScreen';
 import RadioButton from './TestAnything/RadioButton';
 import RadioButtonFc from './TestAnything/RadioButton';
+import Firebase from './FireBase/Firebase';
 
 
 
@@ -45,6 +46,7 @@ function AppNavigator() {
         <Stack.Screen name="DetailsCart" component={DetailsCart} options={{ headerShown: false }} />
         <Stack.Screen name="BuyScreen" component={BuyScreen} options={{ headerShown: false }} />
         <Stack.Screen name="RadioButtonFc" component={RadioButtonFc} options={{ headerShown: false }} />
+        <Stack.Screen name="Firebase" component={Firebase} options={{ headerShown: false }} />
        
        
         

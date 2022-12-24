@@ -75,7 +75,7 @@ const Wishlist = () => {
         <FlatList
           data={wishlist}
           renderItem={({ item }) => <CartWishlist val={item} />}
-          contentContainerStyle={{ flexDirection: 'column', flexWrap: "wrap", }}
+          contentContainerStyle={{ flexDirection: 'column',  }}
         />
 
       </View>

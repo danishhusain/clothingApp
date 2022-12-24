@@ -182,6 +182,20 @@ export const tshirt = [
       i: "Generic Name  :  T-Shirt",
     }
   },
+  {
+    brand: "LV", color: "Black", price: "100", code: "t13", url: require("../Images/tshirt.webp"), decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    ItemObject: {
+      a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
+      b: "Date First Available :  22 November 2019",
+      c: "Manufacturer  :  Amazon Brand- Symbol",
+      d: "ASIN  :  B081VN36SK",
+      e: "Item model number  :  SS20SYMTEE41-A",
+      f: "Department :  Men",
+      g: "Manufacturer  :  Amazon Brand- Symbol",
+      h: "Net Quantity  :  3 count",
+      i: "Generic Name  :  T-Shirt",
+    }
+  },
 ]
 
 export const jeans = [

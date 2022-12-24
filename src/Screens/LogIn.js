@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { IconButton, Button, TextInput ,ActivityIndicator} from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Loader from '../Common/Loader'
+import Firebase from '../FireBase/Firebase'
 
 const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState('')
@@ -73,6 +74,7 @@ const LogIn = ({ navigation }) => {
         }
         {error && <Text style={{ color: 'red', margin: 3 }}>Email or Passward does not match</Text>}
         <Button mode='contained' onPress={() => Validaton_Login()}>LogIn</Button>
+        <Button mode='contained' onPress={() => navigation.navigate(Firebase)}>LogIn</Button>
         <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline' }}
           onPress={() => navigation.navigate('SignIn')}>Create New Account</Text>
 
