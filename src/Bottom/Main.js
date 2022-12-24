@@ -20,13 +20,13 @@ const Main = () => {
   const [iconSelected, setIconSelected] = useState(false)
   const { cart, setcart } = useContext(CartContext)
   const { wishlist, setWishlist } = useContext(CartContext)
-  const {setItemDetail}=useContext(CartContext)
+  const { setItemDetail } = useContext(CartContext)
 
 
 
 
   return (
-    <View style={{ flex: 1,paddingBottom:53.5}}>
+    <View style={{ flex: 1, paddingBottom: 53.5 }}>
       <ScrollView>
         <View>
           <Header />
@@ -61,19 +61,21 @@ const Main = () => {
         {category == 0 &&
           <FlatList
             contentContainerStyle={{
-              flexWrap: "wrap",
               flexDirection: "row",
-              // backgroundColor: '#000',
-              // flex:1,
+              flexWrap: 'wrap',
+              // backgroundColor: 'red',
               justifyContent: 'space-between',
-              // padding:5
             }}
+          
             data={tshirt}
+           
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity  onPress={() => {navigation.navigate(Details),
-              setItemDetail(item)
+              
+              <TouchableOpacity onPress={() => {
+                navigation.navigate(Details),
+                  setItemDetail(item)
               }}  >
-                <Image style={{ height: 195, width: 195 }} source={require('../Images/tshirt.webp')}/>
+                <Image style={{ height: 195, width: 195 }} source={require('../Images/tshirt.webp')} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -92,12 +94,12 @@ const Main = () => {
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
                 {/* <Image source={{uri:'item.URL'}} style={{height: 200, width: 200, borderRadius: 37.5 }} /> */}
 
-                <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
               </View>
             </View>}
           />}
-          {/* </View> */}
+        {/* </View> */}
 
         {category == 1 &&
           <FlatList
@@ -111,10 +113,11 @@ const Main = () => {
             }}
             data={jeans}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={() => {navigation.navigate(Details),
-              setItemDetail(item)
+              <TouchableOpacity onPress={() => {
+                navigation.navigate(Details),
+                  setItemDetail(item)
               }}>
-                <Image style={{  height: 195, width: 195 }} source={require("../Images/jeans.webp")} />
+                <Image style={{ height: 195, width: 195 }} source={require("../Images/jeans.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -131,8 +134,8 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.brand}</Text>
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setWishlist([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setWishlist([...cart, item])}>Cart</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
               </View>
             </View>}
           />}
@@ -148,10 +151,11 @@ const Main = () => {
             }}
             data={jacket}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={(props) => {navigation.navigate(Details),
-              setItemDetail(item)
+              <TouchableOpacity onPress={(props) => {
+                navigation.navigate(Details),
+                  setItemDetail(item)
               }} >
-                <Image style={{ height: 195, width: 195  }} source={require("../Images/jacket.webp")} />
+                <Image style={{ height: 195, width: 195 }} source={require("../Images/jacket.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -168,8 +172,8 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.brand}</Text>
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
               </View>
             </View>}
           />}
@@ -185,10 +189,11 @@ const Main = () => {
             }}
             data={shirt}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={(props) => {navigation.navigate(Details),
-              setItemDetail(item)
+              <TouchableOpacity onPress={(props) => {
+                navigation.navigate(Details),
+                  setItemDetail(item)
               }} >
-                <Image style={{  height: 195, width: 195 }} source={require("../Images/shirt.webp")} />
+                <Image style={{ height: 195, width: 195 }} source={require("../Images/shirt.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -205,8 +210,8 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.brand}</Text>
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
               </View>
             </View>}
           />}
@@ -222,10 +227,11 @@ const Main = () => {
             }}
             data={lower}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={(props) => {navigation.navigate(Details),
-              setItemDetail(item)
+              <TouchableOpacity onPress={(props) => {
+                navigation.navigate(Details),
+                  setItemDetail(item)
               }} >
-                <Image style={{  height: 195, width: 195 }} source={require("../Images/lower.webp")} />
+                <Image style={{ height: 195, width: 195 }} source={require("../Images/lower.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -242,8 +248,8 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.brand}</Text>
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
               </View>
             </View>}
           />}
@@ -259,10 +265,11 @@ const Main = () => {
             }}
             data={hoodie}
             renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={(props) => {navigation.navigate(Details),
-              setItemDetail(item)
+              <TouchableOpacity onPress={(props) => {
+                navigation.navigate(Details),
+                  setItemDetail(item)
               }} >
-                <Image style={{  height: 195, width: 195  }} source={require("../Images/hoodie.webp")} />
+                <Image style={{ height: 195, width: 195 }} source={require("../Images/hoodie.webp")} />
               </TouchableOpacity>
 
               <IconButton icon="heart"
@@ -279,8 +286,8 @@ const Main = () => {
                 <Text style={{ left: 5, }}>{item.brand}</Text>
                 <Text style={{ left: 5, }}>{item.color}</Text>
                 <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue'  style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5 ,}} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button  textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5 ,}} onPress={() => {setcart([...cart, item]),navigation.navigate(BuyScreen)}}>Buy</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
               </View>
             </View>}
           />}

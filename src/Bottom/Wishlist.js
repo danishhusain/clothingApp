@@ -63,11 +63,11 @@ const Wishlist = () => {
   return (
     <View style={{ flex: 1, }}>
 
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1,paddingBottom:55 }}>
         {/* header */}
-        <View style={{ width: '100%', height: '8%', backgroundColor: `#6a5acd`, borderBottomWidth: 1 }}>
+        <View style={{ width: '100%', height: '8.5%', backgroundColor: `#6a5acd`, borderBottomWidth: 1 }}>
           <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Wishlist</Text>
-          <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 10, paddingTop: 20, fontWeight: '600' }} onPress={() => setWishlist([])}>Clear Cart</Button>
+          <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 3, paddingTop: 20, fontWeight: '600' }} onPress={() => setWishlist([])}>Clear Cart</Button>
         </View>
 
 

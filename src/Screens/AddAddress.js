@@ -70,7 +70,7 @@ const getAddress=async()=>{
 
       <View style={{
         width: '100%', height: 60, justifyContent: 'space-between',
-        alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2, left: 5,
+        alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2, left: 5, backgroundColor: `#6a5acd`
       }}>
         <Text style={{ fontSize: 22, fontWeight: '600', color: '#000' }}> Fill Address</Text>
         <Button onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>

@@ -12,7 +12,7 @@ const Header = () => {
             alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2,
             backgroundColor: `#6a5acd`,
         }}>
-            <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', color: 'white' }}>ClothingApp</Text>
+            <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', color: 'white',left: 15, }}>ClothingApp</Text>
             <TouchableOpacity style={{ marginRight: 10 }}>
                 {/* <Text style={{fontSize:18,fontWeight:'500',color:'white'}}>Mode</Text> */}
                 <IconButton icon='tshirt-crew-outline' iconColor='white' size={40}></IconButton>
