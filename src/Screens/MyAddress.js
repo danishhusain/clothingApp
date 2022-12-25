@@ -43,13 +43,7 @@ const MyAddress = () => {
   return (
     <View style={{ flex: 1 }}>
 
-      {/* <View style={{
-        width: '100%', height: 70, justifyContent: 'space-between',
-        alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2, left: 5
-      }}>
-        <Text style={{ fontSize: 22, fontWeight: '600', color: '#000' }}>My Address</Text>
-        <Button onPress={() => navigation.navigate(Addaddress)}>Add Address</Button>
-      </View> */}
+      
 
       <View style={{ width: '100%', height: '8%', backgroundColor: `#6a5acd`, borderBottomWidth: 1 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>My Address</Text>

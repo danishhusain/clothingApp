@@ -35,7 +35,7 @@ const Profile = () => {
         alignItems: 'center', flexDirection: 'row', backgroundColor: `#6a5acd`
       }}>
 
-        <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', left: 5, color: 'white' }}>Profile</Text>
+        <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', left: 5, color: 'white',left: 15, }}>Profile</Text>
         <IconButton icon={MORE_ICON} size={25} onPress={() => Logout()}
           style={{ position: 'absolute', right: 5, top: 5 }}
           iconColor={'white'}

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { IconButton, Button, TextInput, } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import {  statusCodes } from '@react-native-google-signin/google-signin';
+import { statusCodes } from '@react-native-google-signin/google-signin';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
@@ -16,10 +16,11 @@ const SignIn = ({ navigation }) => {
   const [badpassward, setBadpassward] = useState(false)
   const [badconfirmpassward, setBadconfirmpassward] = useState(false)
   const [badname, setbadName] = useState(false)
+  const [Passwardconfirmpassward, setPasswardconfirmpassward] = useState(false)
 
 
 
-// validation
+  // validation
   const Validation = (txt) => {
     if (name.length == 0) {
       setbadName(true)
@@ -43,12 +44,19 @@ const SignIn = ({ navigation }) => {
 
     } else {
       setBadconfirmpassward(false)
-      saveData()
-      // AuthsignIn()
-
-
+      passwardNotMatched()
     }
+    
+  }
 
+  //passward not matched
+  const passwardNotMatched=()=> {
+    if (passward !== confirmpassward) {
+      setPasswardconfirmpassward(true)
+    }
+      else {
+      saveData()
+      }
   }
   // save in async storage
   const saveData = async () => {
@@ -63,30 +71,6 @@ const SignIn = ({ navigation }) => {
     }
   }
 
-  // GoogleSignin.configure({
-  //   webClientId: '662105668477-jg2e8sg8vfvph07meoof2ap6fpntpmqe.apps.googleusercontent.com',
-  // });
-
-  // AuthsignIn = async () => {
-  //   try {
-  //     await GoogleSignin.hasPlayServices();
-  //     await GoogleSignin.signOut()
-  //     const userInfo = await GoogleSignin.signIn();
-  //     // this.setState({ userInfo });
-  //     console.log("UserInfo",userInfo)
-  //   } catch (error) {
-  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-  //       // user cancelled the login flow
-  //     } else if (error.code === statusCodes.IN_PROGRESS) {
-  //       // operation (e.g. sign in) is in progress already
-  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-  //       // play services not available or outdated
-  //     } else {
-  //       // some other error happened
-  //     }
-  //   }
-  //   // console.log(">")
-  // };
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -112,6 +96,7 @@ const SignIn = ({ navigation }) => {
           value={confirmpassward}
           onChangeText={(txt) => { setConfirmpassward(txt) }} />
         {badconfirmpassward && <Text style={{ color: 'red' }}>enter confirm passward</Text>}
+        {Passwardconfirmpassward && <Text style={{ color: 'red' }}>passward does not matched</Text>}
 
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Sign In</Button>
 

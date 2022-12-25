@@ -31,9 +31,9 @@ function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} />
+        {/* <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} /> */}
         <Stack.Screen name="LogIn" component={LogIn} options={{ headerShown: false }} />
-        <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} /> */}
+        <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Loader" component={Loader} options={{ headerShown: false }} />
         <Stack.Screen name="MyAddress" component={MyAddress} options={{ headerShown: false }} />
