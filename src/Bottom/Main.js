@@ -76,6 +76,9 @@ const Main = () => {
                   setItemDetail(item)
               }}  >
                 <Image style={{ height: 195, width: 195 }} source={require('../Images/tshirt.webp')} />
+                {/* //for url */}
+                {/* <Image style={{ height: 195, width: 195 }} source={{uri: item.Image_url}} /> */} 
+               
               </TouchableOpacity>
 
               <IconButton icon="heart"

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "1095484900051",
-    "project_id": "prime-cosmos-370812",
-    "storage_bucket": "prime-cosmos-370812.appspot.com"
+    "project_number": "662105668477",
+    "project_id": "clothingapp-21634",
+    "storage_bucket": "clothingapp-21634.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1095484900051:android:5621ac1f37d9e38d7e4a26",
+        "mobilesdk_app_id": "1:662105668477:android:0e0f0cf922758456d7aa14",
         "android_client_info": {
           "package_name": "com.app2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1095484900051-gk2nijhng0cvs6vuurbb011he0ns0ljm.apps.googleusercontent.com",
+          "client_id": "662105668477-jg2e8sg8vfvph07meoof2ap6fpntpmqe.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDUWAwlxxOxELZH-O3gXFZmbI04YaOsn0o"
+          "current_key": "AIzaSyDe0v-nAdxR2oZ0wOGXzPHpjyY1eTGjRSQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1095484900051-gk2nijhng0cvs6vuurbb011he0ns0ljm.apps.googleusercontent.com",
+              "client_id": "662105668477-jg2e8sg8vfvph07meoof2ap6fpntpmqe.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

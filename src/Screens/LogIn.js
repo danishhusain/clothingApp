@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react'
 import { IconButton, Button, TextInput, ActivityIndicator } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Loader from '../Common/Loader'
-import Firebase from '../FireBase/Firebase'
+import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-google-signin/google-signin';
+import HomeScreen from './HomeScreen'
+// import { GoogleSignin } from '@react-native-community/google-signin' //g3
 
-import { GoogleSignin,statusCodes } from '@react-native-google-signin/google-signin';
-import auth from '@react-native-firebase/auth';
-import { useNavigation } from '@react-navigation/native';
+
+
+
 
 const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState('')
@@ -16,58 +18,61 @@ const LogIn = ({ navigation }) => {
   const [badpassward, setBadpassward] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
   const [error, setError] = useState(false)
+  const [loggedIn, setloggedIn] = useState(false);
+  const [userInfo, setuserInfo] = useState([]);
+  const [authenticated, setAutheticated] = useState(false); //g3
 
+ //google
+ useEffect(()=> {
+  GoogleSignin.configure({
+    webClientId: ''
+    // webClientId: '<25645624812-g7tv0leasve9869e8etu18ro38ss0oav.apps.googleusercontent.com>'
+  });
+},[])
+// Somewhere in your code
+signIn = async () => {
+try {
+  await GoogleSignin.hasPlayServices();
+  const userInfo = await GoogleSignin.signIn();
+  // this.setState({ userInfo });
+  console.log("info",userInfo)
+  navigation.navigate(HomeScreen)
+} catch (error) {
+  if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+    // user cancelled the login flow
+  console.log("user cancelled the login flow")
+  } else if (error.code === statusCodes.IN_PROGRESS) {
+    // operation (e.g. sign in) is in progress already
+  console.log(" operation (e.g. sign in) is in progress already")
 
-  //UseEffect Google SignIn
-  useEffect(() => {
-    GoogleSignin.configure({
-      webClientId: '1095484900051-gk2nijhng0cvs6vuurbb011he0ns0ljm.apps.googleusercontent.com',
-    });
-  }, [])
+  } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+    // play services not available or outdated
+  console.log(" play services not available or outdated")
 
-  // // Google SignIn
-  // const googleSihnIn = async () => {
-  //   // Check if your device supports Google Play
-  //   await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-  //   // Get the users ID token
-  //   // const { idToken } = await GoogleSignin.signIn();
-  //   const { idToken } = await GoogleSignin.signIn();
+  } else {
+    // some other error happened
+  console.log("some other error happened")
+  Alert.alert("Please Restart the app")
 
-  //   // Create a Google credential with the token
-  //   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-  //   // Sign-in the user with the credential
-  //   return auth().signInWithCredential(googleCredential);
-  // }
-
-
-  // Somewhere in your code
-  const googleSihnIn = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      // this.setState({ userInfo });
-      console.log("userInfo", userInfo)
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log(error)
-        // user cancelled the login flow
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log(error)
-
-        // operation (e.g. sign in) is in progress already
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        console.log(error)
-
-        // play services not available or outdated
-      } else {
-        console.log(error)
-
-        // some other error happened
-      }
-    }
-  };
-
+  }
+}
+};
+// //getCurrenyUser
+// getCurrentUser = async () => {
+// const currentUser = await GoogleSignin.getCurrentUser();
+// // this.setState({ currentUser });
+// console.log("currentUser",currentUser)
+// };
+// //signOut
+// signOut = async () => {
+// try {
+//   await GoogleSignin.signOut();
+//   // this.setState({ user: null }); // Remember to remove the user from your app's state as well
+// console.log("signOut",{user:null})
+// } catch (error) {
+//   console.error(error);
+// }
+// };
 
 
   // validation Email & passward
@@ -125,19 +130,22 @@ const LogIn = ({ navigation }) => {
 
       <View style={{ alignContent: 'center', justifyContent: 'center', }}>
         <Button mode='contained' onPress={() => Validation_Login()} style={{ marginBottom: 10 }}>LogIn</Button>
-        <Button mode='contained' onPress={() => {
-          googleSihnIn()
-            // .then(res => { console.log("res", res) })
-            // .catch(error => { console.log(">>", error) })
-        }
-        }>SignIn in with Google</Button>
+
+        <GoogleSigninButton style={{ width: "100%", height: 48 ,}} 
+
+        onPress={() => signIn()}
+        />
+
         <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline' }}
           onPress={() => navigation.navigate('SignIn')}>Create New Account</Text>
 
         {/* < Loader modalVisible={modalVisible} setModalVisible={setModalVisible} /> */}
 
+
       </View>
       {modalVisible == true && < Loader />}
+
+
 
     </View>
   )

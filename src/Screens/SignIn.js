@@ -1,11 +1,10 @@
-import { Text, View, KeyboardAvoidingView } from 'react-native'
+import { Text, View, } from 'react-native'
 import React, { useState } from 'react'
 import { IconButton, Button, TextInput, } from 'react-native-paper'
-import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { statusCodes } from '@react-native-google-signin/google-signin';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import auth from '@react-native-firebase/auth';
+import { check, PERMISSIONS, RESULTS, request } from 'react-native-permissions';
+import { useEffect } from 'react'
+
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("")
@@ -19,6 +18,63 @@ const SignIn = ({ navigation }) => {
   const [Passwardconfirmpassward, setPasswardconfirmpassward] = useState(false)
 
 
+
+// //Camera  permissions
+// const requestCameraPermission = ()=> {
+//   request(PERMISSIONS.ANDROID.CAMERA).then((response)=>{
+//       console.log(response)
+//   })
+// }
+// //Camera  permissions useEffect
+// useEffect(()=> {
+//   requestCameraPermission()
+// },[])
+// //Location  permissions
+// const requestLocationPermission = ()=> {
+//   request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((response)=>{
+//       console.log(response)
+//   })
+// }
+// //Location  permissions useEffect
+// useEffect(()=> {
+//   requestLocationPermission()
+// },[])
+// //Storage  permissions
+// const requestStoragePermission = ()=> {
+//   request(PERMISSIONS.ANDROID.ACCESS_MEDIA_LOCATION).then((response)=>{
+//       console.log(response)
+//   })
+// }
+// //Storage  permissions useEffect
+// useEffect(()=> {
+//   requestStoragePermission()
+// },[])
+// //check  camera Permissions
+// const checkPermission=()=> {
+//   check(PERMISSIONS.ANDROID.CAMERA)
+//   .then((result) => {
+//     switch (result) {
+//       case RESULTS.UNAVAILABLE:
+//         console.log('This feature is not available (on this device / in this context)');
+//         break;
+//       case RESULTS.DENIED:
+//         console.log('The permission has not been requested / is denied but requestable');
+//         break;
+//       case RESULTS.LIMITED:
+//         console.log('The permission is limited: some actions are possible');
+//         break;
+//       case RESULTS.GRANTED:
+//         console.log('The permission is granted');
+//         break;
+//       case RESULTS.BLOCKED:
+//         console.log('The permission is denied and not requestable anymore');
+//         break;
+//     }
+//   })
+//   .catch((error) => {
+//     // …
+//   });
+// }
 
   // validation
   const Validation = (txt) => {
@@ -103,12 +159,18 @@ const SignIn = ({ navigation }) => {
         <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline' }}
           value={email}
           onPress={() => navigation.goBack()}>Alredy have Account</Text>
-
       </View>
+
+      {/* /for testing */}
+      {/* <View>
+        <Button mode='contained' onPress={()=>requestCameraPermission()}>Camera</Button>
+        <Button mode='contained' onPress={()=>requestLocationPermission()}>Location</Button>
+        <Button mode='contained' onPress={()=>requestStoragePermission()}>Storage</Button>
+        <Button mode='contained' onPress={()=>checkPermission()}>CP</Button>
+      </View> */}
     </View>
 
   )
 }
 
 export default SignIn
-// const styles = StyleSheet.create({})

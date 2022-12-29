@@ -26,6 +26,7 @@ import Firebase from './FireBase/Firebase';
 
 
 
+
 const Stack = createNativeStackNavigator();
 function AppNavigator() {
   return (
@@ -47,6 +48,7 @@ function AppNavigator() {
         <Stack.Screen name="BuyScreen" component={BuyScreen} options={{ headerShown: false }} />
         <Stack.Screen name="RadioButtonFc" component={RadioButtonFc} options={{ headerShown: false }} />
         <Stack.Screen name="Firebase" component={Firebase} options={{ headerShown: false }} />
+      
        
        
         

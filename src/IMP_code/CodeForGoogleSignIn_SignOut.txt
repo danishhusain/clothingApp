@@ -1,0 +1,52 @@
+ //google
+ useEffect(()=> {
+  GoogleSignin.configure({
+    webClientId: ''
+    // webClientId: '<25645624812-g7tv0leasve9869e8etu18ro38ss0oav.apps.googleusercontent.com>'
+  });
+},[])
+// Somewhere in your code
+signIn = async () => {
+try {
+  await GoogleSignin.hasPlayServices();
+  const userInfo = await GoogleSignin.signIn();
+  // this.setState({ userInfo });
+  console.log("info",userInfo)
+  navigation.navigate(HomeScreen)
+} catch (error) {
+  if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+    // user cancelled the login flow
+  console.log("user cancelled the login flow")
+  } else if (error.code === statusCodes.IN_PROGRESS) {
+    // operation (e.g. sign in) is in progress already
+  console.log(" operation (e.g. sign in) is in progress already")
+
+  } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+    // play services not available or outdated
+  console.log(" play services not available or outdated")
+
+  } else {
+    // some other error happened
+  console.log("some other error happened")
+  Alert.alert("Please Restart the app")
+
+  }
+}
+};
+
+// //getCurrenyUser
+// getCurrentUser = async () => {
+// const currentUser = await GoogleSignin.getCurrentUser();
+// // this.setState({ currentUser });
+// console.log("currentUser",currentUser)
+// };
+// //signOut
+// signOut = async () => {
+// try {
+//   await GoogleSignin.signOut();
+//   // this.setState({ user: null }); // Remember to remove the user from your app's state as well
+// console.log("signOut",{user:null})
+// } catch (error) {
+//   console.error(error);
+// }
+// };

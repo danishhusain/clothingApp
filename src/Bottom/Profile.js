@@ -9,7 +9,7 @@ import MyAddress from '../Screens/MyAddress'
 import Addaddress from '../Screens/AddAddress'
 import LogoutScreen from '../Screens/LogoutScreen'
 import LogIn from '../Screens/LogIn'
-
+import {GoogleSignin, GoogleSigninButton,statusCodes,} from '@react-native-google-signin/google-signin';
 
 
 
@@ -19,13 +19,19 @@ const Profile = () => {
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
 
+  //signOut
+  signOut = async () => {
+    try {
+      await GoogleSignin.signOut();
+      // this.setState({ user: null }); // Remember to remove the user from your app's state as well
+      console.log("signOut", { user: null })
+      navigation.navigate(LogIn)
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 
- 
-
-
-
-  
 
   return (
 
@@ -35,8 +41,8 @@ const Profile = () => {
         alignItems: 'center', flexDirection: 'row', backgroundColor: `#6a5acd`
       }}>
 
-        <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', left: 5, color: 'white',left: 15, }}>Profile</Text>
-        <IconButton icon={MORE_ICON} size={25} onPress={() => Logout()}
+        <Text style={{ fontSize: 22, fontWeight: '600', color: '#000', left: 5, color: 'white', left: 15, }}>Profile</Text>
+        <IconButton icon={MORE_ICON} size={25} onPress={() => console.log("boom")}
           style={{ position: 'absolute', right: 5, top: 5 }}
           iconColor={'white'}
         ></IconButton>
@@ -58,9 +64,9 @@ const Profile = () => {
           <Text style={{ color: `#6a5acd`, fontWeight: '600' }}>Offers</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ flex: 2.5, alignItems: 'center' }}>
-        <IconButton icon={'logout'}  size={30} onPress={() => navigation.navigate(LogIn)} ></IconButton>
-        <Text style={{ fontWeight: '500', size: 20, color: `#6a5acd` }}>Logout</Text>
+      <View style={{ flex: 2.5, alignItems: 'center', }}>
+        <IconButton icon={'logout'}  size={30} onPress={() => signOut()} ></IconButton>
+        <Text onPress={() => signOut()} style={{ fontWeight: '500', size: 20, color: `#6a5acd` }}>Logout</Text>
       </View>
 
     </View>
