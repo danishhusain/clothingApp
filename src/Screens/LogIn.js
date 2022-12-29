@@ -7,6 +7,7 @@ import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-goo
 import HomeScreen from './HomeScreen'
 import { useContext } from 'react'
 import { CartContext } from '../Context/CartContext'
+import { AuthContext } from '../Context/AuthContext'
 // import { GoogleSignin } from '@react-native-community/google-signin' //g3
 
 
@@ -21,6 +22,7 @@ const LogIn = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [error, setError] = useState(false)
   const {isSignedIn,setisSignedIn}=useContext(CartContext)
+  const {d,setd}=useContext(AuthContext)
 
  //google
  useEffect(()=> {
@@ -60,22 +62,7 @@ try {
   }
 }
 };
-// //getCurrenyUser
-// getCurrentUser = async () => {
-// const currentUser = await GoogleSignin.getCurrentUser();
-// // this.setState({ currentUser });
-// console.log("currentUser",currentUser)
-// };
-// //signOut
-// signOut = async () => {
-// try {
-//   await GoogleSignin.signOut();
-//   // this.setState({ user: null }); // Remember to remove the user from your app's state as well
-// console.log("signOut",{user:null})
-// } catch (error) {
-//   console.error(error);
-// }
-// };
+console.log("sa",d)
 
 
   // validation Email & passward

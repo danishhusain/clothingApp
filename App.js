@@ -11,6 +11,7 @@ import CartContextProvider from './src/Context/CartContext'
 import MyAddress from './src/Screens/MyAddress'
 import Addaddress from './src/Screens/AddAddress'
 import { StatusBar } from 'react-native'
+import { AuthProvider } from './src/Context/AuthContext'
 
 
 const App = () => {
@@ -18,13 +19,14 @@ const App = () => {
   return (
     
     <CartContextProvider>
+      <AuthProvider>
     {/* <HomeScreen /> */}
     {/* <LogIn/> */}
     <AppNavigator/>
     {/* <Profile/> */}
     {/* <MyAddress/> */}
     {/* <Addaddress/> */}
-
+    </AuthProvider>
     </CartContextProvider>
   )
 }
