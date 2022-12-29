@@ -13,8 +13,8 @@ export default function CartContextProvider({ children }) {
   const [adData, setAdData] = useState([])
   const [ItemDetail, setItemDetail] = useState([])
   const [CartAddress, setCartAddress] = useState([])
-
   const [ DetailAddress, setDetailAddress ] = useState([])
+  const [isSignedIn,setisSignedIn]=useState(false)
 
 
 
@@ -31,7 +31,8 @@ export default function CartContextProvider({ children }) {
       adData, setAdData,
       ItemDetail, setItemDetail,
       DetailAddress, setDetailAddress,
-      CartAddress, setCartAddress
+      CartAddress, setCartAddress,
+      isSignedIn,setisSignedIn
     }}>
       {children}
     </CartContext.Provider>

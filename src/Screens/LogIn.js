@@ -5,6 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import Loader from '../Common/Loader'
 import { GoogleSignin, statusCodes, GoogleSigninButton } from '@react-native-google-signin/google-signin';
 import HomeScreen from './HomeScreen'
+import { useContext } from 'react'
+import { CartContext } from '../Context/CartContext'
 // import { GoogleSignin } from '@react-native-community/google-signin' //g3
 
 
@@ -18,9 +20,7 @@ const LogIn = ({ navigation }) => {
   const [badpassward, setBadpassward] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
   const [error, setError] = useState(false)
-  const [loggedIn, setloggedIn] = useState(false);
-  const [userInfo, setuserInfo] = useState([]);
-  const [authenticated, setAutheticated] = useState(false); //g3
+  const {isSignedIn,setisSignedIn}=useContext(CartContext)
 
  //google
  useEffect(()=> {
@@ -33,9 +33,12 @@ const LogIn = ({ navigation }) => {
 signIn = async () => {
 try {
   await GoogleSignin.hasPlayServices();
+  //Google service are available
+  console.log("Google service are available")
   const userInfo = await GoogleSignin.signIn();
   // this.setState({ userInfo });
   console.log("info",userInfo)
+  setisSignedIn(true)
   navigation.navigate(HomeScreen)
 } catch (error) {
   if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -131,8 +134,8 @@ try {
       <View style={{ alignContent: 'center', justifyContent: 'center', }}>
         <Button mode='contained' onPress={() => Validation_Login()} style={{ marginBottom: 10 }}>LogIn</Button>
 
-        <GoogleSigninButton style={{ width: "100%", height: 48 ,}} 
-
+        <GoogleSigninButton 
+        style={{ width: "100%" , height: 48 ,}}
         onPress={() => signIn()}
         />
 
