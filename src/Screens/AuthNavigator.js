@@ -12,7 +12,7 @@ import { CartContext } from '../Context/CartContext';
 const Stack = createNativeStackNavigator(CartContext);
 function AuthNavigator() {
   const { s, sets } = useContext(Car)
-  console.log("sds",s)
+  console.log("data",s)
   return (
     //    <AuthProvider>
     // <NavigationContainer>
