@@ -7,25 +7,40 @@ import { CartContext } from '../Context/CartContext';
 
 
 
+
+
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
-  const {isSignedIn,setisSignedIn}=useContext(CartContext)
+  // const {isSignedIn,setisSignedIn}=useContext(CartContext)
+  const {s,sets}=useContext(CartContext)
 
-//getCurrenyUser
-getCurrentUser = async () => {
-const currentUser = await GoogleSignin.getCurrentUser();
-// this.setState({ currentUser });
-console.log("currentUser",currentUser)
-};
+
 //isSignedIn
 isSignedIn = async () => {
   const isSignedIn = await GoogleSignin.isSignedIn();
   // this.setState({ isLoginScreenPresented: !isSignedIn });
   console.log("isSignedIn",{ isLoginScreenPresented: !isSignedIn })
+  // console.log("isSignedIn",{ isLoginScreenPresented_s: !s })
 };
 //console
-console.log(">>",isSignedIn)
+console.log("login",s)
+//getCurrentUserInfo
+getCurrentUserInfo = async () => {
+  try {
+    const userInfo = await GoogleSignin.signInSilently();
+    // this.setState({ userInfo });
+    console.log("getCurrentUserInfo",userInfo)
+  } catch (error) {
+    if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+      // user has not signed in yet
+    console.log("user has not signed in yet")
+
+    } else {
+      // some other error
+    }
+  }
+};
 
   return (
     <View>
@@ -40,8 +55,8 @@ console.log(">>",isSignedIn)
     />
     <View >
     <Text style={{alignSelf:'center',marginTop:'10%'}}>NO data</Text>
-    <Button onPress={()=>getCurrentUser()}>getCurrentUser</Button>
     <Button onPress={()=>isSignedIn()}>isSignedIn</Button>
+    <Button onPress={()=>getCurrentUserInfo()}>getCurrentUserInfo</Button>
 
     </View>
     </View>
