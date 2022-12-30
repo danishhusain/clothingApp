@@ -10,6 +10,9 @@ import Addaddress from '../Screens/AddAddress'
 import LogoutScreen from '../Screens/LogoutScreen'
 import LogIn from '../Screens/LogIn'
 import {GoogleSignin, GoogleSigninButton,statusCodes,} from '@react-native-google-signin/google-signin';
+import { useContext } from 'react'
+import { AuthContext } from '../Context/AuthContext'
+import Navigation from '../Navigation'
 
 
 
@@ -17,7 +20,7 @@ import {GoogleSignin, GoogleSigninButton,statusCodes,} from '@react-native-googl
 const Profile = () => {
   const navigation = useNavigation();
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
-
+const {logout2}=useContext(AuthContext)
 
   //signOut
   signOut = async () => {
@@ -31,7 +34,8 @@ const Profile = () => {
     }
   };
 
-
+// console
+// console.log("profile",logout2)
 
   return (
 
@@ -64,9 +68,14 @@ const Profile = () => {
           <Text style={{ color: `#6a5acd`, fontWeight: '600' }}>Offers</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ flex: 2.5, alignItems: 'center', }}>
+      {/* org */}
+      {/* <View style={{ flex: 2.5, alignItems: 'center', }}>
         <IconButton icon={'logout'}  size={30} onPress={() => signOut()} ></IconButton>
         <Text onPress={() => signOut()} style={{ fontWeight: '500', size: 20, color: `#6a5acd` }}>Logout</Text>
+      </View> */}
+      <View style={{ flex: 2.5, alignItems: 'center', }}>
+        <IconButton icon={'logout'}  size={30} onPress={() => {logout2()}} ></IconButton>
+        <Text onPress={() => {logout2()}} style={{ fontWeight: '500', size: 20, color: `#6a5acd` }}>Logout</Text>
       </View>
 
     </View>

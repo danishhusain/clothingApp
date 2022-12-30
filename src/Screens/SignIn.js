@@ -122,7 +122,7 @@ const SignIn = ({ navigation }) => {
       await AsyncStorage.setItem('Email', email)
       await AsyncStorage.setItem('Passward', passward)
       navigation.goBack();
-      // AuthsignIn()
+     
 
     }
   }

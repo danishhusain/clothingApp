@@ -4,6 +4,7 @@ import { Button, Searchbar } from 'react-native-paper';
 import {GoogleSignin, GoogleSigninButton,statusCodes,} from '@react-native-google-signin/google-signin';
 import { useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -24,7 +25,7 @@ isSignedIn = async () => {
   // console.log("isSignedIn",{ isLoginScreenPresented_s: !s })
 };
 //console
-console.log("login",s)
+// console.log("login",s)
 //getCurrentUserInfo
 getCurrentUserInfo = async () => {
   try {
@@ -41,6 +42,12 @@ getCurrentUserInfo = async () => {
     }
   }
 };
+//getUserToken
+const getCurrentUserToken =async()=> {
+  let userToken= await AsyncStorage.getItem('userToken')
+  console.log("saerch",userToken)
+  
+}
 
   return (
     <View>
@@ -57,6 +64,7 @@ getCurrentUserInfo = async () => {
     <Text style={{alignSelf:'center',marginTop:'10%'}}>NO data</Text>
     <Button onPress={()=>isSignedIn()}>isSignedIn</Button>
     <Button onPress={()=>getCurrentUserInfo()}>getCurrentUserInfo</Button>
+    <Button onPress={()=>getCurrentUserToken()}>getCurrentUserInfo</Button>
 
     </View>
     </View>
