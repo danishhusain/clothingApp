@@ -96,7 +96,7 @@ function AuthNavigator() {
       {/* <Stack.Screen name="SplashScreen" component={SplashScreen} options={{ headerShown: false }} /> */}
       <Stack.Screen name="LogIn" component={LogIn} options={{ headerShown: false }} />
       <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+      {/* <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Loader" component={Loader} options={{ headerShown: false }} />
       <Stack.Screen name="MyAddress" component={MyAddress} options={{ headerShown: false }} />
       <Stack.Screen name="MyOrders" component={MyOrders} options={{ headerShown: false }} />
@@ -109,7 +109,7 @@ function AuthNavigator() {
       <Stack.Screen name="BuyScreen" component={BuyScreen} options={{ headerShown: false }} />
       <Stack.Screen name="RadioButtonFc" component={RadioButtonFc} options={{ headerShown: false }} />
       <Stack.Screen name="Firebase" component={Firebase} options={{ headerShown: false }} />
-      <Stack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} />
+      <Stack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} /> */}
 
 
     </Stack.Navigator>

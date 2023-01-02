@@ -19,7 +19,7 @@ const BuyScreen = ({ item }) => {
     const { cart, setcart } = useContext(CartContext)
 
 
-     let makePayment = () => {
+    let makePayment = () => {
 
 
         var options = {
@@ -48,6 +48,7 @@ const BuyScreen = ({ item }) => {
 
 
     const lastCartItem = cart[cart.length - 1]
+    // const lastCartItem = [cart.length - 1]
     // console.log(">>", lastCartItem)
     const getAddress = async () => {
         let bdata = await AsyncStorage.getItem("Address")
