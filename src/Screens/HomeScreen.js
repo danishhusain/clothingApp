@@ -8,6 +8,7 @@ import Cart from '../Bottom/Cart'
 import Profile from '../Bottom/Profile'
 import { CartContext } from '../Context/CartContext'
 import { mdiMagnify, mdiHomeSearchOutline } from '@mdi/js';
+import MyOrders from './MyOrders'
 
 
 const HomeScreen = () => {
@@ -21,7 +22,7 @@ const HomeScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       {/* <View style={{ flex: 1 }}> */}
-        {selectedTab == 0 ? (<Main />) : selectedTab == 1 ? (<Search />) : selectedTab == 2 ? (<Cart />) : selectedTab == 3 ? (<Wishlist />) : (<Profile />)}
+      {selectedTab == 0 ? (<Main />) : selectedTab == 1 ? (<Search />) : selectedTab == 2 ? (<MyOrders />) : selectedTab == 3 ? (<Wishlist />) : (<Profile />)}
 
       {/* </View> */}
       <View style={{
@@ -45,21 +46,11 @@ const HomeScreen = () => {
 
 
         <View style={{ backgroundColor: '#FFF', borderRadius: 25 }}>
-          <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
-            {cart.length == 0 ? null :
-              <Badge size={18} >{cart.length}</Badge>
-            }
-          </View>
-
-
-
-          <IconButton icon="cart" iconColor={selectedTab == 2 ? "blue" : `#000`} onPress={() => setSelectedTab(2)}
+          <IconButton icon="moped" iconColor={selectedTab == 2 ? "blue" : `#000`} onPress={() => setSelectedTab(2)}
             size={25} >
           </IconButton>
-
         </View>
-
-
+        
         <View >
           <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
             {wishlist.length == 0 ? null :

@@ -20,6 +20,7 @@ import RadioButton from './TestAnything/RadioButton';
 import RadioButtonFc from './TestAnything/RadioButton';
 import Firebase from './FireBase/Firebase';
 import Navigation from './Navigation';
+import Cart from './Bottom/Cart';
 
 
 const Stack = createNativeStackNavigator();
@@ -44,6 +45,7 @@ function AppNavigator() {
         <Stack.Screen name="RadioButtonFc" component={RadioButtonFc} options={{ headerShown: false }} />
         <Stack.Screen name="Firebase" component={Firebase} options={{ headerShown: false }} />
         <Stack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} />
+        <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
 
         
       </Stack.Navigator>

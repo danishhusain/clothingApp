@@ -170,7 +170,7 @@ const Cart = () => {
 
 
       {/* button */}
-      <View style={{ flex: .17, marginTop: 3.5, marginHorizontal: 5, paddingBottom: 4 }}>
+      <View style={{ flex: .07, marginTop: 3.5, marginHorizontal: 5, paddingBottom: 4 }}>
 
         <Button mode='contained' onPress={() => {makePayment()}}>Place Order</Button>
       </View>
