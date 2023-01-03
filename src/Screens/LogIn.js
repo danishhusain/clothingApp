@@ -467,14 +467,12 @@ import Profile from '../Bottom/Profile'
 const LogIn = ({ navigation, }) => {
   const [email, setEmail] = useState('')
   const [password, setpassword] = useState('')
-  const [bademail, setBademail] = useState(false)
-  const [badpassword, setBadpassword] = useState(false)
   const [modalVisible, setModalVisible] = useState(false);
-  const [error, setError] = useState(false)
   const { isSignedIn, setisSignedIn } = useContext(CartContext)
-  const { d, setd } = useContext(AuthContext)
   const { login2, logout2, signIn_g, ResetEmailVerification } = useContext(AuthContext)
   const [hidePassword, setHidePassword] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   //  //google
   //  useEffect(()=> {
@@ -557,6 +555,19 @@ const LogIn = ({ navigation, }) => {
   //     }
   //   }
 
+  //validation
+  const handleSubmit = () => {
+    if (!email.includes('@')) {
+      setErrorMessage('Please enter a valid email address');
+    } else if (password.length < 8) {
+      setErrorMessage('Password must be at least 8 characters');
+    } else {
+      setErrorMessage('');
+      // submit form data
+      login2(email, password)
+    }
+  };
+
   const togglePasswordVisibility = () => {
     setHidePassword(!hidePassword);
   };
@@ -566,25 +577,20 @@ const LogIn = ({ navigation, }) => {
       <View style={{ marginHorizontal: 10, justifyContent: 'space-between', marginBottom: 10 }}>
         <TextInput keyboardType='email-address' autoComplete='email' value={email} style={{ marginVertical: 5 }} mode='outlined' label={"Email"} left={<TextInput.Icon icon={"email"} />}
           onChangeText={(txt) => setEmail(txt)} />
-        {/* {
-          bademail && (<Text style={{ color: 'red' }}> Enter email</Text>)
-        } */}
         <TextInput autoComplete='password' value={password} style={{ marginVertical: 5 }} mode='outlined' label={"password"} secureTextEntry={hidePassword} left={<TextInput.Icon icon={"key"} />}
-          right={<TextInput.Icon onPress={() => togglePasswordVisibility()} icon='eye'  />}
+          right={<TextInput.Icon onPress={() => togglePasswordVisibility()} icon='eye' />}
 
           onChangeText={(txt) => setpassword(txt)} />
-        {/* {badpassword && (<Text style={{ color: 'red' }}> Enter password</Text>)}
-        {error && <Text style={{ color: 'red', margin: 3 }}>Email or password  not matched</Text>} */}
+        {errorMessage ? <Text>{errorMessage}</Text> : null}
+
         <TouchableOpacity style={{ alignItems: 'flex-end', }} onPress={() => { ResetEmailVerification(email) }}>
           <Text style={{ color: 'blue' }} onPress={() => { ResetEmailVerification(email) }}>Forget? </Text >
         </TouchableOpacity>
       </View>
 
       <View style={{ alignContent: 'center', justifyContent: 'center', }}>
-        {/* <Button mode='contained' onPress={() => Validation_Login()} style={{ marginBottom: 10 }}>LogIn</Button> */}
-        {/* <Button mode='contained' onPress={() => login2()} style={{ marginBottom: 10 }}>LogIn2</Button> */}
 
-        <Button mode='contained' onPress={() => { login2(email, password) }} style={{ marginBottom: 10 }} >LogIn2</Button>
+        <Button mode='contained' onPress={() => { handleSubmit(email, password) }} style={{ marginBottom: 10 }} >LogIn2</Button>
 
         <GoogleSigninButton
           style={{ width: "100%", height: 48, }}

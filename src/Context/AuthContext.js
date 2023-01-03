@@ -67,15 +67,17 @@ import { getAuth, sendPasswordResetEmail, } from "firebase/auth";
 import Firebase from '../FireBase/Firebase';
 import { initializeApp } from 'firebase/app';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { useNavigation, } from '@react-navigation/native';
 
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children, }) => {
     const [userToken, setUserToken] = useState(null)
     const [loader, setLoader] = useState(true)
+    const navigation=useNavigation
 
-    { loader ? <Loader /> : null }
+    // { loader ? navigation.navigate(Loader) : null }
 
 
     //SighnIn with Email & Passward
@@ -114,7 +116,8 @@ export const AuthProvider = ({ children }) => {
     }
     // LogIn with Email & Passward
     const login2 = async (email, password) => {
-        setLoader(true)
+        // setLoader(true)
+       
         console.log("here")
         try {
             await auth().signInWithEmailAndPassword(email, password);
@@ -123,7 +126,7 @@ export const AuthProvider = ({ children }) => {
             console.log("Please make account", e);
         }
         console.log("there")
-        setLoader(false)
+        // setLoader(false)
     }
     // SighnIn with Google
     // const signIn_g = async () => {

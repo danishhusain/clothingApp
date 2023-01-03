@@ -7,6 +7,9 @@ import { CartContext } from '../Context/CartContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { firebase } from '@react-native-firebase/auth';
 import { AuthContext } from '../Context/AuthContext';
+import { useNavigation } from '@react-navigation/native';
+import ImageSliding from '../Components/ImageSliding';
+import Loader from '../Common/Loader';
 
 
 
@@ -19,10 +22,15 @@ const Search = () => {
   const { s, sets } = useContext(CartContext)
   const user = firebase.auth().currentUser;
   const { userToken, setUserToken } = useContext(AuthContext)
+const navigation=useNavigation()
 
 
-  // //Password Reset Inside
-
+//loader
+const lo=()=>{
+{/* <Loader/>  */}
+// navigation.navigate(Loader)
+{/* <Text>fs</Text> */}
+}
 
   // Send the email verification
   const email_verification = () => {
@@ -105,6 +113,8 @@ const Search = () => {
         <Button onPress={() => userData()}>userData</Button>
         <Button onPress={() => ResetEmailVerificationInside()}>ResetEmailVerificationInside</Button>
         <Button onPress={() => email_verification()}>email_verification</Button>
+        <Button onPress={() => navigation.navigate(ImageSliding)}>ImageSliding</Button>
+        <Button onPress={() => lo()}>loader</Button>
 
       </View>
     </View>

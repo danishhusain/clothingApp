@@ -102,7 +102,7 @@
 //       setBadconfirmpassword(false)
 //       passwordNotMatched()
 //     }
-    
+
 //   }
 
 //   //password not matched
@@ -122,7 +122,7 @@
 //       await AsyncStorage.setItem('Email', email)
 //       await AsyncStorage.setItem('password', password)
 //       navigation.goBack();
-     
+
 
 //     }
 //   }
@@ -190,53 +190,36 @@ const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState("")
   const [password, setpassword] = useState("")
   const [name, setName] = useState("")
-  const [confirmpassword, setConfirmpassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [bademail, setBademail] = useState(false)
   const [badpassword, setBadpassword] = useState(false)
   const [badconfirmpassword, setBadconfirmpassword] = useState(false)
   const [badname, setbadName] = useState(false)
   const [passwordconfirmpassword, setpasswordconfirmpassword] = useState(false)
-  const {register,ResetEmailVerification}=useContext(AuthContext)
+  const { register, ResetEmailVerification } = useContext(AuthContext)
+  const [errorMessage, setErrorMessage] = useState('');
+
+  //
+
+  const handleSubmit = () => {
+    if (!name) {
+      setErrorMessage('Please enter your name');
+    } else if (!email.includes('@')) {
+      setErrorMessage('Please enter a valid email address');
+    } else if (password.length < 8) {
+      setErrorMessage('Password must be at least 8 characters');
+    } else if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match');
+    } else {
+      setErrorMessage('');
+      // submit form data
+      register(email, password)
+
+    }
+  };
 
 
-  // // validation
-  // const Validation = (txt) => {
-  //   if (name.length == 0) {
-  //     setbadName(true)
-  //   } else {
-  //     setbadName(false)
-  //   }
-  //   if (email.length == 0) {
-  //     setBademail(true)
-
-  //   } else {
-  //     setBademail(false)
-  //   }
-  //   if (password.length == 0) {
-  //     setBadpassword(true)
-
-  //   } else {
-  //     setBadpassword(false)
-  //   }
-  //   if (confirmpassword.length == 0) {
-  //     setBadconfirmpassword(true)
-
-  //   } else {
-  //     setBadconfirmpassword(false)
-  //     passwordNotMatched()
-  //   }
-    
-  // }
-
-  // //password not matched
-  // const passwordNotMatched=()=> {
-  //   if (password !== confirmpassword) {
-  //     setpasswordconfirmpassword(true)
-  //   }
-  //     else {
-  //     saveData()
-  //     }
-  // }
+ 
   // // save in async storage
   // const saveData = async () => {
   //   // console.log("ok")
@@ -245,7 +228,7 @@ const SignIn = ({ navigation }) => {
   //     await AsyncStorage.setItem('Email', email)
   //     await AsyncStorage.setItem('password', password)
   //     navigation.goBack();
-     
+
 
   //   }
   // }
@@ -260,30 +243,25 @@ const SignIn = ({ navigation }) => {
           value={name}
           autoComplete='name'
           onChangeText={(txt) => { setName(txt) }} />
-        {/* {badname && <Text style={{ color: 'red' }}>enter name</Text>} */}
 
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Email"} left={<TextInput.Icon icon={"email"} />}
           value={email} keyboardType='email-address'
+
           autoComplete='email'
           onChangeText={(txt) => { setEmail(txt) }} />
-        {/* {bademail && <Text style={{ color: 'red' }}>enter email</Text>} */}
 
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"password"} secureTextEntry left={<TextInput.Icon icon={"key"} />}
           value={password}
           autoComplete='password'
           onChangeText={(txt) => { setpassword(txt) }} />
-        {/* {badpassword && <Text style={{ color: 'red' }}>enter password</Text>} */}
 
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={" Confirm password"} secureTextEntry left={<TextInput.Icon icon={"key"} />}
-          value={confirmpassword}
+          value={confirmPassword}
           autoComplete='password'
-          onChangeText={(txt) => { setConfirmpassword(txt) }} />
-        {/* {badconfirmpassword && <Text style={{ color: 'red' }}>enter confirm password</Text>}
-        {passwordconfirmpassword && <Text style={{ color: 'red' }}>password does not matched</Text>} */}
+          onChangeText={(txt) => { setConfirmPassword(txt) }} />
+        {errorMessage ? <Text>{errorMessage}</Text> : null}
 
-{/* org */}
-        {/* <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Sign In</Button> */}
-        <Button style={{ marginVertical: 5 }} mode='contained' onPress={() =>register(email,password) }>Sign In</Button>
+        <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => handleSubmit(email, password, name)}>Sign In</Button>
 
         <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline' }}
           value={email}

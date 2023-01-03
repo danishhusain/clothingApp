@@ -10,6 +10,7 @@ import Details from '../Screens/Details'
 import { Item } from 'react-native-paper/lib/typescript/components/Drawer/Drawer'
 import TotalOrder from '../Screens/TotalOrder'
 import BuyScreen from '../Screens/BuyScreen'
+import ImageSliding from '../Components/ImageSliding'
 
 
 
@@ -32,19 +33,12 @@ const Main = () => {
       <View>
         <Header />
       </View>
-      <View style={{}}>
-        {/* <ImageSlider
-            data={[
-              { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5a5uCP-n4teeW2SApcIqUrcQApev8ZVCJkA&usqp=CAU' },
-              { img: 'https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg' },
-              {img: 'https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__340.jpg'}
-            ]}
-            autoPlay={false}
-            onItemChanged={(item) => console.log("item", item)}
-            closeIconColor="#fff"
-            showHeader={false}
-          /> */}
+      <View style={{backgroundColor:'red',width: '100%', height: 250,}}>
+        {/* <Image source={require('../Images/slide1.webp')} style={{ width: '100%', height: 250, borderRadius: 20 }} /> */}
         <Image source={require('../Images/slide1.webp')} style={{ width: '100%', height: 250, borderRadius: 20 }} />
+            {/* <ImageSliding/> */}
+
+       
 
       </View>
 
@@ -141,7 +135,7 @@ const Main = () => {
               <Text style={{ left: 5, }}>{item.brand}</Text>
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
-              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcartgit ([...cart, item])}>Cart</Button>
               <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
             </View>
           </View>}

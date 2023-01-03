@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { CartContext } from '../Context/CartContext'
 import { Badge, IconButton } from 'react-native-paper'
 import Navigation from '../Navigation'
-import {  useNavigation} from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import Cart from '../Bottom/Cart'
 import Profile from '../Bottom/Profile'
 
@@ -28,13 +28,14 @@ const Header = () => {
             </View>
 
             <View style={{ height: 60, width: 60 }}>
-            <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
+                <IconButton icon={'cart'} size={30} iconColor='white' onPress={() => navigation.navigate(Cart)}></IconButton>
+
+                <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
                     {cart.length == 0 ? null :
                         <Badge size={18} >{cart.length}</Badge>
                     }
                 </View>
-                <IconButton icon={'cart'} size={30} iconColor='white' onPress={()=>navigation.navigate(Cart)}></IconButton>
-                
+
             </View>
         </View>
     )
