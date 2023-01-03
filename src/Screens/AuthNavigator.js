@@ -57,28 +57,12 @@
 
 
 import React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useContext } from 'react';
 import { AuthContext, AuthProvider } from '../Context/AuthContext';
 import LogIn from './LogIn';
 import SignIn from './SignIn';
-import HomeScreen from './HomeScreen';
-import Loader from '../Common/Loader';
-import MyAddress from './MyAddress';
-import MyOrders from './MyOrders';
-import Offers from './Offers';
-import Addaddress from './AddAddress';
-import LogoutScreen from './LogoutScreen';
-import TotalOrder from './TotalOrder';
-import Details from './Details';
-import DetailsCart from './DetailsCart';
-import BuyScreen from './BuyScreen';
-import RadioButtonFc from '../TestAnything/RadioButton';
-import Firebase from '../FireBase/Firebase';
-import SplashScreen from './SplashScreen';
-import Navigation from '../Navigation';
+
 
 
 

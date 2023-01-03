@@ -22,24 +22,27 @@ const Search = () => {
 
 
   // //Password Reset Inside
-  // const ResetEmailVerificationInside = () => {
-  //   const userToken = firebase.auth().currentUser;
 
-  //   if (userToken) {
-  //     console.log('User email: ', userToken.email);
-  //   }
-  // }
 
-  //Password Reset Inside
-  const ResetEmailVerificationInside = () => {
-    firebase.auth().sendPasswordResetEmail(firebase.auth().currentUser)
-      .then(() => console.log("link send"))
-      .catch((e) =>
-        console.log("error", e))
-
-    if (userToken) {
-      console.log('User email: ', userToken.email);
-    }
+  // Send the email verification
+  const email_verification = () => {
+    firebase.auth().currentUser.sendEmailVerification().then(function () {
+      // Email verification sent!
+      alert("Email verification sent!")
+      console.log('Email verification sent!');
+      if (firebase.auth().currentUser.emailVerified) {
+        // The user's email is verified
+        alert("The user's email is verified")
+      } else {
+        // The user's email is not verified
+        alert("The user's email is not verified")
+  
+      }
+    }).catch(function (error) {
+      // An error happened.
+      console.log(error);
+    })
+    
   }
 
 
@@ -101,6 +104,7 @@ const Search = () => {
         <Button onPress={() => getCurrentUserToken()}>getCurrentUserInfo</Button>
         <Button onPress={() => userData()}>userData</Button>
         <Button onPress={() => ResetEmailVerificationInside()}>ResetEmailVerificationInside</Button>
+        <Button onPress={() => email_verification()}>email_verification</Button>
 
       </View>
     </View>

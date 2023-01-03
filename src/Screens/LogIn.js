@@ -457,6 +457,7 @@ import HomeScreen from './HomeScreen'
 import { useContext } from 'react'
 import { CartContext } from '../Context/CartContext'
 import { AuthContext } from '../Context/AuthContext'
+import Profile from '../Bottom/Profile'
 // import { GoogleSignin } from '@react-native-community/google-signin' //g3
 
 

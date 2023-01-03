@@ -60,21 +60,23 @@
 import React, { createContext, useState } from 'react';
 import auth, { firebase } from '@react-native-firebase/auth';
 // import firestore from '@react-native-firebase/firestore';
-import { GoogleSignin } from '@react-native-community/google-signin';
+// import { GoogleSignin } from '@react-native-community/google-signin';
 import Loader from '../Common/Loader';
 // import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { getAuth, sendPasswordResetEmail, } from "firebase/auth";
 import Firebase from '../FireBase/Firebase';
 import { initializeApp } from 'firebase/app';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [userToken, setUserToken] = useState(null)
-    const [loader, setLoader] = useState(false)
+    const [loader, setLoader] = useState(true)
 
     { loader ? <Loader /> : null }
+
 
     //SighnIn with Email & Passward
     const register = async (email, password) => {
@@ -124,47 +126,46 @@ export const AuthProvider = ({ children }) => {
         setLoader(false)
     }
     // SighnIn with Google
-    const signIn_g = async () => {
-        setLoader(true)
+    // const signIn_g = async () => {
+    //     setLoader(true)
+    //     try {
+    //         // Get the users ID token
+    //         const { idToken } = await GoogleSignin.signIn();
 
-        try {
-            // Get the users ID token
-            const { idToken } = await GoogleSignin.signIn();
+    //         // Create a Google credential with the token
+    //         const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
-            // Create a Google credential with the token
-            const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    //         // Sign-in the user with the credential
+    //         await auth().signInWithCredential(googleCredential)
+    //             // Use it only when user Sign's up, 
+    //             // so create different social signup function
+    //             // .then(() => {
+    //             //   //Once the user creation has happened successfully, we can add the currentUser into firestore
+    //             //   //with the appropriate details.
+    //             //   // console.log('current User', auth().currentUser);
+    //             //   firestore().collection('users').doc(auth().currentUser.uid)
+    //             //   .set({
+    //             //       fname: '',
+    //             //       lname: '',
+    //             //       email: auth().currentUser.email,
+    //             //       createdAt: firestore.Timestamp.fromDate(new Date()),
+    //             //       userImg: null,
+    //             //   })
+    //             //   //ensure we catch any errors at this stage to advise us if something does go wrong
+    //             //   .catch(error => {
+    //             //       console.log('Something went wrong with added user to firestore: ', error);
+    //             //   })
+    //             // })
+    //             //we need to catch the whole sign up process if it fails too.
+    //             .catch(error => {
+    //                 console.log('Something went wrong with sign up: ', error);
+    //             });
+    //     } catch (error) {
+    //         console.log({ error });
+    //     }
+    //     setLoader(false)
 
-            // Sign-in the user with the credential
-            await auth().signInWithCredential(googleCredential)
-                // Use it only when user Sign's up, 
-                // so create different social signup function
-                // .then(() => {
-                //   //Once the user creation has happened successfully, we can add the currentUser into firestore
-                //   //with the appropriate details.
-                //   // console.log('current User', auth().currentUser);
-                //   firestore().collection('users').doc(auth().currentUser.uid)
-                //   .set({
-                //       fname: '',
-                //       lname: '',
-                //       email: auth().currentUser.email,
-                //       createdAt: firestore.Timestamp.fromDate(new Date()),
-                //       userImg: null,
-                //   })
-                //   //ensure we catch any errors at this stage to advise us if something does go wrong
-                //   .catch(error => {
-                //       console.log('Something went wrong with added user to firestore: ', error);
-                //   })
-                // })
-                //we need to catch the whole sign up process if it fails too.
-                .catch(error => {
-                    console.log('Something went wrong with sign up: ', error);
-                });
-        } catch (error) {
-            console.log({ error });
-        }
-        setLoader(false)
-
-    }
+    // }
     //Logout
     const logout_g = async () => {
         setLoader(true)
@@ -185,6 +186,24 @@ export const AuthProvider = ({ children }) => {
                 alert("password reset email has been sent ssuccefully"))
             .catch((e) =>
                 alert("error", e))
+    }
+
+    // gogle signIn
+    // Configure Google Signin
+    GoogleSignin.configure({
+        // webClientId: '662105668477-jg2e8sg8vfvph07meoof2ap6fpntpmqe.apps.googleusercontent.com',
+        // webClientId: '',
+    });
+    const signIn_g = async () => {
+        
+        // Sign in with Google
+        GoogleSignin.signIn()
+            .then((user) => {
+                console.log("google",user);
+            })
+            .catch((err) => {
+                console.error("google error",err);
+            });
     }
 
     //LogIn with fb
@@ -236,7 +255,7 @@ export const AuthProvider = ({ children }) => {
     //     console.log({error});
     //   }
     // }
-
+    //
 
     return (
         <AuthContext.Provider

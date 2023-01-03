@@ -26,13 +26,14 @@ const Main = () => {
 
 
   return (
+
+
     <View style={{ flex: 1, paddingBottom: 53.5 }}>
-      <ScrollView>
-        <View>
-          <Header />
-        </View>
-        <View style={{}}>
-          {/* <ImageSlider
+      <View>
+        <Header />
+      </View>
+      <View style={{}}>
+        {/* <ImageSlider
             data={[
               { img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5a5uCP-n4teeW2SApcIqUrcQApev8ZVCJkA&usqp=CAU' },
               { img: 'https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg' },
@@ -43,261 +44,280 @@ const Main = () => {
             closeIconColor="#fff"
             showHeader={false}
           /> */}
-          <Image source={require('../Images/slide1.webp')} style={{ width: '100%', height: 250, borderRadius: 20 }} />
+        <Image source={require('../Images/slide1.webp')} style={{ width: '100%', height: 250, borderRadius: 20 }} />
 
-        </View>
+      </View>
 
-        <View style={{}}>
-          <FlatList
-            data={product}
-            horizontal
-            renderItem={({ item }) => <Button style={{ margin: 5 }} mode='contained'
-              disabled={category == item.id ? true : false}
-              onPress={() => setCategory(item.id)}>{item.title}</Button>}
-          />
-        </View>
+      <View style={{}}>
+        <FlatList
+          data={product}
+          horizontal
+          renderItem={({ item }) => <Button style={{ margin: 5 }} mode='contained'
+            disabled={category == item.id ? true : false}
+            onPress={() => setCategory(item.id)}>{item.title}</Button>}
+        />
+      </View>
 
-        {/* <View style={{  backgroundColor: 'red',flex: 1,flexDirection:'row',justifyContent:'space-between' }}> */}
-        {category == 0 &&
-          <FlatList
-            contentContainerStyle={{
-              flexDirection: "row",
-              flexWrap: 'wrap',
-              // backgroundColor: 'red',
-              justifyContent: 'space-between',
-            }}
-          
-            data={tshirt}
-           
-            renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              
-              <TouchableOpacity onPress={() => {
-                navigation.navigate(Details),
-                  setItemDetail(item)
-              }}  >
-                <Image style={{ height: 195, width: 195 }} source={require('../Images/tshirt.webp')} />
-                {/* //for url */}
-                {/* <Image style={{ height: 195, width: 195 }} source={{uri: item.Image_url}} /> */} 
-               
-              </TouchableOpacity>
+      {/* <View style={{  backgroundColor: 'red',flex: 1,flexDirection:'row',justifyContent:'space-between' }}> */}
+      {category == 0 &&
+        <FlatList
+          contentContainerStyle={{
+            // flexDirection: "row",
+            // flexWrap: 'wrap',
+            // backgroundColor: 'red',
+            justifyContent: 'space-between',
+          }}
+          data={tshirt}
+          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
 
-              <IconButton icon="heart"
-                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
-                size={20}
-                style={{ position: 'absolute', top: 0, right: 0 }}
-                onPress={() => {
-                  setWishlist([...wishlist, item])
-                  setIconSelected(item.code)
-                }
-                }>
-              </IconButton>
-              <View style={{ justifyContent: 'space-between' }}>
-                <Text style={{ left: 5, }}>{item.brand}</Text>
-                <Text style={{ left: 5, }}>{item.color}</Text>
-                <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                {/* <Image source={{uri:'item.URL'}} style={{height: 200, width: 200, borderRadius: 37.5 }} /> */}
+            <TouchableOpacity onPress={() => {
+              navigation.navigate(Details),
+                setItemDetail(item)
+            }}  >
+              <Image style={{ height: 195, width: 195 }} source={require('../Images/tshirt.webp')} />
+              {/* //for url */}
+              {/* <Image style={{ height: 195, width: 195 }} source={{uri: item.Image_url}} /> */}
 
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
-              </View>
-            </View>}
-          />}
-        {/* </View> */}
+            </TouchableOpacity>
 
-        {category == 1 &&
-          <FlatList
-            contentContainerStyle={{
-              flexWrap: "wrap",
-              flexDirection: "row",
-              // backgroundColor: '#000',
-              // flex:1,
-              justifyContent: 'space-between',
-              // padding:5
-            }}
-            data={jeans}
-            renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={() => {
-                navigation.navigate(Details),
-                  setItemDetail(item)
-              }}>
-                <Image style={{ height: 195, width: 195 }} source={require("../Images/jeans.webp")} />
-              </TouchableOpacity>
+            <IconButton icon="heart"
+              iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+              size={20}
+              style={{ position: 'absolute', top: 0, right: 0 }}
+              onPress={() => {
+                setWishlist([...wishlist, item])
+                setIconSelected(item.code)
+              }
+              }>
+            </IconButton>
+            <View style={{ justifyContent: 'space-between' }}>
+              <Text style={{ left: 5, }}>{item.brand}</Text>
+              <Text style={{ left: 5, }}>{item.color}</Text>
+              <Text style={{ left: 5, }}>RS: {item.price}</Text>
+              {/* <Image source={{uri:'item.URL'}} style={{height: 200, width: 200, borderRadius: 37.5 }} /> */}
 
-              <IconButton icon="heart"
-                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
-                size={20}
-                style={{ position: 'absolute', top: 0, right: 0 }}
-                onPress={() => {
-                  setWishlist([...wishlist, item])
-                  setIconSelected(item.code)
-                }
-                }>
-              </IconButton>
-              <View style={{ justifyContent: 'space-between' }}>
-                <Text style={{ left: 5, }}>{item.brand}</Text>
-                <Text style={{ left: 5, }}>{item.color}</Text>
-                <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setWishlist([...cart, item])}>Cart</Button>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
-              </View>
-            </View>}
-          />}
-        {category == 2 &&
-          <FlatList
-            contentContainerStyle={{
-              flexWrap: "wrap",
-              flexDirection: "row",
-              // backgroundColor: '#000',
-              // flex:1,
-              justifyContent: 'space-between',
-              // padding:5
-            }}
-            data={jacket}
-            renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={(props) => {
-                navigation.navigate(Details),
-                  setItemDetail(item)
-              }} >
-                <Image style={{ height: 195, width: 195 }} source={require("../Images/jacket.webp")} />
-              </TouchableOpacity>
-
-              <IconButton icon="heart"
-                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
-                size={20}
-                style={{ position: 'absolute', top: 0, right: 0 }}
-                onPress={() => {
-                  setWishlist([...wishlist, item])
-                  setIconSelected(item.code)
-                }
-                }>
-              </IconButton>
-              <View style={{ justifyContent: 'space-between' }}>
-                <Text style={{ left: 5, }}>{item.brand}</Text>
-                <Text style={{ left: 5, }}>{item.color}</Text>
-                <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
-              </View>
-            </View>}
-          />}
-        {category == 3 &&
-          <FlatList
-            contentContainerStyle={{
-              flexWrap: "wrap",
-              flexDirection: "row",
-              // backgroundColor: '#000',
-              // flex:1,
-              justifyContent: 'space-between',
-              // padding:5
-            }}
-            data={shirt}
-            renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={(props) => {
-                navigation.navigate(Details),
-                  setItemDetail(item)
-              }} >
-                <Image style={{ height: 195, width: 195 }} source={require("../Images/shirt.webp")} />
-              </TouchableOpacity>
-
-              <IconButton icon="heart"
-                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
-                size={20}
-                style={{ position: 'absolute', top: 0, right: 0 }}
-                onPress={() => {
-                  setWishlist([...wishlist, item])
-                  setIconSelected(item.code)
-                }
-                }>
-              </IconButton>
-              <View style={{ justifyContent: 'space-between' }}>
-                <Text style={{ left: 5, }}>{item.brand}</Text>
-                <Text style={{ left: 5, }}>{item.color}</Text>
-                <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
-              </View>
-            </View>}
-          />}
-        {category == 4 &&
-          <FlatList
-            contentContainerStyle={{
-              flexWrap: "wrap",
-              flexDirection: "row",
-              // backgroundColor: '#000',
-              // flex:1,
-              justifyContent: 'space-between',
-              // padding:5
-            }}
-            data={lower}
-            renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={(props) => {
-                navigation.navigate(Details),
-                  setItemDetail(item)
-              }} >
-                <Image style={{ height: 195, width: 195 }} source={require("../Images/lower.webp")} />
-              </TouchableOpacity>
-
-              <IconButton icon="heart"
-                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
-                size={20}
-                style={{ position: 'absolute', top: 0, right: 0 }}
-                onPress={() => {
-                  setWishlist([...wishlist, item])
-                  setIconSelected(item.code)
-                }
-                }>
-              </IconButton>
-              <View style={{ justifyContent: 'space-between' }}>
-                <Text style={{ left: 5, }}>{item.brand}</Text>
-                <Text style={{ left: 5, }}>{item.color}</Text>
-                <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
-              </View>
-            </View>}
-          />}
-        {category == 5 &&
-          <FlatList
-            contentContainerStyle={{
-              flexWrap: "wrap",
-              flexDirection: "row",
-              // backgroundColor: '#000',
-              // flex:1,
-              justifyContent: 'space-between',
-              // padding:5
-            }}
-            data={hoodie}
-            renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, }}>
-              <TouchableOpacity onPress={(props) => {
-                navigation.navigate(Details),
-                  setItemDetail(item)
-              }} >
-                <Image style={{ height: 195, width: 195 }} source={require("../Images/hoodie.webp")} />
-              </TouchableOpacity>
-
-              <IconButton icon="heart"
-                iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
-                size={20}
-                style={{ position: 'absolute', top: 0, right: 0 }}
-                onPress={() => {
-                  setWishlist([...wishlist, item])
-                  setIconSelected(item.code)
-                }
-                }>
-              </IconButton>
-              <View style={{ justifyContent: 'space-between' }}>
-                <Text style={{ left: 5, }}>{item.brand}</Text>
-                <Text style={{ left: 5, }}>{item.color}</Text>
-                <Text style={{ left: 5, }}>RS: {item.price}</Text>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-                <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
-              </View>
-            </View>}
-          />}
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+            </View>
+          </View>}
+          keyExtractor={item => item.code}
+          horizontal={false}
+          numColumns={2}
 
 
-      </ScrollView>
+        />}
+      {/* </View> */}
+
+      {category == 1 &&
+        <FlatList
+          contentContainerStyle={{
+            // flexWrap: "wrap",
+            // flexDirection: "row",
+            // backgroundColor: '#000',
+            // flex:1,
+            justifyContent: 'space-between',
+            // padding:5
+          }}
+          data={jeans}
+          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+            <TouchableOpacity onPress={() => {
+              navigation.navigate(Details),
+                setItemDetail(item)
+            }}>
+              <Image style={{ height: 195, width: 195 }} source={require("../Images/jeans.webp")} />
+            </TouchableOpacity>
+
+            <IconButton icon="heart"
+              iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+              size={20}
+              style={{ position: 'absolute', top: 0, right: 0 }}
+              onPress={() => {
+                setWishlist([...wishlist, item])
+                setIconSelected(item.code)
+              }
+              }>
+            </IconButton>
+            <View style={{ justifyContent: 'space-between' }}>
+              <Text style={{ left: 5, }}>{item.brand}</Text>
+              <Text style={{ left: 5, }}>{item.color}</Text>
+              <Text style={{ left: 5, }}>RS: {item.price}</Text>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setWishlist([...cart, item])}>Cart</Button>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+            </View>
+          </View>}
+          keyExtractor={item => item.code}
+          horizontal={false}
+          numColumns={2}
+        />}
+      {category == 2 &&
+        <FlatList
+          contentContainerStyle={{
+            // flexWrap: "wrap",
+            // flexDirection: "row",
+            // backgroundColor: '#000',
+            // flex:1,
+            justifyContent: 'space-between',
+            // padding:5
+          }}
+          data={jacket}
+          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+            <TouchableOpacity onPress={(props) => {
+              navigation.navigate(Details),
+                setItemDetail(item)
+            }} >
+              <Image style={{ height: 195, width: 195 }} source={require("../Images/jacket.webp")} />
+            </TouchableOpacity>
+
+            <IconButton icon="heart"
+              iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+              size={20}
+              style={{ position: 'absolute', top: 0, right: 0 }}
+              onPress={() => {
+                setWishlist([...wishlist, item])
+                setIconSelected(item.code)
+              }
+              }>
+            </IconButton>
+            <View style={{ justifyContent: 'space-between' }}>
+              <Text style={{ left: 5, }}>{item.brand}</Text>
+              <Text style={{ left: 5, }}>{item.color}</Text>
+              <Text style={{ left: 5, }}>RS: {item.price}</Text>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+            </View>
+          </View>}
+          keyExtractor={item => item.code}
+          horizontal={false}
+          numColumns={2}
+        />}
+      {category == 3 &&
+        <FlatList
+          contentContainerStyle={{
+            // flexWrap: "wrap",
+            // flexDirection: "row",
+            // backgroundColor: '#000',
+            // flex:1,
+            justifyContent: 'space-between',
+            // padding:5
+          }}
+          data={shirt}
+          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10,padding:1 }}>
+            <TouchableOpacity onPress={(props) => {
+              navigation.navigate(Details),
+                setItemDetail(item)
+            }} >
+              <Image style={{ height: 195, width: 195 }} source={require("../Images/shirt.webp")} />
+            </TouchableOpacity>
+
+            <IconButton icon="heart"
+              iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+              size={20}
+              style={{ position: 'absolute', top: 0, right: 0 }}
+              onPress={() => {
+                setWishlist([...wishlist, item])
+                setIconSelected(item.code)
+              }
+              }>
+            </IconButton>
+            <View style={{ justifyContent: 'space-between' }}>
+              <Text style={{ left: 5, }}>{item.brand}</Text>
+              <Text style={{ left: 5, }}>{item.color}</Text>
+              <Text style={{ left: 5, }}>RS: {item.price}</Text>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+            </View>
+          </View>}
+          keyExtractor={item => item.code}
+          horizontal={false}
+          numColumns={2}
+        />}
+      {category == 4 &&
+        <FlatList
+          contentContainerStyle={{
+            // flexWrap: "wrap",
+            // flexDirection: "row",
+            // backgroundColor: '#000',
+            // flex:1,
+            justifyContent: 'space-between',
+            // padding:5
+          }}
+          data={lower}
+          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+            <TouchableOpacity onPress={(props) => {
+              navigation.navigate(Details),
+                setItemDetail(item)
+            }} >
+              <Image style={{ height: 195, width: 195 }} source={require("../Images/lower.webp")} />
+            </TouchableOpacity>
+
+            <IconButton icon="heart"
+              iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+              size={20}
+              style={{ position: 'absolute', top: 0, right: 0 }}
+              onPress={() => {
+                setWishlist([...wishlist, item])
+                setIconSelected(item.code)
+              }
+              }>
+            </IconButton>
+            <View style={{ justifyContent: 'space-between' }}>
+              <Text style={{ left: 5, }}>{item.brand}</Text>
+              <Text style={{ left: 5, }}>{item.color}</Text>
+              <Text style={{ left: 5, }}>RS: {item.price}</Text>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+            </View>
+          </View>}
+          keyExtractor={item => item.code}
+          // horizontal={false}
+          numColumns={2}
+        />}
+      {category == 5 &&
+        <FlatList
+          contentContainerStyle={{
+            // flexWrap: "wrap",
+            // flexDirection: "row",
+            // backgroundColor: '#000',
+            // flex:1,
+            justifyContent: 'space-between',
+            // padding:5
+          }}
+          data={hoodie}
+          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+            <TouchableOpacity onPress={(props) => {
+              navigation.navigate(Details),
+                setItemDetail(item)
+            }} >
+              <Image style={{ height: 195, width: 195 }} source={require("../Images/hoodie.webp")} />
+            </TouchableOpacity>
+
+            <IconButton icon="heart"
+              iconColor={iconSelected == item.code ? '#1DA664' : '#000'}
+              size={20}
+              style={{ position: 'absolute', top: 0, right: 0 }}
+              onPress={() => {
+                setWishlist([...wishlist, item])
+                setIconSelected(item.code)
+              }
+              }>
+            </IconButton>
+            <View style={{ justifyContent: 'space-between' }}>
+              <Text style={{ left: 5, }}>{item.brand}</Text>
+              <Text style={{ left: 5, }}>{item.color}</Text>
+              <Text style={{ left: 5, }}>RS: {item.price}</Text>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
+              <Button textColor='blue' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+            </View>
+          </View>}
+          keyExtractor={item => item.code}
+          horizontal={false}
+          numColumns={2}
+        />}
+
+
+      {/* </ScrollView> */}
     </View>
+
     //  {/* </View> */}
 
   )

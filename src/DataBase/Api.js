@@ -838,7 +838,7 @@ export const lower = [
     }
   },
   {
-    brand: "nike", color: "brown", price: "1000", code: "l1", url: require("../Images/tshirt.webp"), decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    brand: "nike", color: "brown", price: "1000", code: "l11", url: require("../Images/tshirt.webp"), decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -852,7 +852,7 @@ export const lower = [
     }
   },
   {
-    brand: "nike", color: "brown", price: "1000", code: "l2", url: require("../Images/tshirt.webp"), decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    brand: "nike", color: "brown", price: "1000", code: "l12", url: require("../Images/tshirt.webp"), decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
