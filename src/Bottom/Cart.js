@@ -47,7 +47,7 @@ const CartCard = ({ val }) => {
       <ScrollView style={{ width: '100%', backgroundColor: '#B0A0FF', marginVertical: 1, }} >
         <View style={{ justifyContent: 'center', alignContent: 'center', }}>
           <TouchableOpacity onPress={() => { navigation.navigate(Details), setItemDetail(val) }} >
-            <Image style={{ height: 100, width: 100 }} source={require('../Images/tshirt.webp')} />
+            <Image style={{ height: 100, width: 100 }} source={{uri: val.url}} />
           </TouchableOpacity>
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 10, color: '#000', }}>Brand:-{val.brand}</Text>
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 30, color: '#000', }}>Color:-{val.color}</Text>
@@ -57,7 +57,7 @@ const CartCard = ({ val }) => {
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
 
-          <Button textColor='blue' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart, val]), navigation.navigate(BuyScreen) }}>Buy</Button>
+          <Button textColor='#fff' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart, val]), navigation.navigate(BuyScreen) }}>Buy</Button>
 
         </View>
       </ScrollView>

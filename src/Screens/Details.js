@@ -59,7 +59,7 @@ const Details = ({ value }) => {
 
             {/* image SliderBox */}
             <View style={{ flex: 10, backgroundColor: "#000" }}>
-                <Image style={{ height: '100%', width: '100%' }} source={require('../Images/tshirt.webp')} />
+                <Image style={{ height: '100%', width: '100%' }} source={{uri:ItemDetail.url}} />
                 {/* <SliderBox images={ItemDetail.ImagesObject.Image} /> */}
             </View>
 

@@ -1,17 +1,3 @@
-// import React from 'react';
-// import { View, ActivityIndicator } from 'react-native';
-
-// const LoadingSpinner = () => {
-//   return (
-//     <View style={{flex:1}}>
-//       <ActivityIndicator size="large" />
-
-//     </View>
- 
-//   );
-// };
-
-// export default LoadingSpinner;
 
 
 import React from 'react';

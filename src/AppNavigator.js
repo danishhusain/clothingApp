@@ -23,6 +23,7 @@ import Navigation from './Navigation';
 import Cart from './Bottom/Cart';
 import ImageSliding from './Components/ImageSliding';
 import Test from './Common/Test';
+import BottomTab from './Common/BottomTab';
 
 
 const Stack = createNativeStackNavigator();
@@ -50,6 +51,7 @@ function AppNavigator() {
         <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
         <Stack.Screen name="ImageSliding" component={ImageSliding} options={{ headerShown: false }} />
         <Stack.Screen name="Test" component={Test} options={{ headerShown: false }} />
+        <Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
 
         
       </Stack.Navigator>
