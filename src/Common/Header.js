@@ -6,6 +6,7 @@ import Navigation from '../Navigation'
 import { useNavigation } from '@react-navigation/native'
 import Cart from '../Bottom/Cart'
 import Profile from '../Bottom/Profile'
+import Test from './Test'
 
 const Header = () => {
     const { cart } = useContext(CartContext)
@@ -20,7 +21,7 @@ const Header = () => {
             <View style={{ alignSelf: 'flex-start', right: 5 }}>
                 <TouchableOpacity style={{ alignItems: 'flex-end', }}>
                     {/* <Text style={{fontSize:18,fontWeight:'500',color:'white'}}>Mode</Text> */}
-                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40}></IconButton>
+                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(Test)}></IconButton>
                 </TouchableOpacity>
             </View>
             <View style={{ marginRight: 130 }}>

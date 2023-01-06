@@ -191,11 +191,6 @@ const SignIn = ({ navigation }) => {
   const [password, setpassword] = useState("")
   const [name, setName] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [bademail, setBademail] = useState(false)
-  const [badpassword, setBadpassword] = useState(false)
-  const [badconfirmpassword, setBadconfirmpassword] = useState(false)
-  const [badname, setbadName] = useState(false)
-  const [passwordconfirmpassword, setpasswordconfirmpassword] = useState(false)
   const { register, ResetEmailVerification } = useContext(AuthContext)
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -253,6 +248,7 @@ const SignIn = ({ navigation }) => {
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"password"} secureTextEntry left={<TextInput.Icon icon={"key"} />}
           value={password}
           autoComplete='password'
+          
           onChangeText={(txt) => { setpassword(txt) }} />
 
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={" Confirm password"} secureTextEntry left={<TextInput.Icon icon={"key"} />}

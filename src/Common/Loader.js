@@ -1,14 +1,45 @@
+// import React from 'react';
+// import { View, ActivityIndicator } from 'react-native';
+
+// const LoadingSpinner = () => {
+//   return (
+//     <View style={{flex:1}}>
+//       <ActivityIndicator size="large" />
+
+//     </View>
+ 
+//   );
+// };
+
+// export default LoadingSpinner;
+
 
 import React from 'react';
-import { View, Modal, ActivityIndicator } from 'react-native';
+import { View, Modal, ActivityIndicator, Alert } from 'react-native';
 
-function Loader() {
+const LoadingSpinner=()=> {
+  const [isVisible, setIsVisible] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+
   return (
-    <Modal>
-      <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <ActivityIndicator size="large" />
-      </View>
-    </Modal>
+    <View>
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={isVisible}
+        onRequestClose={() => setIsVisible(false)}
+      >
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          {isLoading ? (
+            <ActivityIndicator size="small" color="#0000ff" />
+          ) : (
+            // The content of your modal goes here
+            alert.apply("alert")
+          )}
+        </View>
+      </Modal>
+    </View>
   );
 }
-export default Loader
+export default LoadingSpinner;
+

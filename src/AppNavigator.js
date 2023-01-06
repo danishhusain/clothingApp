@@ -22,6 +22,7 @@ import Firebase from './FireBase/Firebase';
 import Navigation from './Navigation';
 import Cart from './Bottom/Cart';
 import ImageSliding from './Components/ImageSliding';
+import Test from './Common/Test';
 
 
 const Stack = createNativeStackNavigator();
@@ -48,6 +49,7 @@ function AppNavigator() {
         <Stack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} />
         <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
         <Stack.Screen name="ImageSliding" component={ImageSliding} options={{ headerShown: false }} />
+        <Stack.Screen name="Test" component={Test} options={{ headerShown: false }} />
 
         
       </Stack.Navigator>
