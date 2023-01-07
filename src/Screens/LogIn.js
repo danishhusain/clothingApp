@@ -414,36 +414,27 @@
 // export default LogIn
 
 // const styles = StyleSheet.create({})
-import {Text, TouchableOpacity, View} from 'react-native';
-import React, {useState, useEffect} from 'react';
-import {
-  IconButton,
-  Button,
-  TextInput,
-  ActivityIndicator,
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {IconButton,Button,TextInput,ActivityIndicator,
 } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Loader from '../Common/Loader';
-import {
-  GoogleSignin,
-  statusCodes,
-  GoogleSigninButton,
+import {GoogleSignin,statusCodes,GoogleSigninButton,
 } from '@react-native-google-signin/google-signin';
 import HomeScreen from './HomeScreen';
-import {useContext} from 'react';
-import {CartContext} from '../Context/CartContext';
-import {AuthContext} from '../Context/AuthContext';
+import { useContext } from 'react';
+import { CartContext } from '../Context/CartContext';
+import { AuthContext } from '../Context/AuthContext';
 import Profile from '../Bottom/Profile';
 import auth from '@react-native-firebase/auth';
 
-const LogIn = ({navigation}) => {
+const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const {isSignedIn, setisSignedIn} = useContext(CartContext);
-  const {login2, ResetEmailVerification,isLoading,setIsLoading,} =
-    useContext(AuthContext);
-    // const {isLoading,setIsLoading}=useContext(AuthContext)
+  const { isSignedIn, setisSignedIn } = useContext(CartContext);
+  const { login2, ResetEmailVerification, isLoading, setIsLoading, } = useContext(AuthContext);
   const [hidePassword, setHidePassword] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -452,34 +443,35 @@ const LogIn = ({navigation}) => {
     GoogleSignin.configure({
       webClientId:
         '662105668477-jg2e8sg8vfvph07meoof2ap6fpntpmqe.apps.googleusercontent.com',
-        offlineAccess: true, 
-        // accountName:true,
-        
+      offlineAccess: true,
+      // accountName:true,
+
     });
   });
-
+  //Google LogIn
   const onGoogleButtonPress = async () => {
     // setIsLoading(true)
     // Check if your device supports Google Play
-    await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
     // Get the users ID token
-    const {idToken} = await GoogleSignin.signIn();
+    const { idToken } = await GoogleSignin.signIn();
     console.log('Id Token 1', idToken);
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    console.log('Succesfuuly Create a Google credential with the token  token:',googleCredential);
+    console.log('Succesfuuly Create a Google credential with the token  token:', googleCredential);
     // Sign-in the user with the credential
-    const user_signin_in = auth().signInWithCredential(googleCredential);
-    console.log('Sign-in the user with the credential');
+    return auth().signInWithCredential(googleCredential);
+    // const user_signin_in = auth().signInWithCredential(googleCredential);
+    // console.log('Sign-in the user with the credential');
 
-    user_signin_in
-      .then(user => {
-        console.log('userInffo', user);
-      })
-      .then(e => {
-        console.log('userInfo error', e);
-      });
-    setIsLoading(false)
+    // user_signin_in
+    //   .then(user => {
+    //     console.log('userInffo', user);
+    //   })
+    //   .then(e => {
+    //     console.log('userInfo error', e);
+    //   });
+    // setIsLoading(false)
 
   };
 
@@ -535,13 +527,15 @@ const LogIn = ({navigation}) => {
       login2(email, password);
     }
   };
-
+  //Togal Password
   const togglePasswordVisibility = () => {
-    setHidePassword(hidePassword=>!hidePassword);
+    setHidePassword(hidePassword => !hidePassword);
   };
   return (
-    <View style={{flex: 1, justifyContent: 'center'}}>
-      <Text style={{alignSelf: 'center', fontSize: 25, fontWeight: '600'}}>
+    <View style={{ flex: 1, justifyContent: 'center' }}>
+      {/* <ImageBackground source={require('../Images/bgImage.webp')}  resizeMode='stretch' style={{ flex: 1, justifyContent: 'center' }}> */}
+
+      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600' }}>
         LogIn{' '}
       </Text>
       <View
@@ -554,7 +548,7 @@ const LogIn = ({navigation}) => {
           keyboardType="email-address"
           autoComplete="email"
           value={email}
-          style={{marginVertical: 5}}
+          style={{ marginVertical: 5 }}
           mode="outlined"
           label={'Email'}
           left={<TextInput.Icon icon={'email'} />}
@@ -563,29 +557,29 @@ const LogIn = ({navigation}) => {
         <TextInput
           autoComplete="password"
           value={password}
-          style={{marginVertical: 5}}
+          style={{ marginVertical: 5 }}
           mode="outlined"
           label={'password'}
           secureTextEntry={hidePassword}
           left={<TextInput.Icon icon={'key'} />}
-           right={
+          right={
             <TextInput.Icon
               onPress={() => togglePasswordVisibility()}
               icon="eye"
             />
           }
-          
+
           onChangeText={txt => setpassword(txt)}
         />
         {errorMessage ? <Text>{errorMessage}</Text> : null}
 
         <TouchableOpacity
-          style={{alignItems: 'flex-end'}}
+          style={{ alignItems: 'flex-end' }}
           onPress={() => {
             ResetEmailVerification(email);
           }}>
           <Text
-            style={{color: 'blue'}}
+            style={{ color: 'blue' }}
             onPress={() => {
               ResetEmailVerification(email);
             }}>
@@ -594,18 +588,18 @@ const LogIn = ({navigation}) => {
         </TouchableOpacity>
       </View>
 
-      <View style={{alignContent: 'center', justifyContent: 'center'}}>
+      <View style={{ alignContent: 'center', justifyContent: 'center' }}>
         <Button
           mode="contained"
           onPress={() => {
             handleSubmit(email, password);
           }}
-          style={{marginBottom: 10}}>
+          style={{ marginBottom: 10 }}>
           LogIn2
         </Button>
 
         <GoogleSigninButton
-          style={{width: '100%', height: 48}}
+          style={{ width: '100%', height: 48 }}
           onPress={() => onGoogleButtonPress()}
         />
 
@@ -623,6 +617,8 @@ const LogIn = ({navigation}) => {
         {/* < Loader modalVisible={modalVisible} setModalVisible={setModalVisible} /> */}
       </View>
       {modalVisible == true && <Loader />}
+      {/* </ImageBackground> */}
+
     </View>
   );
 };

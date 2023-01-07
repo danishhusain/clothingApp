@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import { View, Modal, ActivityIndicator, Alert } from 'react-native';
 

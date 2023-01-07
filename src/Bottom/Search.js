@@ -14,6 +14,7 @@ import {AuthContext} from '../Context/AuthContext';
 import {useNavigation} from '@react-navigation/native';
 import ImageSliding from '../Components/ImageSliding';
 import Loader from '../Common/Loader';
+import Permissions from '../Permission/Permissions';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -85,10 +86,7 @@ const Search = () => {
     const isSignedIn = await GoogleSignin.isSignedIn();
     // this.setState({ isLoginScreenPresented: !isSignedIn });
     console.log('isSignedIn', {isLoginScreenPresented: !isSignedIn});
-    // console.log("isSignedIn",{ isLoginScreenPresented_s: !s })
   };
-  //console
-  // console.log("login",s)
   //getCurrentUserInfo
   getCurrentUserInfo = async () => {
     try {
@@ -124,9 +122,7 @@ const Search = () => {
         <Text style={{alignSelf: 'center', marginTop: '10%'}}>NO data</Text>
         <Button onPress={() => isSignedIn()}>isSignedIn</Button>
         <Button onPress={() => getCurrentUserInfo()}>getCurrentUserInfo</Button>
-        <Button onPress={() => getCurrentUserToken()}>
-          getCurrentUserToken
-        </Button>
+        {/* <Button onPress={() => getCurrentUserToken()}>getCurrentUserToken</Button> */}
         <Button onPress={() => userData()}>userData</Button>
         <Button onPress={() => ResetEmailVerificationInside()}>
           ResetEmailVerificationInside
@@ -136,6 +132,7 @@ const Search = () => {
           ImageSliding
         </Button>
         <Button onPress={() => lo()}>loader</Button>
+        <Button onPress={() => navigation.navigate(Permissions)}>Permission</Button>
       </View>
     </View>
   );

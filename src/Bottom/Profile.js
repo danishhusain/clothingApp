@@ -28,7 +28,9 @@ import {useContext} from 'react';
 import {AuthContext} from '../Context/AuthContext';
 import Navigation from '../Navigation';
 import {firebase} from '@react-native-firebase/auth';
-import Test from '../Common/Test';
+import Camera from '../Common/LaunchCamera';
+
+
 
 const Profile = () => {
   const navigation = useNavigation();
@@ -87,7 +89,7 @@ const Profile = () => {
         style={{fontSize: 20,color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center',}}>
         {user ? user.displayName : null}
       </Text> */}
-      <Test/>
+      <Camera/>
       </View>
 
       {/* //other Component */}

@@ -5,8 +5,9 @@ import { Badge, IconButton } from 'react-native-paper'
 import Navigation from '../Navigation'
 import { useNavigation } from '@react-navigation/native'
 import Cart from '../Bottom/Cart'
-import Profile from '../Bottom/Profile'
-import Test from './Test'
+import Camera from './LaunchCamera'
+import ImageSliding from '../Components/ImageSliding'
+
 
 const Header = () => {
     const { cart } = useContext(CartContext)
@@ -21,7 +22,9 @@ const Header = () => {
             <View style={{ alignSelf: 'flex-start', right: 5 }}>
                 <TouchableOpacity style={{ alignItems: 'flex-end', }}>
                     {/* <Text style={{fontSize:18,fontWeight:'500',color:'white'}}>Mode</Text> */}
-                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(Test)}></IconButton>
+                    {/* <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(Camera)}></IconButton>
+                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(Camera)}></IconButton> */}
+                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(Camera)}></IconButton>
                 </TouchableOpacity>
             </View>
             <View style={{ marginRight: 130 }}>

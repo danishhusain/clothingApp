@@ -11,12 +11,12 @@
 //    Dimensions,
 //    TouchableOpacity
 //  } from 'react-native';
- 
+
 
 //  import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 
-// const Test = () => {
+// const LaunchCamera = () => {
 
 //   const [fileData, setFileData] = useState(null);
 //   const [fileUri, setFileUri] = useState(null);
@@ -131,7 +131,7 @@
 //       </Fragment>
 //   )
 // };
-// export default Test;
+// export default LaunchCamera;
 // const styles = StyleSheet.create({
 //   scrollView: {
 //     backgroundColor: "grey",
@@ -184,42 +184,41 @@
 
 import { useNavigation } from '@react-navigation/native';
 import React, { Fragment, Component, useState, } from 'react';
- import {
-   SafeAreaView,
-   StyleSheet,
-   ScrollView,
-   View,
-   Text,
-   StatusBar,
-   Image,
-   Dimensions,
-   TouchableOpacity,
-   Platform
- } from 'react-native';
- 
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  Platform
+} from 'react-native';
 
- import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import { Button ,Avatar, IconButton,BottomNavigation,Appbar,Dialog, Portal} from 'react-native-paper';
+
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { Button, Avatar, IconButton, BottomNavigation, Appbar, Dialog, Portal } from 'react-native-paper';
 import BottomTab from './BottomTab';
-// import BottomTab from './BottomTab';
 
 
 // const navigation=useNavigation()
-const Test = () => {
-const navigation=useNavigation()
+const Camera = () => {
+  const navigation = useNavigation()
   const [fileData, setFileData] = useState(null);
   const [fileUri, setFileUri] = useState(null);
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
   const renderFileData = () => {
- 
+
     if (fileData) {
       return <Avatar.Image size={130} source={{ uri: 'data:image/jpeg;base64,' + fileData }}
-      style={{width: 130,top:30, height: 130, alignSelf: 'center'}}
+        style={{ width: 130, top: 30, height: 130, alignSelf: 'center' }}
       />
     } else {
-      return <Avatar.Image size={130} source={require('../Images/profile.jpg')} 
-      style={{width: 130,top:30, height: 130, alignSelf: 'center'}}
+      return <Avatar.Image size={130} source={require('../Images/profile.jpg')}
+        style={{ width: 130, top: 30, height: 130, alignSelf: 'center' }}
       />
     }
 
@@ -230,12 +229,12 @@ const navigation=useNavigation()
     if (fileUri) {
       return <Image
         source={{ uri: fileUri }}
-        style={{width: 150, height: 150, alignSelf: 'center'}}
+        style={{ width: 150, height: 150, alignSelf: 'center' }}
       />
     } else {
       return <Image
         source={require('../Images/profile.jpg')}
-        style={{width: 150, height: 150, alignSelf: 'center'}}
+        style={{ width: 150, height: 150, alignSelf: 'center' }}
       />
     }
   }
@@ -291,41 +290,26 @@ const navigation=useNavigation()
     });
 
   }
- //
- const MyComponent = () => {
-  const [visible, setVisible] = React.useState(false);
+  //
 
-  const hideDialog = () => setVisible(false);
 
   return (
-    <Portal>
-      <Dialog visible={visible} onDismiss={hideDialog}>
-        <Dialog.Actions>
-          <Button onPress={() => console.log('Cancel')}>Cancel</Button>
-          <Button onPress={() => console.log('Ok')}>Ok</Button>
-        </Dialog.Actions>
-      </Dialog>
-    </Portal>
-  );
-};
+    <View style={styles.body}>
+      <View >
+        {renderFileData()}
+        <View style={{ justifyContent: 'center', alignSelf: 'center', bottom: 22, left: 45, backgroundColor: '#6a5acd', borderRadius: 200, }}>
+          {/* <IconButton icon={'camera'}  onPress={() => {<BottomTab/>}}>CAMERA</IconButton> */}
+          <IconButton icon={'camera'} iconColor={'#fff'} onPress={() => { launchNativeCamera() }}>CAMERA</IconButton>
+          {/* <IconButton icon={'camera'}  onPress={() => {navigation.navigate(LaunchCamera)}}>CAMERA</IconButton> */}
+          {/* <IconButton icon={'camera'}  onPress={() => {MyComponent()}}>CAMERA</IconButton> */}
+          {/* <IconButton icon={'camera'}  onPress={() => {navigation.navigate(BottomTab)}}>CAMERA</IconButton> */}
+        </View>
+      </View>
+    </View>
 
-  return (
-          <View style={styles.body}>
-            <View >
-              {renderFileData()}
-              <View style={{justifyContent:'center',alignSelf:'center',bottom:22,left:45,backgroundColor:'#6a5acd',borderRadius:200,}}>
-              {/* <IconButton icon={'camera'}  onPress={() => {<BottomTab/>}}>CAMERA</IconButton> */}
-              <IconButton icon={'camera'} iconColor={'#fff'} onPress={() => {launchNativeCamera()}}>CAMERA</IconButton>
-              {/* <IconButton icon={'camera'}  onPress={() => {navigation.navigate(Test)}}>CAMERA</IconButton> */}
-              {/* <IconButton icon={'camera'}  onPress={() => {MyComponent()}}>CAMERA</IconButton> */}
-              {/* <IconButton icon={'camera'}  onPress={() => {navigation.navigate(BottomTab)}}>CAMERA</IconButton> */}
-              </View>
-            </View>
-          </View>
-        
   )
 };
-export default Test;
+export default Camera;
 const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: "grey",
@@ -356,7 +340,7 @@ const styles = StyleSheet.create({
   },
   btnParentSection: {
     alignItems: 'center',
-    marginTop:10
+    marginTop: 10
   },
   btnSection: {
     width: 225,
@@ -365,13 +349,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 3,
-    marginBottom:10
+    marginBottom: 10
   },
   btnText: {
     textAlign: 'center',
     color: 'gray',
     fontSize: 14,
-    fontWeight:'bold'
+    fontWeight: 'bold'
   }
 });
 

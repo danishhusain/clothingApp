@@ -9,6 +9,8 @@ import Profile from '../Bottom/Profile'
 import { CartContext } from '../Context/CartContext'
 import { mdiMagnify, mdiHomeSearchOutline } from '@mdi/js';
 import MyOrders from './MyOrders'
+import Camera from '../Common/LaunchCamera'
+import Permissions from '../Permission/Permissions'
 
 
 const HomeScreen = () => {
@@ -22,7 +24,8 @@ const HomeScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       {/* <View style={{ flex: 1 }}> */}
-      {selectedTab == 0 ? (<Main />) : selectedTab == 1 ? (<Search />) : selectedTab == 2 ? (<MyOrders />) : selectedTab == 3 ? (<Wishlist />) : (<Profile />)}
+      {/* <Permissions/> */}
+      {selectedTab == 0 ? (<Main />) : selectedTab == 1 ? (<Search />) : selectedTab == 2 ? (<MyOrders/>) : selectedTab == 3 ? (<Wishlist />) : (<Profile />)}
 
       {/* </View> */}
       <View style={{

@@ -6,6 +6,7 @@ import {IconButton} from 'react-native-paper';
 import BuyScreen from '../Screens/BuyScreen';
 
 const ImageSliding = () => {
+  const navigation=useNavigation()
   return (
     <View
       style={{
