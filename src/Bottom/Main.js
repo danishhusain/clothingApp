@@ -69,6 +69,7 @@ const Main = () => {
             <TouchableOpacity onPress={() => {
               navigation.navigate(Details),
                 setItemDetail(item)
+                
             }}  >
               {/* for source */}
               {/* <Image style={{ height: 150, width: 195}} source={require('../Images/tshirt.webp')} /> */}
