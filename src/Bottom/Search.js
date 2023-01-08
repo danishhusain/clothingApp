@@ -78,6 +78,7 @@ const Search = () => {
     if (user) {
       console.log('User email: ', user.email);
       console.log('User email: ', user.password);
+      console.log('User email: ', user.displayName);
     }
   };
 

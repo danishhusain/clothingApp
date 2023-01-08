@@ -4,6 +4,7 @@ import CartContextProvider from './src/Context/CartContext';
 import {AuthContext, AuthProvider} from './src/Context/AuthContext';
 
 import Navigation from './src/Navigation';
+// import LoadingSpinner from './src/Common/Loader';
 
 const App = () => {
   return (

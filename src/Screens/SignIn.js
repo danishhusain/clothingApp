@@ -208,7 +208,7 @@ const SignIn = ({ navigation }) => {
     } else {
       setErrorMessage('');
       // submit form data
-      register(email, password)
+      register(email, password,name)
 
     }
   };

@@ -8,7 +8,7 @@ import Firebase from '../FireBase/Firebase';
 import {initializeApp} from 'firebase/app';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {useNavigation} from '@react-navigation/native';
-import LoadingSpinner from '../Common/Loader';
+// import LoadingSpinner from '../Common/Loader';
 import { useContext } from 'react';
 
 export const AuthContext = createContext();
@@ -18,12 +18,12 @@ export const AuthProvider = ({children}) => {
 
 
   //SighnIn with Email & Passward
-  const register = async (email, password) => {
+  const register = async (email, password,name) => {
 
 
     try {
       await auth()
-        .createUserWithEmailAndPassword(email, password)
+        .createUserWithEmailAndPassword(email, password,name)
         .then(() => {
           console.log('register suceesfully');
           //   //Once the user creation has happened successfully, we can add the currentUser into firestore

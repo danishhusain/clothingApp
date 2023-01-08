@@ -1,5 +1,5 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   IconButton,
@@ -14,7 +14,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Offers from '../Screens/Offers';
 import MyOrders from '../Screens/MyOrders';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import MyAddress from '../Screens/MyAddress';
 import Addaddress from '../Screens/AddAddress';
 import LogoutScreen from '../Screens/LogoutScreen';
@@ -24,10 +24,10 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import {useContext} from 'react';
-import {AuthContext} from '../Context/AuthContext';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContext';
 import Navigation from '../Navigation';
-import {firebase} from '@react-native-firebase/auth';
+import { firebase } from '@react-native-firebase/auth';
 import Camera from '../Common/LaunchCamera';
 
 
@@ -35,14 +35,14 @@ import Camera from '../Common/LaunchCamera';
 const Profile = () => {
   const navigation = useNavigation();
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
-  const {logout2, logout_g} = useContext(AuthContext);
+  const { logout2, logout_g } = useContext(AuthContext);
   const user = firebase.auth().currentUser;
 
   //signOut
   signOut = async () => {
     try {
       await GoogleSignin.signOut();
-      console.log('signOut', {user: null});
+      console.log('signOut', { user: null });
       navigation.navigate(LogIn);
     } catch (error) {
       console.error(error);
@@ -53,7 +53,7 @@ const Profile = () => {
   // console.log("profile",logout2)
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           width: '100%',
@@ -78,22 +78,22 @@ const Profile = () => {
           icon={MORE_ICON}
           size={25}
           onPress={() => console.log('boom')}
-          style={{position: 'absolute', right: 5, top: 5}}
+          style={{ position: 'absolute', right: 5, top: 5 }}
           iconColor={'white'}></IconButton>
       </View>
       {/* //image Component */}
-      <View style={{height:250,width:'100%'}}>
-      {/* <Image source={require('../Images/playstore.png')} style={{width: 150, height: 150, alignSelf: 'center'}}/>
-     
-      <Text
-        style={{fontSize: 20,color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center',}}>
-        {user ? user.displayName : null}
-      </Text> */}
-      <Camera/>
+      <View style={{ height: 250, width: '100%' }}>
+        {/* {/* <Image source={require('../Images/playstore.png')} style={{width: 150, height: 150, alignSelf: 'center'}}/> */}
+
+
+        <Camera />
+        <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>{user ? user.displayName : null}</Text>
+        <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>Danish</Text>
+        <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>{user ? user.email : null}</Text>
       </View>
 
       {/* //other Component */}
-      <View style={{flex: 1, alignContent: 'center'}}>
+      <View style={{ flex: 1, alignContent: 'center' }}>
         <TouchableOpacity
           style={{
             borderBottomWidth: 0.2,
@@ -104,7 +104,7 @@ const Profile = () => {
             marginTop: 10,
           }}
           onPress={() => navigation.navigate(MyAddress)}>
-          <Text style={{color: `#6a5acd`, fontWeight: '600'}}>My Address</Text>
+          <Text style={{ color: `#6a5acd`, fontWeight: '600' }}>My Address</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -116,7 +116,7 @@ const Profile = () => {
             marginTop: 10,
           }}
           onPress={() => navigation.navigate(MyOrders)}>
-          <Text style={{color: `#6a5acd`, fontWeight: '600'}}>My Orders</Text>
+          <Text style={{ color: `#6a5acd`, fontWeight: '600' }}>My Orders</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -128,11 +128,11 @@ const Profile = () => {
             marginTop: 10,
           }}
           onPress={() => navigation.navigate(Offers)}>
-          <Text style={{color: `#6a5acd`, fontWeight: '600'}}>Offers</Text>
+          <Text style={{ color: `#6a5acd`, fontWeight: '600' }}>Offers</Text>
         </TouchableOpacity>
       </View>
-  
-    <View style={{flex: 2.1, alignItems: 'center'}}>
+
+      <View style={{ flex: 2.1, alignItems: 'center' }}>
         <IconButton
           icon={'logout'}
           size={30}
@@ -143,7 +143,7 @@ const Profile = () => {
           onPress={() => {
             logout_g();
           }}
-          style={{fontWeight: '500', size: 20, color: `#6a5acd`}}>
+          style={{ fontWeight: '500', size: 20, color: `#6a5acd` }}>
           Logout
         </Text>
       </View>

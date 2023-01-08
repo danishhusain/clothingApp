@@ -11,9 +11,10 @@ const Permissions = () => {
     // All  permissions useEffect
     useEffect(() => {
 
+        requestCameraPermission()
         requestStoragePermission(),
             requestLocationPermission()
-        requestCameraPermission()
+
     }, [])
 
     //Camera  permissions
@@ -60,7 +61,7 @@ const Permissions = () => {
                 console.log("error in permission")
             });
     }
-   
+
 }
 
 export default Permissions

@@ -11,6 +11,7 @@ import { mdiMagnify, mdiHomeSearchOutline } from '@mdi/js';
 import MyOrders from './MyOrders'
 import Camera from '../Common/LaunchCamera'
 import Permissions from '../Permission/Permissions'
+import LoadingSpinner from '../Common/Loader'
 
 
 const HomeScreen = () => {
@@ -24,7 +25,8 @@ const HomeScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       {/* <View style={{ flex: 1 }}> */}
-      {/* <Permissions/> */}
+      <Permissions/>
+      {/* <LoadingSpinner/> */}
       {selectedTab == 0 ? (<Main />) : selectedTab == 1 ? (<Search />) : selectedTab == 2 ? (<MyOrders/>) : selectedTab == 3 ? (<Wishlist />) : (<Profile />)}
 
       {/* </View> */}

@@ -25,6 +25,8 @@ import Camera from './Common/LaunchCamera';
 import Header from './Common/Header';
 import Main from './Bottom/Main';
 import Permissions from './Permission/Permissions';
+import CheckLoader from './TestAnything/CheckLoader';
+// import LoadingSpinner from './Common/Loader';
 
 
 
@@ -57,6 +59,8 @@ function AppNavigator() {
         <Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
         <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
         <Stack.Screen name="Permissions" component={Permissions} options={{ headerShown: false }} />
+        <Stack.Screen name="CheckLoader" component={CheckLoader} options={{ headerShown: false }} />
+        {/* <Stack.Screen name="LoadingSpinner" component={LoadingSpinner} options={{ headerShown: false }} /> */}
 
         
       </Stack.Navigator>
