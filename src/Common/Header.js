@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native'
 import Cart from '../Bottom/Cart'
 import Camera from './LaunchCamera'
 import ImageSliding from '../Components/ImageSliding'
-import CheckLoader from '../TestAnything/CheckLoader'
 // import LoadingSpinner from './Loader'
 
 

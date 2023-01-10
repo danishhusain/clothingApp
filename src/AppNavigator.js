@@ -14,8 +14,8 @@ import TotalOrder from './Screens/TotalOrder';
 import Details from './Screens/Details';
 import DetailsCart from './Screens/DetailsCart';
 import BuyScreen from './Screens/BuyScreen';
-import RadioButton from './TestAnything/RadioButton';
-import RadioButtonFc from './TestAnything/RadioButton';
+
+
 import Firebase from './FireBase/Firebase';
 import Navigation from './Navigation';
 import Cart from './Bottom/Cart';
@@ -25,7 +25,7 @@ import Camera from './Common/LaunchCamera';
 import Header from './Common/Header';
 import Main from './Bottom/Main';
 import Permissions from './Permission/Permissions';
-import CheckLoader from './TestAnything/CheckLoader';
+// import CheckLoader from './TestAnything/CheckLoader';
 // import LoadingSpinner from './Common/Loader';
 
 
@@ -51,7 +51,6 @@ function AppNavigator() {
         <Stack.Screen name="Details" component={Details} options={{ headerShown: false }} />
         <Stack.Screen name="DetailsCart" component={DetailsCart} options={{ headerShown: false }} />
         <Stack.Screen name="BuyScreen" component={BuyScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="RadioButtonFc" component={RadioButtonFc} options={{ headerShown: false }} />
         <Stack.Screen name="Firebase" component={Firebase} options={{ headerShown: false }} />
         <Stack.Screen name="Navigation" component={Navigation} options={{ headerShown: false }} />
         <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
@@ -59,7 +58,6 @@ function AppNavigator() {
         <Stack.Screen name="BottomTab" component={BottomTab} options={{ headerShown: false }} />
         <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
         <Stack.Screen name="Permissions" component={Permissions} options={{ headerShown: false }} />
-        <Stack.Screen name="CheckLoader" component={CheckLoader} options={{ headerShown: false }} />
         {/* <Stack.Screen name="LoadingSpinner" component={LoadingSpinner} options={{ headerShown: false }} /> */}
 
         
