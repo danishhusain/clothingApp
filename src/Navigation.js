@@ -5,7 +5,6 @@ import AuthNavigator from './Screens/AuthNavigator';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import auth, {firebase} from '@react-native-firebase/auth';
-// import LoadingSpinner from './Common/Loader';
 
 
 const Stack = createNativeStackNavigator();

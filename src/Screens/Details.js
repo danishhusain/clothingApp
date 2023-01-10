@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image, FlatList, ScrollView, YellowBox } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, ScrollView, } from 'react-native'
 import React from 'react'
-import { useState, useContext, useEffect } from 'react'
+import { useState,  useEffect } from 'react'
 import { CartContext } from '../Context/CartContext'
 import { Button, Card, IconButton } from 'react-native-paper'
 import { useNavigation, useIsFocused } from '@react-navigation/native'
@@ -9,6 +9,8 @@ import Addaddress from '../Screens/AddAddress'
 import BuyScreen from './BuyScreen'
 import TotalOrder from './TotalOrder'
 import { shirt, tshirt } from '../DataBase/Api'
+import { useContext } from 'react'
+// const { cart, setcart } = useContext(CartContext)
 
 
 
@@ -108,7 +110,7 @@ const Details = ({ value }) => {
                     </View>
                     {/* <View style={{ flex: 1 }}></View> */}
                     <View style={{ paddingVertical: 4, flexDirection: 'row', justifyContent: 'space-around', }}>
-                        <Button mode='contained'>Add Cart</Button>
+                        <Button mode='contained'  onPress={() => setcart(...cart ,ItemDetail)}>Add Cart</Button>
                         <Button mode='contained' onPress={() => navigation.navigate(BuyScreen)}>Buy Now</Button>
                     </View>
                     <Text style={{ fontSize: 20 }}>Recommended</Text>
@@ -133,8 +135,6 @@ const Details = ({ value }) => {
                             </View>
                         } />
                     </View>
-
-                    <Button onPress={()=>RecommnededItem()}>jhj</Button>
 
                 </ScrollView>
             </View>

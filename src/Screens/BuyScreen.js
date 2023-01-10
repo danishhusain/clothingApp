@@ -17,11 +17,11 @@ const BuyScreen = ({ item }) => {
     const [CartAddress, setCartAddress] = useState([])
     // const { CartAddress, setCartAddress } = useContext(CartContext)
     const { cart, setcart } = useContext(CartContext)
+    const { ItemDetail } = useContext(CartContext)
 
 
+    // PayMent method
     let makePayment = () => {
-
-
         var options = {
             description: 'Credits towards consultation',
             image: 'https://i.imgur.com/3g7nmJC.png',
@@ -47,9 +47,7 @@ const BuyScreen = ({ item }) => {
     }
 
 
-    const lastCartItem = cart[cart.length - 1]
-    // const lastCartItem = [cart.length - 1]
-    // console.log(">>", lastCartItem)
+
     const getAddress = async () => {
         let bdata = await AsyncStorage.getItem("Address")
         setCartAddress(JSON.parse(bdata))
@@ -58,8 +56,6 @@ const BuyScreen = ({ item }) => {
         getAddress()
     }, [isFocused])
 
-
-    // console.log(">>>", CartAddress[0])
 
     return (
         <View style={{ flex: 1 }}>
@@ -72,9 +68,9 @@ const BuyScreen = ({ item }) => {
             {/* Short Detail */}
             <View style={{ flex: .5, }}>
                 <ScrollView>
-                    <Image style={{ height: 250, width: "100%", paddingLeft: 5 }} source={require('../Images/tshirt.webp')} />
-                    <Text style={{ fontSize: 20, fontWeight: '800', paddingLeft: 5 }}>{lastCartItem.ItemName}</Text>
-                    <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Code:- {lastCartItem.code}</Text>
+                    <Image style={{ height: 250, width: "100%", paddingLeft: 5 }} source={{ uri: ItemDetail.url }} />
+                    <Text style={{ fontSize: 20, fontWeight: '800', paddingLeft: 5 }}>{ItemDetail.ItemName}</Text>
+                    <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Code:- {ItemDetail.code}</Text>
                     <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Quantity:- </Text>
 
                 </ScrollView>
@@ -85,8 +81,6 @@ const BuyScreen = ({ item }) => {
                 <IconButton icon={'map-marker-outline'} iconColor={'#fff'}
                     style={{}}
                 />
-                {/* <RadioButtonFc /> */}
-                {/* <Text style={{ right: 40 }}>{CartAddress[1].city}</Text> */}
             </View>
             {/* Estimated Delivery */}
             <View style={{ flex: 0.5, paddingLeft: 5 }}>
@@ -95,7 +89,7 @@ const BuyScreen = ({ item }) => {
             </View>
             {/* Total Price */}
             <View style={{}}>
-                <Text style={{ fontSize: 22, fontWeight: '800', paddingLeft: 5, color: 'blue', }}>₹ {lastCartItem.price}</Text>
+                <Text style={{ fontSize: 22, fontWeight: '800', paddingLeft: 5, color: 'blue', }}>₹ {ItemDetail.price}</Text>
             </View>
             {/* Button */}
             <View style={{ width: '90%', alignSelf: 'center', }}>

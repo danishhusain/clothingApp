@@ -5,9 +5,6 @@ import { Badge, IconButton } from 'react-native-paper'
 import Navigation from '../Navigation'
 import { useNavigation } from '@react-navigation/native'
 import Cart from '../Bottom/Cart'
-import Camera from './LaunchCamera'
-import ImageSliding from '../Components/ImageSliding'
-// import LoadingSpinner from './Loader'
 
 
 const Header = () => {

@@ -7,8 +7,6 @@ import { product, tshirt, jeans, jacket, shirt, lower, hoodie } from '../DataBas
 import { ImageSlider } from "react-native-image-slider-banner";
 import { useNavigation } from '@react-navigation/native'
 import Details from '../Screens/Details'
-import { Item } from 'react-native-paper/lib/typescript/components/Drawer/Drawer'
-import TotalOrder from '../Screens/TotalOrder'
 import BuyScreen from '../Screens/BuyScreen'
 import ImageSliding from '../Components/ImageSliding'
 
@@ -93,7 +91,7 @@ const Main = () => {
               {/* <Image source={{uri:'item.URL'}} style={{height: 200, width: 200, borderRadius: 37.5 }} /> */}
 
               <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setItemDetail(item), navigation.navigate(BuyScreen) }}>Buy</Button>
             </View>
           </View>}
           keyExtractor={item => item.code}
@@ -141,7 +139,7 @@ const Main = () => {
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
               <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setItemDetail(item), navigation.navigate(BuyScreen) }}>Buy</Button>
             </View>
           </View>}
           keyExtractor={item => item.code}
@@ -182,7 +180,7 @@ const Main = () => {
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
               <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setItemDetail(item), navigation.navigate(BuyScreen) }}>Buy</Button>
             </View>
           </View>}
           keyExtractor={item => item.code}
@@ -223,7 +221,7 @@ const Main = () => {
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
               <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setItemDetail(item), navigation.navigate(BuyScreen) }}>Buy</Button>
             </View>
           </View>}
           keyExtractor={item => item.code}
@@ -264,7 +262,7 @@ const Main = () => {
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
               <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setItemDetail(item), navigation.navigate(BuyScreen) }}>Buy</Button>
             </View>
           </View>}
           keyExtractor={item => item.code}
@@ -305,7 +303,7 @@ const Main = () => {
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
               <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
-              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setcart([...cart, item]), navigation.navigate(BuyScreen) }}>Buy</Button>
+              <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setItemDetail(item), navigation.navigate(BuyScreen) }}>Buy</Button>
             </View>
           </View>}
           keyExtractor={item => item.code}
