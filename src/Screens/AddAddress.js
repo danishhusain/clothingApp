@@ -3,7 +3,7 @@
 // import { Button, TextInput } from 'react-native-paper'
 // import AsyncStorage from '@react-native-async-storage/async-storage'
 // import { useNavigation } from '@react-navigation/native'
-// import MyAddress from './MyAddress'
+// // import MyAddress from './MyAddress'
 // import HomeScreen from './HomeScreen'
 // import Main from '../Bottom/Main'
 
@@ -113,9 +113,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, TextInput } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/native'
-import MyAddress from './MyAddress'
 import HomeScreen from './HomeScreen'
-import Main from '../Bottom/Main'
 import Geolocation from '@react-native-community/geolocation'
 import Geocoder from 'react-native-geocoding';
 
@@ -218,21 +216,16 @@ const Addaddress = () => {
     //   Alternatively, you can use native modules for android & ios platforms for geocoding react - native - geolocation - service, react - native - geocoder etc as well.
   }
 
-  
+
   return (
     <View style={{ flex: 1, }}>
 
-      <View style={{
-        width: '100%', height: 60, justifyContent: 'space-between',
-        alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2, left: 5, backgroundColor: `#6a5acd`
-      }}>
-        <Text style={{ fontSize: 22, fontWeight: '600', color: '#000' }}> Fill Address</Text>
-        <Button onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
+        <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Fill Address</Text>
+        <Button style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>
       </View>
 
-
-
-      <View style={{ marginHorizontal: 10, justifyContent: 'space-between', }}>
+      <View style={{ marginHorizontal: 10, marginTop: 30 }}>
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter city name"} left={<TextInput.Icon icon={"home"} />}
           value={city}
           onChangeText={(txt) => setCity(txt)} />
@@ -248,9 +241,10 @@ const Addaddress = () => {
           onChangeText={(txt) => setPincode(txt)} />
         {badpincode && <Text style={{ color: 'red' }}>Enter pincode</Text>}
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Save Address</Button>
-        <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLong()}>Save Address</Button>
+        {/* <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLong()}>Save Address</Button>
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLongFromAdd()}>Save Address</Button>
-        <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getAddFromLatLong()}>Save Address</Button>
+        <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getAddFromLatLong()}>Save Address</Button> */}
+
 
       </View>
 

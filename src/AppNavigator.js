@@ -14,8 +14,6 @@ import TotalOrder from './Screens/TotalOrder';
 import Details from './Screens/Details';
 import DetailsCart from './Screens/DetailsCart';
 import BuyScreen from './Screens/BuyScreen';
-
-
 import Firebase from './FireBase/Firebase';
 import Navigation from './Navigation';
 import Cart from './Bottom/Cart';
@@ -25,6 +23,7 @@ import Camera from './Common/LaunchCamera';
 import Header from './Common/Header';
 import Main from './Bottom/Main';
 import Permissions from './Permission/Permissions';
+import Wishlist from './Bottom/Wishlist';
 // import CheckLoader from './TestAnything/CheckLoader';
 // import LoadingSpinner from './Common/Loader';
 
@@ -40,6 +39,7 @@ function AppNavigator() {
         <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} /> */}
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Main" component={Main} options={{ headerShown: false }} />
+        <Stack.Screen name="Wishlist" component={Wishlist} options={{ headerShown: false }} />
         <Stack.Screen name="Loader" component={Loader} options={{ headerShown: false }} />
         <Stack.Screen name="MyAddress" component={MyAddress} options={{ headerShown: false }} />
         <Stack.Screen name="MyOrders" component={MyOrders} options={{ headerShown: false,  }} />

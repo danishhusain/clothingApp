@@ -45,13 +45,13 @@ const MyAddress = () => {
 
       
 
-      <View style={{ width: '100%', height: '8%', backgroundColor: `#6a5acd`, borderBottomWidth: 1 }}>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`,elevation:2, borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>My Address</Text>
-        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 3, paddingTop: 20, fontWeight: '600' }} onPress={() => navigation.navigate(Addaddress)}>Add Address</Button>
+        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(Addaddress)}>Add Address</Button>
       </View>
 
 
-      <View style={{ flex: 1, borderBottomWidth: 0.2, borderBottomColor: '#000' }}>
+      <View style={{ flex: 1, borderBottomWidth: 0.2, borderBottomColor: '#000',top:1 }}>
         {adData && <FlatList
           data={adData}
           renderItem={({ item }) =>

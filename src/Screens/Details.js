@@ -40,12 +40,12 @@ const Details = ({ value }) => {
             <View style={{ flex: 1 }}>
 
                 {/* header */}
-                <View style={{ width: '100%', height: '8%', backgroundColor: `#6a5acd`, borderBottomWidth: 1 }}>
+                <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, elevation: 2,borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
                     <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Details</Text>
                     {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 10, paddingTop: 20, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button> */}
                 </View>
 
-                <View style={{ width: '100%', height: 45, backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ width: '100%', height: 45, top: 1,backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', width: '75%', left: -5 }}>
                         <IconButton icon={'map-marker-outline'} iconColor={'#fff'} />
                         <FlatList data={DetailAddress}

@@ -54,32 +54,9 @@ const Profile = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View
-        style={{
-          width: '100%',
-          height: 70,
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexDirection: 'row',
-          backgroundColor: `#6a5acd`,
-        }}>
-        <Text
-          style={{
-            fontSize: 22,
-            fontWeight: '600',
-            color: '#000',
-            left: 5,
-            color: 'white',
-            left: 15,
-          }}>
-          Profile
-        </Text>
-        <IconButton
-          icon={MORE_ICON}
-          size={25}
-          onPress={() => console.log('boom')}
-          style={{ position: 'absolute', right: 5, top: 5 }}
-          iconColor={'white'}></IconButton>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, borderBottomWidth: 1 }}>
+        <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Profile </Text>
+        <IconButton icon={MORE_ICON} size={25} onPress={() => console.log('boom')} style={{ position: 'absolute', right: 5,  }} iconColor={'white'}></IconButton>
       </View>
       {/* //image Component */}
       <View style={{ height: 250, width: '100%' }}>
@@ -88,7 +65,7 @@ const Profile = () => {
 
         <Camera />
         <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>{user ? user.displayName : null}</Text>
-        <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>Danish</Text>
+        {/* <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>Danish</Text> */}
         <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>{user ? user.email : null}</Text>
       </View>
 

@@ -115,7 +115,7 @@ const Search = () => {
         placeholder="Search"
         onChangeText={onChangeSearch}
         value={searchQuery}
-        style={{backgroundColor: `#6a5acd`}}
+        style={{backgroundColor: `#6a5acd`,}}
         iconColor={'white'}
         placeholderTextColor={'white'}
       />

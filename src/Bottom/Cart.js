@@ -47,7 +47,7 @@ const CartCard = ({ val }) => {
       <ScrollView style={{ width: '100%', backgroundColor: '#B0A0FF', marginVertical: 1, }} >
         <View style={{ justifyContent: 'center', alignContent: 'center', }}>
           <TouchableOpacity onPress={() => { navigation.navigate(Details), setItemDetail(val) }} >
-            <Image style={{ height: 100, width: 100 }} source={{uri: val.url}} />
+            <Image style={{ height: 100, width: 100 }} source={{ uri: val.url }} />
           </TouchableOpacity>
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 10, color: '#000', }}>Brand:-{val.brand}</Text>
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 30, color: '#000', }}>Color:-{val.color}</Text>
@@ -129,17 +129,15 @@ const Cart = () => {
     <View style={{ flex: 1, }}>
 
       {/* header */}
-      <View style={{ width: '100%', height: '8%', backgroundColor: `#6a5acd`, borderBottomWidth: 1 }}>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`,elevation:2, borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Your Cart</Text>
-      <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 3, paddingTop: 20, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button>
+        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button>
       </View>
 
       {/* location */}
-      <View style={{ width: '100%', height: 45, backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between' }}>
+      <View style={{ width: '100%', height: 45,top:1, backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between' }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '75%', left: -5 }}>
-          <IconButton icon={'map-marker-outline'} iconColor={'#fff'}
-            style={{}}
-          />
+          <IconButton icon={'map-marker-outline'} iconColor={'#fff'} style={{}} />
 
           {CartAddress ? <Text style={{ fontWeight: '500', fontSize: 16, color: "white", right: 140 }}>Deliver to:- {CartAddress[0].city}</Text> : null}
 
@@ -157,7 +155,7 @@ const Cart = () => {
         <FlatList
           data={cart}
           renderItem={({ item }) => <CartCard val={item} />}
-          contentContainerStyle={{ flexDirection: 'column',  }}
+          contentContainerStyle={{ flexDirection: 'column', }}
         />
 
       </View>
@@ -172,7 +170,7 @@ const Cart = () => {
       {/* button */}
       <View style={{ flex: .07, marginTop: 3.5, marginHorizontal: 5, paddingBottom: 4 }}>
 
-        <Button mode='contained' onPress={() => {makePayment()}}>Place Order</Button>
+        <Button mode='contained' onPress={() => { makePayment() }}>Place Order</Button>
       </View>
 
     </View>
