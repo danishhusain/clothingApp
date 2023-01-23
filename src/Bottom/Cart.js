@@ -149,7 +149,7 @@ const Cart = () => {
           >Change</Button>
         </View>
       </View>
-
+      
       {/* Flatlist */}
       <View style={{ flex: 1, }}>
         <FlatList

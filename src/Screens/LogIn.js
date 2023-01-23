@@ -11,7 +11,7 @@ const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const { login2, ResetEmailVerification, } = useContext(AuthContext);
+  const { login, ResetEmailVerification, } = useContext(AuthContext);
   const [hidePassword, setHidePassword] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -73,6 +73,7 @@ const LogIn = ({ navigation }) => {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
       {/* <ImageBackground source={require('../Images/bgImage.webp')}  resizeMode='stretch' style={{ flex: 1, justifyContent: 'center' }}> */}
+      
       <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600' }}>
         LogIn{' '}
       </Text>
@@ -93,7 +94,7 @@ const LogIn = ({ navigation }) => {
 
       {/* LogIn,LogIn with Google and create new acc */}
       <View style={{ alignContent: 'center', justifyContent: 'center' }}>
-        <Button mode="contained" onPress={() => { handleSubmit(email, password); }} style={{ marginBottom: 10 }}>LogIn2</Button>
+        <Button mode="contained" onPress={() => { handleSubmit(email, password); }} style={{ marginBottom: 10 }}>LogIn</Button>
 
         <GoogleSigninButton style={{ width: '100%', height: 48 }} onPress={() => onGoogleButtonPress()} />
 

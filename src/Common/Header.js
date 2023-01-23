@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Alert } from 'react-native'
 import React, { useContext } from 'react'
 import { CartContext } from '../Context/CartContext'
 import { Badge, IconButton } from 'react-native-paper'
@@ -23,7 +23,8 @@ const Header = () => {
                     {/* {/* <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(Camera)}></IconButton> */}
                      {/* <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(Camera)}></IconButton>  */}
                     {/* <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(LoadingSpinner)}></IconButton> */}
-                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(CheckLoader)}></IconButton>
+                    {/* <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(CheckLoader)}></IconButton> */}
+                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>Alert.alert("This is alert")}></IconButton>
                 </TouchableOpacity>
             </View>
             <View style={{ marginRight: 130 }}>

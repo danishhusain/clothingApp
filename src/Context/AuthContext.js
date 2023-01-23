@@ -52,7 +52,7 @@ export const AuthProvider = ({children}) => {
 
   };
   // LogIn with Email & Passward
-  const login2 = async (email, password) => {
+  const login = async (email, password) => {
  
 
     console.log('here');
@@ -141,7 +141,7 @@ export const AuthProvider = ({children}) => {
     <AuthContext.Provider
       value={{
         // userToken, setUserToken,
-        login2,
+        login,
         register,
         logout_g,
         ResetEmailVerification,

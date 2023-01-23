@@ -15,10 +15,9 @@ const BuyScreen = ({ item }) => {
     const navigation = useNavigation()
     const isFocused = useIsFocused()
     const [CartAddress, setCartAddress] = useState([])
-    // const { CartAddress, setCartAddress } = useContext(CartContext)
     const { cart, setcart } = useContext(CartContext)
     const { ItemDetail } = useContext(CartContext)
-
+    const [paymentID, setPaymentId] = useState([])
 
     // PayMent method
     let makePayment = () => {
@@ -27,7 +26,7 @@ const BuyScreen = ({ item }) => {
             image: 'https://i.imgur.com/3g7nmJC.png',
             currency: 'INR',
             key: 'rzp_test_vsfrhBmZ90xJFJ', // Your api key
-            amount: (lastCartItem.price) * 100,
+            amount: (ItemDetail.price) * 100,
             name: 'Danish',
             prefill: {
                 email: 'danisharab2000@gmail.com',
@@ -39,6 +38,7 @@ const BuyScreen = ({ item }) => {
         RazorpayCheckout.open(options).then((data) => {
             // handle success
             alert(`Success: ${data.razorpay_payment_id}`);
+            setPaymentId(data.razorpay_payment_id)
         }).catch((error) => {
             // handle failure
             // alert(`Error: ${error.code} | ${error.description}`);
@@ -46,8 +46,9 @@ const BuyScreen = ({ item }) => {
         });
     }
 
+    console.log("PaymentID", paymentID)
 
-
+    //getAdress
     const getAddress = async () => {
         let bdata = await AsyncStorage.getItem("Address")
         setCartAddress(JSON.parse(bdata))
@@ -60,30 +61,26 @@ const BuyScreen = ({ item }) => {
     return (
         <View style={{ flex: 1 }}>
             {/* header */}
-            <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, elevation: 2,borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
+            <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
                 <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Buy</Text>
-                {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 10, paddingTop: 20, fontWeight: '600' }} onPress={() => console.log("hi")}>Clear Cart</Button> */}
             </View>
 
             {/* Short Detail */}
-            <View style={{ flex: .5, }}>
-                <ScrollView>
-                    <Image style={{ height: 250, width: "100%", paddingLeft: 5 }} source={{ uri: ItemDetail.url }} />
-                    <Text style={{ fontSize: 20, fontWeight: '800', paddingLeft: 5 }}>{ItemDetail.ItemName}</Text>
-                    <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Code:- {ItemDetail.code}</Text>
-                    <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Quantity:- </Text>
-
-                </ScrollView>
+            <View style={{ flex: .6, }}>
+                <Image style={{ height: 250, width: "100%", paddingLeft: 5 }} source={{ uri: ItemDetail.url }} />
+                <Text style={{ fontSize: 20, fontWeight: '800', paddingLeft: 5 }}>{ItemDetail.ItemName}</Text>
+                <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Code:- {ItemDetail.code}</Text>
+                <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Quantity:- </Text>                
             </View >
             { /* Address */}
-            <View style={{ height: 30, width: "90%", backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '90%', left: -5, alignSelf: 'center' }}>
-
-                <IconButton icon={'map-marker-outline'} iconColor={'#fff'}
-                    style={{}}
-                />
+            <View style={{ height: 23, width: "90%", backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '90%', left: -5, alignSelf: 'center' }}>
+                <FlatList data={CartAddress}
+                    renderItem={({ item }) => <Text style={{ fontWeight: '500', fontSize: 16, color: "white", paddingRight: 30 }}>Deliver to:- {item.city} , {item.pincode}</Text>
+                    } />
             </View>
+
             {/* Estimated Delivery */}
-            <View style={{ flex: 0.5, paddingLeft: 5 }}>
+            <View style={{ flex: 0.5, paddingLeft: 15 }}>
                 <Text style={{ fontSize: 18, color: 'blue' }}>Estimated Delivery 2,3 days</Text>
 
             </View>

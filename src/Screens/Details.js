@@ -109,9 +109,10 @@ const Details = ({ value }) => {
                         <Text style={{ left: 5, color: '#000' }}>{ItemDetail.ItemObject.f}</Text>
                     </View>
                     {/* <View style={{ flex: 1 }}></View> */}
-                    <View style={{ paddingVertical: 4, flexDirection: 'row', justifyContent: 'space-around', }}>
-                        <Button mode='contained'  onPress={() => setcart(...cart ,ItemDetail)}>Add Cart</Button>
+                    <View style={{  }}>
+                        {/* <Button mode='contained'  onPress={() => setcart(...cart ,ItemDetail)}>Add Cart</Button> */}
                         <Button mode='contained' onPress={() => navigation.navigate(BuyScreen)}>Buy Now</Button>
+                        {/* <Button mode='contained'>height</Button> */}
                     </View>
                     <Text style={{ fontSize: 20 }}>Recommended</Text>
 
