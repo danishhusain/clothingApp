@@ -70,18 +70,22 @@ const BuyScreen = ({ item }) => {
                 <Image style={{ height: 250, width: "100%", paddingLeft: 5 }} source={{ uri: ItemDetail.url }} />
                 <Text style={{ fontSize: 20, fontWeight: '800', paddingLeft: 5 }}>{ItemDetail.ItemName}</Text>
                 <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Code:- {ItemDetail.code}</Text>
-                <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Quantity:- </Text>                
+                <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Quantity:- </Text>
             </View >
             { /* Address */}
-            <View style={{ height: 23, width: "90%", backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '90%', left: -5, alignSelf: 'center' }}>
+            <View style={{ height: 23,marginTop:'40%', width: "90%", backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '90%', left: -5, alignSelf: 'center' }}>
                 <FlatList data={CartAddress}
                     renderItem={({ item }) => <Text style={{ fontWeight: '500', fontSize: 16, color: "white", paddingRight: 30 }}>Deliver to:- {item.city} , {item.pincode}</Text>
                     } />
             </View>
 
             {/* Estimated Delivery */}
-            <View style={{ flex: 0.5, paddingLeft: 15 }}>
+            <View style={{  paddingLeft: 15 }}>
                 <Text style={{ fontSize: 18, color: 'blue' }}>Estimated Delivery 2,3 days</Text>
+
+            </View>
+            <View style={{flex:1,justifyContent:'center',alignItems:'center', }}>
+                <Image style={{height:"100%",width:"70%"}} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/814/814256.png?w=740&t=st=1674666379~exp=1674666979~hmac=3d7eba6b9e969f0bd447aa0fe45ecd14a46c3833b57421546b94e8daef58def0' }}></Image>
 
             </View>
             {/* Total Price */}
@@ -89,6 +93,7 @@ const BuyScreen = ({ item }) => {
                 <Text style={{ fontSize: 22, fontWeight: '800', paddingLeft: 5, color: 'blue', }}>₹ {ItemDetail.price}</Text>
             </View>
             {/* Button */}
+            
             <View style={{ width: '90%', alignSelf: 'center', }}>
                 <Button mode='contained' buttonColor='green' style={{ marginVertical: 5 }} onPress={() => makePayment()} >Make Payment</Button>
                 {/* <Button mode='contained' buttonColor='green' style={{ marginVertical: 5 }} onPress={() => navigation.navigate(RadioButton)} >Make Payment</Button> */}

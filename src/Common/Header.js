@@ -24,7 +24,7 @@ const Header = () => {
                      {/* <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(Camera)}></IconButton>  */}
                     {/* <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(LoadingSpinner)}></IconButton> */}
                     {/* <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>navigation.navigate(CheckLoader)}></IconButton> */}
-                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>Alert.alert("This is alert")}></IconButton>
+                    <IconButton icon='tshirt-crew-outline' iconColor='white' size={40} onPress={()=>{}}></IconButton>
                 </TouchableOpacity>
             </View>
             <View style={{ marginRight: 130 }}>

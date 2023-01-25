@@ -162,7 +162,7 @@ const Main = () => {
               navigation.navigate(Details),
                 setItemDetail(item)
             }} >
-              <Image style={{ height: 150, width: 195 }} source={require("../Images/jacket.webp")} />
+              <Image style={{ height: 150, width: 195 }} source={{uri:item.url}} />
             </TouchableOpacity>
 
             <IconButton icon="heart"
@@ -203,7 +203,7 @@ const Main = () => {
               navigation.navigate(Details),
                 setItemDetail(item)
             }} >
-              <Image style={{ height: 150, width: 195 }} source={require("../Images/shirt.webp")} />
+              <Image style={{ height: 150, width: 195 }} source={{uri:item.url}} />
             </TouchableOpacity>
 
             <IconButton icon="heart"
@@ -244,7 +244,7 @@ const Main = () => {
               navigation.navigate(Details),
                 setItemDetail(item)
             }} >
-              <Image style={{ height: 150, width: 195 }} source={require("../Images/lower.webp")} />
+              <Image style={{ height: 150, width: 195 }} source={{uri:item.url}}  />
             </TouchableOpacity>
 
             <IconButton icon="heart"
@@ -285,7 +285,7 @@ const Main = () => {
               navigation.navigate(Details),
                 setItemDetail(item)
             }} >
-              <Image style={{ height: 150, width: 195 }} source={require("../Images/hoodie.webp")} />
+              <Image style={{ height: 150, width: 195 }} source={{uri:item.url}}  />
             </TouchableOpacity>
 
             <IconButton icon="heart"
