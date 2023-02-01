@@ -1,7 +1,7 @@
 const CustomColor =
 {
-// AppColor:'#6a5acd',    
-AppColor:'#FEDBD0',    
+AppColor:'#6a5acd',    
+// AppColor:'#FEDBD0',    
 ButtonColor:'#FFFBEB',
 AQUA_GREEN: '#1A5276',
 RED: '#B03A2E',

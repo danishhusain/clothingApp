@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, FlatList, ScrollView, } from 'react-native'
+import { StyleSheet, Text, View, Image, FlatList, ScrollView, Share, } from 'react-native'
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { CartContext } from '../Context/CartContext'
@@ -14,6 +14,7 @@ import { useContext } from 'react'
 import { ImageSlider, ImageCarousel } from 'react-native-image-slider-banner';
 import CustomButton from '../CustomComponents/CustomButton'
 import CustomColor from '../CustomComponents/CustomColor'
+import ShareExample from '../Common/ShareExample'
 
 
 
@@ -41,12 +42,12 @@ const Details = ({ value }) => {
 
     // console.log("data", ItemDetail)
     // console.log("A", DetailAddress)
-
+   
     return (
         <View style={{ flex: 1 }}>
 
             {/* header */}
-            <View style={{ width: '100%', height: '6.80%',backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
+            <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
                 <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Details</Text>
                 {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 10, paddingTop: 20, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button> */}
             </View>
@@ -65,7 +66,7 @@ const Details = ({ value }) => {
                     {/* <Button mode='contained' style={{ position: 'absolute', right: 1, alignSelf: 'center', }}
                         onPress={() => navigation.navigate(Addaddress)}
                     >Change</Button> */}
-                    <CustomButton mode={'contained'} title={"Change"}  onClick={() => navigation.navigate(Addaddress)} />
+                    <CustomButton mode={'contained'} title={"Change"} onClick={() => navigation.navigate(Addaddress)} />
 
                 </View>
 
@@ -106,6 +107,7 @@ const Details = ({ value }) => {
                     <View>
                         <Text style={{ right: 5, fontSize: 20, fontWeight: '600', color: '#000' }}>₹{ItemDetail.price}</Text>
                         <Text style={{ right: 5, fontSize: 14, color: '#000' }}>Inclusive of all taxes</Text>
+                        <ShareExample data={ItemDetail}/>
                     </View>
                 </View>
 
@@ -154,7 +156,7 @@ const Details = ({ value }) => {
                                     <Text variant="bodyMedium">{item.brand}</Text>
                                     {/* <Text variant="bodyMedium">{item.code}</Text> */}
                                 </Card.Content>
-                                <Card.Actions style={{ justifyContent: 'space-between',marginHorizontal:5, }}>
+                                <Card.Actions style={{ justifyContent: 'space-between', marginHorizontal: 5, }}>
                                     <Button>Cart</Button>
                                     <Button>Buy</Button>
                                     {/* <CustomButton mode={'outlined'} title={"Cart"} ButtonColor={CustomColor.ButtonColor} onClick={() => console.log("size")} />

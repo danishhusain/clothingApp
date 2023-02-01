@@ -17,6 +17,7 @@ import Loader from '../Common/Loader';
 import Permissions from '../Permission/Permissions';
 import CustomColor, { theme } from '../CustomComponents/CustomColor';
 import CustomButton from '../CustomComponents/CustomButton';
+import ShareExample from '../Common/ShareExample';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -143,6 +144,7 @@ const Search = () => {
         <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.e} onClick={() => console.log("jiji")} />
         <CustomButton title={"Button4"} mode={'contained'} ButtonColor={CustomColor.g} onClick={() => console.log("jiji")} IconInButton={'share'} />
         {/* <Text style={{color:theme.colors.success,fontSize:theme.textVariants.header.fontSize,fontFamily:'Helvetica'}}>DANISH Razik 2000</Text> */}
+        <ShareExample/>
       </View>
     </View>
   );
