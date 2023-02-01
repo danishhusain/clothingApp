@@ -15,6 +15,8 @@ import {useNavigation} from '@react-navigation/native';
 import ImageSliding from '../Components/ImageSliding';
 import Loader from '../Common/Loader';
 import Permissions from '../Permission/Permissions';
+import CustomColor from '../CustomComponents/CustomColor';
+import CustomButton from '../CustomComponents/CustomButton';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -110,7 +112,7 @@ const Search = () => {
   };
 
   return (
-    <View>
+    <View style={{}}>
       <Searchbar
         placeholder="Search"
         onChangeText={onChangeSearch}
@@ -134,6 +136,12 @@ const Search = () => {
         </Button>
         <Button onPress={() => lo()}>loader</Button>
         <Button onPress={() => navigation.navigate(Permissions)}>Permission</Button>
+    
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.RED} onClick={()=>console.log("jiji")}  />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.a} onClick={()=>console.log("jiji")}  />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.TransParentColor} onClick={()=>console.log("jiji")}  />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.e} onClick={()=>console.log("jiji")}  />
+        <CustomButton title={"Button4"} mode={'contained'} ButtonColor={CustomColor.g} onClick={()=>console.log("jiji")}   IconInButton={'share'} />
       </View>
     </View>
   );

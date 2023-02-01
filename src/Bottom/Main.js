@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import Details from '../Screens/Details'
 import BuyScreen from '../Screens/BuyScreen'
 import ImageSliding from '../Components/ImageSliding'
+import { CustomButton } from '../CustomComponents/CustomButton'
 
 
 
@@ -304,6 +305,7 @@ const Main = () => {
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
               <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-start', top: -7, right: 5, }} onPress={() => setcart([...cart, item])}>Cart</Button>
               <Button textColor='#fff' style={{ position: 'absolute', alignSelf: 'flex-end', bottom: -7, right: 5, }} onPress={() => { setItemDetail(item), navigation.navigate(BuyScreen) }}>Buy</Button>
+              {/* <CustomButton/> */}
             </View>
           </View>}
           keyExtractor={item => item.code}
