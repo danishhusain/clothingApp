@@ -29,6 +29,7 @@ import { AuthContext } from '../Context/AuthContext';
 import Navigation from '../Navigation';
 import { firebase } from '@react-native-firebase/auth';
 import Camera from '../Common/LaunchCamera';
+import CustomColor from '../CustomComponents/CustomColor';
 
 
 
@@ -54,7 +55,7 @@ const Profile = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, borderBottomWidth: 1 }}>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 1 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Profile </Text>
         <IconButton icon={MORE_ICON} size={25} onPress={() => console.log('boom')} style={{ position: 'absolute', right: 5,  }} iconColor={'white'}></IconButton>
       </View>
@@ -64,9 +65,9 @@ const Profile = () => {
 
 
         <Camera />
-        <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>{user ? user.displayName : null}</Text>
+        <Text style={{ fontSize: 20, color: CustomColor.AppColor, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>{user ? user.displayName : null}</Text>
         {/* <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>Danish</Text> */}
-        <Text style={{ fontSize: 20, color: `#6a5acd`, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>{user ? user.email : null}</Text>
+        <Text style={{ fontSize: 20, color: CustomColor.AppColor, fontWeight: '1000', fontWeight: '600', alignSelf: 'center', }}>{user ? user.email : null}</Text>
       </View>
 
       {/* //other Component */}
@@ -81,7 +82,7 @@ const Profile = () => {
             marginTop: 10,
           }}
           onPress={() => navigation.navigate(MyAddress)}>
-          <Text style={{ color: `#6a5acd`, fontWeight: '600' }}>My Address</Text>
+          <Text style={{ color: CustomColor.AppColor, fontWeight: '600' }}>My Address</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -93,7 +94,7 @@ const Profile = () => {
             marginTop: 10,
           }}
           onPress={() => navigation.navigate(MyOrders)}>
-          <Text style={{ color: `#6a5acd`, fontWeight: '600' }}>My Orders</Text>
+          <Text style={{ color: CustomColor.AppColor, fontWeight: '600' }}>My Orders</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
@@ -105,13 +106,14 @@ const Profile = () => {
             marginTop: 10,
           }}
           onPress={() => navigation.navigate(Offers)}>
-          <Text style={{ color: `#6a5acd`, fontWeight: '600' }}>Offers</Text>
+          <Text style={{ color: CustomColor.AppColor, fontWeight: '600' }}>Offers</Text>
         </TouchableOpacity>
       </View>
 
       <View style={{ flex: 2.1, alignItems: 'center' }}>
         <IconButton
           icon={'logout'}
+          iconColor={CustomColor.AppColor}
           size={30}
           onPress={() => {
             logout_g();
@@ -120,7 +122,7 @@ const Profile = () => {
           onPress={() => {
             logout_g();
           }}
-          style={{ fontWeight: '500', size: 20, color: `#6a5acd` }}>
+          style={{ fontWeight: '500', size: 20, color: CustomColor.AppColor }}>
           Logout
         </Text>
       </View>

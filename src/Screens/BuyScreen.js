@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { useNavigation, useIsFocused } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import RazorpayCheckout from 'react-native-razorpay';
+import CustomColor from '../CustomComponents/CustomColor'
 
 
 
@@ -61,39 +62,39 @@ const BuyScreen = ({ item }) => {
     return (
         <View style={{ flex: 1 }}>
             {/* header */}
-            <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
+            <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
                 <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Buy</Text>
             </View>
 
             {/* Short Detail */}
             <View style={{ flex: .6, }}>
-                <Image style={{ height: 250, width: "100%", paddingLeft: 5 }} source={{ uri: ItemDetail.url }} />
-                <Text style={{ fontSize: 20, fontWeight: '800', paddingLeft: 5 }}>{ItemDetail.ItemName}</Text>
-                <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Code:- {ItemDetail.code}</Text>
-                <Text style={{ fontSize: 16, fontWeight: '600', paddingLeft: 5 }}>Quantity:- </Text>
+                <Image style={{ height: 250, width: "100%", }} source={{ uri: ItemDetail.url }} />
+                <Text style={{ fontSize: 20, fontWeight: '800', marginLeft: 5 }}>{ItemDetail.ItemName}</Text>
+                <Text style={{ fontSize: 16, fontWeight: '600', marginLeft: 5 }}>Code:- {ItemDetail.code}</Text>
+                <Text style={{ fontSize: 16, fontWeight: '600', marginLeft: 5 }}>Quantity:- </Text>
             </View >
             { /* Address */}
-            <View style={{ height: 23,marginTop:'40%', width: "90%", backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '90%', left: -5, alignSelf: 'center' }}>
+            <View style={{ height: 23, marginTop: '40%', width: "100%", marginRight: 15,paddingLeft:5, backgroundColor: CustomColor.GRAY, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '90%', left: -5, alignSelf: 'center' }}>
                 <FlatList data={CartAddress}
-                    renderItem={({ item }) => <Text style={{ fontWeight: '500', fontSize: 16, color: "white", paddingRight: 30 }}>Deliver to:- {item.city} , {item.pincode}</Text>
+                    renderItem={({ item }) => <Text style={{ fontWeight: '500', fontSize: 16, color: "white", }}>Deliver to:- {item.city} , {item.pincode}</Text>
                     } />
             </View>
 
             {/* Estimated Delivery */}
-            <View style={{  paddingLeft: 15 }}>
-                <Text style={{ fontSize: 18, color: 'blue' }}>Estimated Delivery 2,3 days</Text>
+            <View style={{ paddingLeft: 5 }}>
+                <Text style={{ fontSize: 18, color: CustomColor.AppColor }}>Estimated Delivery 2,3 days</Text>
 
             </View>
-            <View style={{flex:1,justifyContent:'center',alignItems:'center', }}>
-                <Image style={{height:"100%",width:"70%"}} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/814/814256.png?w=740&t=st=1674666379~exp=1674666979~hmac=3d7eba6b9e969f0bd447aa0fe45ecd14a46c3833b57421546b94e8daef58def0' }}></Image>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+                <Image style={{ height: "100%", width: "70%" }} source={{ uri: 'https://cdn-icons-png.flaticon.com/512/814/814256.png?w=740&t=st=1674666379~exp=1674666979~hmac=3d7eba6b9e969f0bd447aa0fe45ecd14a46c3833b57421546b94e8daef58def0' }}></Image>
 
             </View>
             {/* Total Price */}
-            <View style={{}}>
-                <Text style={{ fontSize: 22, fontWeight: '800', paddingLeft: 5, color: 'blue', }}>₹ {ItemDetail.price}</Text>
+            <View style={{ paddingLeft: 5 }}>
+                <Text style={{ fontSize: 22, fontWeight: '800', paddingLeft: 5, color: CustomColor.AppColor, }}>₹ {ItemDetail.price}</Text>
             </View>
             {/* Button */}
-            
+
             <View style={{ width: '90%', alignSelf: 'center', }}>
                 <Button mode='contained' buttonColor='green' style={{ marginVertical: 5 }} onPress={() => makePayment()} >Make Payment</Button>
                 {/* <Button mode='contained' buttonColor='green' style={{ marginVertical: 5 }} onPress={() => navigation.navigate(RadioButton)} >Make Payment</Button> */}

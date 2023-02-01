@@ -10,6 +10,7 @@ import Details from '../Screens/Details'
 import BuyScreen from '../Screens/BuyScreen'
 import ImageSliding from '../Components/ImageSliding'
 import { CustomButton } from '../CustomComponents/CustomButton'
+import CustomColor from '../CustomComponents/CustomColor'
 
 
 
@@ -57,13 +58,10 @@ const Main = () => {
       {category == 0 &&
         <FlatList
           contentContainerStyle={{
-            // flexDirection: "row",
-            // flexWrap: 'wrap',
-            // backgroundColor: 'red',
             justifyContent: 'space-between',
           }}
           data={tshirt}
-          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+          renderItem={({ item }) => <View style={{ borderRadius: 10, padding: 0.5 }}>
 
             <TouchableOpacity onPress={() => {
               navigation.navigate(Details),
@@ -85,7 +83,7 @@ const Main = () => {
               }
               }>
             </IconButton>
-            <View style={{ justifyContent: 'space-between' }}>
+            <View style={{ justifyContent: 'space-between', backgroundColor: CustomColor.AppColor, }}>
               <Text style={{ left: 5, }}>{item.brand}</Text>
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
@@ -116,7 +114,7 @@ const Main = () => {
             // padding:5
           }}
           data={jeans}
-          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+          renderItem={({ item }) => <View style={{  borderRadius: 10, padding: 0.5 }}>
             <TouchableOpacity onPress={() => {
               navigation.navigate(Details),
                 setItemDetail(item)
@@ -135,7 +133,7 @@ const Main = () => {
               }
               }>
             </IconButton>
-            <View style={{ justifyContent: 'space-between' }}>
+            <View style={{ justifyContent: 'space-between', backgroundColor: CustomColor.AppColor, }}>
               <Text style={{ left: 5, }}>{item.brand}</Text>
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
@@ -150,15 +148,10 @@ const Main = () => {
       {category == 2 &&
         <FlatList
           contentContainerStyle={{
-            // flexWrap: "wrap",
-            // flexDirection: "row",
-            // backgroundColor: '#000',
-            // flex:1,
             justifyContent: 'space-between',
-            // padding:5
           }}
           data={jacket}
-          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+          renderItem={({ item }) => <View style={{  borderRadius: 10, padding: 0.5 }}>
             <TouchableOpacity onPress={(props) => {
               navigation.navigate(Details),
                 setItemDetail(item)
@@ -176,7 +169,7 @@ const Main = () => {
               }
               }>
             </IconButton>
-            <View style={{ justifyContent: 'space-between' }}>
+            <View style={{ justifyContent: 'space-between', backgroundColor: CustomColor.AppColor, }}>
               <Text style={{ left: 5, }}>{item.brand}</Text>
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
@@ -191,15 +184,10 @@ const Main = () => {
       {category == 3 &&
         <FlatList
           contentContainerStyle={{
-            // flexWrap: "wrap",
-            // flexDirection: "row",
-            // backgroundColor: '#000',
-            // flex:1,
             justifyContent: 'space-between',
-            // padding:5
           }}
           data={shirt}
-          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10,padding:1 }}>
+          renderItem={({ item }) => <View style={{  borderRadius: 10,padding:0.5 }}>
             <TouchableOpacity onPress={(props) => {
               navigation.navigate(Details),
                 setItemDetail(item)
@@ -217,7 +205,7 @@ const Main = () => {
               }
               }>
             </IconButton>
-            <View style={{ justifyContent: 'space-between' }}>
+            <View style={{ justifyContent: 'space-between' , backgroundColor: CustomColor.AppColor, }}>
               <Text style={{ left: 5, }}>{item.brand}</Text>
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
@@ -232,15 +220,10 @@ const Main = () => {
       {category == 4 &&
         <FlatList
           contentContainerStyle={{
-            // flexWrap: "wrap",
-            // flexDirection: "row",
-            // backgroundColor: '#000',
-            // flex:1,
             justifyContent: 'space-between',
-            // padding:5
           }}
           data={lower}
-          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+          renderItem={({ item }) => <View style={{ borderRadius: 10, padding: 0.5 }}>
             <TouchableOpacity onPress={(props) => {
               navigation.navigate(Details),
                 setItemDetail(item)
@@ -258,7 +241,7 @@ const Main = () => {
               }
               }>
             </IconButton>
-            <View style={{ justifyContent: 'space-between' }}>
+            <View style={{ justifyContent: 'space-between', backgroundColor: CustomColor.AppColor, }}>
               <Text style={{ left: 5, }}>{item.brand}</Text>
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>
@@ -273,15 +256,10 @@ const Main = () => {
       {category == 5 &&
         <FlatList
           contentContainerStyle={{
-            // flexWrap: "wrap",
-            // flexDirection: "row",
-            // backgroundColor: '#000',
-            // flex:1,
             justifyContent: 'space-between',
-            // padding:5
           }}
           data={hoodie}
-          renderItem={({ item }) => <View style={{ backgroundColor: '#B0A0FF', borderRadius: 10, padding: 1 }}>
+          renderItem={({ item }) => <View style={{ borderRadius: 10, padding: 0.5 }}>
             <TouchableOpacity onPress={(props) => {
               navigation.navigate(Details),
                 setItemDetail(item)
@@ -299,7 +277,7 @@ const Main = () => {
               }
               }>
             </IconButton>
-            <View style={{ justifyContent: 'space-between' }}>
+            <View style={{ justifyContent: 'space-between' , backgroundColor: CustomColor.AppColor,}}>
               <Text style={{ left: 5, }}>{item.brand}</Text>
               <Text style={{ left: 5, }}>{item.color}</Text>
               <Text style={{ left: 5, }}>RS: {item.price}</Text>

@@ -200,6 +200,7 @@ import {
 
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { Button, Avatar, IconButton, BottomNavigation, Appbar, Dialog, Portal } from 'react-native-paper';
+import CustomColor from '../CustomComponents/CustomColor';
 import BottomTab from './BottomTab';
 
 
@@ -297,7 +298,7 @@ const Camera = () => {
     <View style={styles.body}>
       <View >
         {renderFileData()}
-        <View style={{ justifyContent: 'center', alignSelf: 'center', bottom: 22, left: 45, backgroundColor: '#6a5acd', borderRadius: 200, }}>
+        <View style={{ justifyContent: 'center', alignSelf: 'center', bottom: 22, left: 45, backgroundColor: CustomColor.AppColor, borderRadius: 200, }}>
           {/* <IconButton icon={'camera'}  onPress={() => {<BottomTab/>}}>CAMERA</IconButton> */}
           <IconButton icon={'camera'} iconColor={'#fff'} onPress={() => { launchNativeCamera() }}>CAMERA</IconButton>
           {/* <IconButton icon={'camera'}  onPress={() => {navigation.navigate(LaunchCamera)}}>CAMERA</IconButton> */}

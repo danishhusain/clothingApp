@@ -5,6 +5,7 @@ import { Badge, IconButton } from 'react-native-paper'
 import Navigation from '../Navigation'
 import { useNavigation } from '@react-navigation/native'
 import Cart from '../Bottom/Cart'
+import CustomColor from '../CustomComponents/CustomColor'
 
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
         <View style={{
             width: '100%', height: 70, justifyContent: 'space-between',
             alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2,
-            backgroundColor: `#6a5acd`,
+            backgroundColor: CustomColor.AppColor,
         }}>
             <View style={{ alignSelf: 'flex-start', right: 5 }}>
                 <TouchableOpacity style={{ alignItems: 'flex-end', }}>

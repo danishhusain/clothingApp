@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Sent } from './AddAddress'
 import { CartContext } from '../Context/CartContext'
 import { FlatList } from 'react-native-gesture-handler'
+import CustomColor from '../CustomComponents/CustomColor'
 
 
 
@@ -43,15 +44,15 @@ const MyAddress = () => {
   return (
     <View style={{ flex: 1 }}>
 
-      
 
-      <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`,elevation:2, borderBottomLeftRadius:5,borderBottomRightRadius:5}}>
+
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>My Address</Text>
         <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(Addaddress)}>Add Address</Button>
       </View>
 
 
-      <View style={{ flex: 1, borderBottomWidth: 0.2, borderBottomColor: '#000',top:1 }}>
+      <View style={{ flex: 1, borderBottomWidth: 0.2, borderBottomColor: '#000', top: 1 }}>
         {adData && <FlatList
           data={adData}
           renderItem={({ item }) =>

@@ -12,6 +12,8 @@ import DetailsCart from '../Screens/DetailsCart'
 import BuyScreen from '../Screens/BuyScreen'
 import { set } from 'react-native-reanimated'
 import RazorpayCheckout from 'react-native-razorpay';
+import CustomColor from '../CustomComponents/CustomColor'
+import CustomButton from '../CustomComponents/CustomButton'
 
 
 
@@ -133,13 +135,13 @@ const Cart = () => {
     <View style={{ flex: 1, }}>
 
       {/* header */}
-      <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 ,bottom:0.5}}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Your Cart</Text>
         <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button>
       </View>
 
       {/* location */}
-      <View style={{ width: '100%', height: 45, top: 1, backgroundColor: `#6a5acd`, flexDirection: 'row', justifyContent: 'space-between' }}>
+      <View style={{ width: '100%', height: 45, backgroundColor: CustomColor.AppColor, flexDirection: 'row', justifyContent: 'space-between', }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '75%', left: -5 }}>
           <IconButton icon={'map-marker-outline'} iconColor={'#fff'} style={{}} />
 
@@ -167,14 +169,14 @@ const Cart = () => {
       {/* Total Balance */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, marginHorizontal: 5 }}>
         {/* <Text style={{color:'blue',fontWeight:'800'}}>Sub-Total: </Text> */}
-        <Text style={{ fontSize: 20, color: 'blue' }}>Total: {totalprice}</Text>
+        <Text style={{ fontSize: 20, color: CustomColor.AppColor}}>Total: {totalprice}</Text>
       </View>
 
 
       {/* button */}
       <View style={{ flex: .07, marginTop: 3.5, marginHorizontal: 5, paddingBottom: 4 }}>
-
-        <Button mode='contained' onPress={() => { makePayment() }}>Place Order</Button>
+        {/* <Button mode='contained' onPress={() => { makePayment() }}>Place Order</Button> */}
+        <CustomButton mode={'contained'} title={"Place Order"} onClick={()=> makePayment()} />
       </View>
 
     </View>

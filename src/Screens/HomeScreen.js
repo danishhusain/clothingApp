@@ -12,6 +12,7 @@ import MyOrders from './MyOrders'
 import Camera from '../Common/LaunchCamera'
 import Permissions from '../Permission/Permissions'
 import LoadingSpinner from '../Common/Loader'
+import CustomColor from '../CustomComponents/CustomColor'
 
 
 const HomeScreen = () => {
@@ -30,9 +31,8 @@ const HomeScreen = () => {
       {selectedTab == 0 ? (<Main />) : selectedTab == 1 ? (<Search />) : selectedTab == 2 ? (<MyOrders/>) : selectedTab == 3 ? (<Wishlist />) : (<Profile />)}
 
       {/* </View> */}
-      <View style={{
-        flex: 1, position: 'absolute', bottom: 0, flexDirection: 'row',
-        justifyContent: 'space-evenly', width: "100%", elevation: 1, backgroundColor: `#6a5acd`
+      <View style={{flex: 1, position: 'absolute', bottom: 0, flexDirection: 'row',
+        justifyContent: 'space-evenly', width: "100%", elevation: 1, backgroundColor: CustomColor.AppColor
       }}>
 
         <IconButton icon="home"

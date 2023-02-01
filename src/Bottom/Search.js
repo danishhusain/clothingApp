@@ -1,40 +1,40 @@
 import * as React from 'react';
-import {View, Text} from 'react-native';
-import {Button, Searchbar} from 'react-native-paper';
+import { View, Text } from 'react-native';
+import { Button, Searchbar } from 'react-native-paper';
 import {
   GoogleSignin,
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-import {useContext} from 'react';
-import {CartContext} from '../Context/CartContext';
+import { useContext } from 'react';
+import { CartContext } from '../Context/CartContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {firebase} from '@react-native-firebase/auth';
-import {AuthContext} from '../Context/AuthContext';
-import {useNavigation} from '@react-navigation/native';
+import { firebase } from '@react-native-firebase/auth';
+import { AuthContext } from '../Context/AuthContext';
+import { useNavigation } from '@react-navigation/native';
 import ImageSliding from '../Components/ImageSliding';
 import Loader from '../Common/Loader';
 import Permissions from '../Permission/Permissions';
-import CustomColor from '../CustomComponents/CustomColor';
+import CustomColor, { theme } from '../CustomComponents/CustomColor';
 import CustomButton from '../CustomComponents/CustomButton';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
   // const {isSignedIn,setisSignedIn}=useContext(CartContext)
-  const {s, sets} = useContext(CartContext);
+  const { s, sets } = useContext(CartContext);
   const user = firebase.auth().currentUser;
-  const {userToken, setUserToken, isLoading, setIsLoading} =
+  const { userToken, setUserToken, isLoading, setIsLoading } =
     useContext(AuthContext);
   const navigation = useNavigation();
 
   //loader
   const lo = () => {
-    setTimeout(()=>{
+    setTimeout(() => {
 
       setIsLoading(true);
-      
-    },1000)
+
+    }, 1000)
 
     {
       /* <Loader/>  */
@@ -43,11 +43,11 @@ const Search = () => {
     {
       /* <Text>fs</Text> */
     }
-    setTimeout(()=>{
+    setTimeout(() => {
 
       setIsLoading(false);
-      
-    },4000)
+
+    }, 4000)
 
   };
 
@@ -88,7 +88,7 @@ const Search = () => {
   isSignedIn = async () => {
     const isSignedIn = await GoogleSignin.isSignedIn();
     // this.setState({ isLoginScreenPresented: !isSignedIn });
-    console.log('isSignedIn', {isLoginScreenPresented: !isSignedIn});
+    console.log('isSignedIn', { isLoginScreenPresented: !isSignedIn });
   };
   //getCurrentUserInfo
   getCurrentUserInfo = async () => {
@@ -117,12 +117,12 @@ const Search = () => {
         placeholder="Search"
         onChangeText={onChangeSearch}
         value={searchQuery}
-        style={{backgroundColor: `#6a5acd`,}}
+        style={{ backgroundColor: CustomColor.AppColor, }}
         iconColor={'white'}
         placeholderTextColor={'white'}
       />
       <View>
-        <Text style={{alignSelf: 'center', marginTop: '10%'}}>NO data</Text>
+        <Text style={{ alignSelf: 'center', marginTop: '10%' }}>NO data</Text>
         <Button onPress={() => isSignedIn()}>isSignedIn</Button>
         <Button onPress={() => getCurrentUserInfo()}>getCurrentUserInfo</Button>
         {/* <Button onPress={() => getCurrentUserToken()}>getCurrentUserToken</Button> */}
@@ -136,12 +136,13 @@ const Search = () => {
         </Button>
         <Button onPress={() => lo()}>loader</Button>
         <Button onPress={() => navigation.navigate(Permissions)}>Permission</Button>
-    
-        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.RED} onClick={()=>console.log("jiji")}  />
-        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.a} onClick={()=>console.log("jiji")}  />
-        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.TransParentColor} onClick={()=>console.log("jiji")}  />
-        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.e} onClick={()=>console.log("jiji")}  />
-        <CustomButton title={"Button4"} mode={'contained'} ButtonColor={CustomColor.g} onClick={()=>console.log("jiji")}   IconInButton={'share'} />
+
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.RED} onClick={() => console.log("jiji")} />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={theme.colors.success} onClick={() => console.log("jiji")} />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.TransParentColor} onClick={() => console.log("jiji")} />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.e} onClick={() => console.log("jiji")} />
+        <CustomButton title={"Button4"} mode={'contained'} ButtonColor={CustomColor.g} onClick={() => console.log("jiji")} IconInButton={'share'} />
+        {/* <Text style={{color:theme.colors.success,fontSize:theme.textVariants.header.fontSize,fontFamily:'Helvetica'}}>DANISH Razik 2000</Text> */}
       </View>
     </View>
   );

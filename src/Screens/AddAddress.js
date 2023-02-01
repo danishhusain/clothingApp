@@ -116,6 +116,7 @@ import { useNavigation } from '@react-navigation/native'
 import HomeScreen from './HomeScreen'
 import Geolocation from '@react-native-community/geolocation'
 import Geocoder from 'react-native-geocoding';
+import CustomColor, { theme } from '../CustomComponents/CustomColor'
 
 
 
@@ -218,9 +219,9 @@ const Addaddress = () => {
 
 
   return (
-    <View style={{ flex: 1, }}>
+    <View style={{ flex: 1,backgroundColor:theme.colors.danger }}>
 
-      <View style={{ width: '100%', height: '6.80%', backgroundColor: `#6a5acd`, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Fill Address</Text>
         <Button style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>
       </View>

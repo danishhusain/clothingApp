@@ -1,7 +1,7 @@
 export const product = [
   { title: "Tshirt", id: 0 },
   { title: "Jeans", id: 1 },
-  { title: "Jacet", id: 2 },
+  { title: "Jacket", id: 2 },
   { title: "Shirt", id: 3 },
   { title: "Lower", id: 4 },
   { title: "Hoodie", id: 5 },
