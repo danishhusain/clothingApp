@@ -8,12 +8,13 @@ import { AuthContext } from '../Context/AuthContext';
 import auth from '@react-native-firebase/auth';
 import { color } from 'react-native-reanimated';
 import CustomColor from '../CustomComponents/CustomColor';
+import LoadingSpinner from '../Common/Loader';
 
 const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
-  const { login, ResetEmailVerification, } = useContext(AuthContext);
+  const { login, ResetEmailVerification, showLoader, setShowLoader } = useContext(AuthContext);
   const [hidePassword, setHidePassword] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -30,7 +31,7 @@ const LogIn = ({ navigation }) => {
 
   //Google LogIn with Token
   const onGoogleButtonPress = async () => {
-    // setIsLoading(true)
+    setShowLoader(true)
     // Check if your device supports Google Play
     await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
     // Get the users ID token
@@ -39,6 +40,7 @@ const LogIn = ({ navigation }) => {
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
     console.log('Succesfuuly Create a Google credential with the token  token:', googleCredential);
+    setShowLoader(false)
     // Sign-in the user with the credential
     return auth().signInWithCredential(googleCredential);
     // const user_signin_in = auth().signInWithCredential(googleCredential);
@@ -51,7 +53,7 @@ const LogIn = ({ navigation }) => {
     //   .then(e => {
     //     console.log('userInfo error', e);
     //   });
-    // setIsLoading(false)
+
 
   };
 
@@ -64,6 +66,7 @@ const LogIn = ({ navigation }) => {
     } else {
       setErrorMessage('');
       // submit form data
+      setShowLoader(true)
       login(email, password);
     }
   };
@@ -73,10 +76,11 @@ const LogIn = ({ navigation }) => {
     setHidePassword(hidePassword => !hidePassword);
   };
   return (
+
     <View style={{ flex: 1, justifyContent: 'center', }}>
       {/* <ImageBackground source={require('../Images/bgImage.webp')}  resizeMode='stretch' style={{ flex: 1, justifyContent: 'center' }}/> */}
-      
-      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600',color:CustomColor.AppColor }}> LogIn{' '}</Text>
+
+      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600', color: CustomColor.AppColor }}> LogIn{' '}</Text>
 
       {/* EmailInput ,PasswordInput and toggle */}
       <View
@@ -90,19 +94,20 @@ const LogIn = ({ navigation }) => {
         {errorMessage ? <Text>{errorMessage}</Text> : null}
 
         <TouchableOpacity style={{ alignItems: 'flex-end' }} onPress={() => { ResetEmailVerification(email); }}>
-          <Text style={{ color:CustomColor.AppColor  }} onPress={() => { ResetEmailVerification(email); }}>Forget?{' '}  </Text>
+          <Text style={{ color: CustomColor.AppColor }} onPress={() => { ResetEmailVerification(email); }}>Forget?{' '}  </Text>
         </TouchableOpacity>
       </View>
 
       {/* LogIn,LogIn with Google and create new acc */}
       <View style={{ alignContent: 'center', justifyContent: 'center' }}>
-        <Button mode="contained" onPress={() => { handleSubmit(email, password); }} style={{ marginBottom: 10,width:'95%',alignSelf:'center' }}>LogIn</Button>
+        <Button mode="contained" onPress={() => { handleSubmit(email, password); }} style={{ marginBottom: 10, width: '95%', alignSelf: 'center' }}>LogIn</Button>
 
-        <GoogleSigninButton style={{ width: '95%', height: 48,alignSelf:'center' }} onPress={() => onGoogleButtonPress()} />
+        <GoogleSigninButton style={{ width: '95%', height: 48, alignSelf: 'center' }} onPress={() => onGoogleButtonPress()} />
 
-        <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline', color:CustomColor.AppColor }} onPress={() => navigation.navigate('SignIn')}>  Create New Account  </Text>
+        <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline', color: CustomColor.AppColor }} onPress={() => navigation.navigate('SignIn')}>  Create New Account  </Text>
       </View>
       {/* </ImageBackground> */}
+      {showLoader ? <LoadingSpinner /> : null}
 
     </View>
   );

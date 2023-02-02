@@ -30,17 +30,19 @@ import Navigation from '../Navigation';
 import { firebase } from '@react-native-firebase/auth';
 import Camera from '../Common/LaunchCamera';
 import CustomColor from '../CustomComponents/CustomColor';
+import LoadingSpinner from '../Common/Loader';
 
 
 
 const Profile = () => {
   const navigation = useNavigation();
   const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
-  const { logout2, logout_g } = useContext(AuthContext);
+  const { logout2, logout_g,showLoader, setShowLoader } = useContext(AuthContext);
   const user = firebase.auth().currentUser;
 
   //signOut
   signOut = async () => {
+    setShowLoader(true)
     try {
       await GoogleSignin.signOut();
       console.log('signOut', { user: null });
@@ -48,6 +50,8 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
     }
+    setShowLoader(false)
+
   };
 
   // console
@@ -126,6 +130,7 @@ const Profile = () => {
           Logout
         </Text>
       </View>
+      {showLoader?<LoadingSpinner/>:null}
     </View>
   );
 };

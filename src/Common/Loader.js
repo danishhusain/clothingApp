@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Modal, ActivityIndicator, Alert } from 'react-native';
+import CustomColor from '../CustomComponents/CustomColor';
 
 const LoadingSpinner=()=> {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -8,6 +9,7 @@ const LoadingSpinner=()=> {
   // setTimeout(()=>{
   //   setIsLoading(false)
   // },4000)
+
   return (
     <View>
       <Modal
@@ -18,7 +20,7 @@ const LoadingSpinner=()=> {
       >
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           {isLoading ? (
-            <ActivityIndicator size="large" color="#0000ff" />
+            <ActivityIndicator size={60} color={CustomColor.AppColor} />
           ) : (
             // The content of your modal goes here
             // alert.apply("alert")

@@ -5,11 +5,10 @@ export const LoaderContext = createContext()
 export const LoaderProvider = ({ children }) => {
 
     const [isVisible, setIsVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    const [a,setA]=useState("hi")
+    const [isLoading, setIsLoading] = useState(false);
+    // const [a,setA]=useState("hi")
+
     const LoadingSpinner = () => {
-
-
         // setTimeout(()=>{
         //   setIsLoading(false)
         // },4000)
@@ -35,7 +34,7 @@ export const LoaderProvider = ({ children }) => {
         );
     }
     return (
-        <LoaderContext.Provider value={{ a,setA}}>
+        <LoaderContext.Provider value={{ setIsVisible,setIsLoading}}>
             {children}
         </LoaderContext.Provider>
     )

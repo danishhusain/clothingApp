@@ -1,29 +1,29 @@
 
-import React, {createContext, useState} from 'react';
-import auth, {firebase} from '@react-native-firebase/auth';
-import {ActivityIndicator, View} from 'react-native';
+import React, { createContext, useState } from 'react';
+import auth, { firebase } from '@react-native-firebase/auth';
+import { ActivityIndicator, View } from 'react-native';
 import Loader from '../Common/Loader';
-import {getAuth, sendPasswordResetEmail} from 'firebase/auth';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import Firebase from '../FireBase/Firebase';
-import {initializeApp} from 'firebase/app';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
-import {useNavigation} from '@react-navigation/native';
+import { initializeApp } from 'firebase/app';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { useNavigation } from '@react-navigation/native';
 // import LoadingSpinner from '../Common/Loader';
 import { useContext } from 'react';
 
 export const AuthContext = createContext();
-export const AuthProvider = ({children}) => {
+export const AuthProvider = ({ children }) => {
 
   const navigation = useNavigation;
-
+  const [showLoader, setShowLoader] = useState(false)
 
   //SighnIn with Email & Passward
-  const register = async (email, password,name) => {
+  const register = async (email, password, name) => {
 
 
     try {
       await auth()
-        .createUserWithEmailAndPassword(email, password,name)
+        .createUserWithEmailAndPassword(email, password, name)
         .then(() => {
           console.log('register suceesfully');
           //   //Once the user creation has happened successfully, we can add the currentUser into firestore
@@ -53,8 +53,6 @@ export const AuthProvider = ({children}) => {
   };
   // LogIn with Email & Passward
   const login = async (email, password) => {
- 
-
     // console.log('here');
     try {
       await auth().signInWithEmailAndPassword(email, password);
@@ -63,9 +61,10 @@ export const AuthProvider = ({children}) => {
       console.log('Please make account', e);
     }
     // console.log('there');
+    setShowLoader(false)
 
   };
- 
+
   //Logout
   const logout_g = async () => {
 
@@ -145,6 +144,8 @@ export const AuthProvider = ({children}) => {
         register,
         logout_g,
         ResetEmailVerification,
+        showLoader,
+        setShowLoader
       }}>
       {children}
     </AuthContext.Provider>

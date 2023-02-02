@@ -122,7 +122,7 @@ const Search = () => {
         placeholderTextColor={'white'}
       />
       <View>
-        <Text style={{ alignSelf: 'center', marginTop: '10%' }}>NO data</Text>
+        <Text style={{ alignSelf: 'center', marginTop: '10%' }}>No Data</Text>
         {/* <Button onPress={() => isSignedIn()}>isSignedIn</Button>
         <Button onPress={() => getCurrentUserInfo()}>getCurrentUserInfo</Button> */}
         {/* <Button onPress={() => getCurrentUserToken()}>getCurrentUserToken</Button> */}
@@ -144,7 +144,7 @@ const Search = () => {
         <CustomButton title={"Button4"} mode={'contained'} ButtonColor={CustomColor.g} onClick={() => console.log("jiji")} IconInButton={'share'} /> */}
         {/* <Text style={{color:theme.colors.success,fontSize:theme.textVariants.header.fontSize,fontFamily:'Helvetica'}}>DANISH Razik 2000</Text> */}
         {/* <ShareExample/> */}
-        <LoadingSpinner/>
+        {/* <LoadingSpinner/> */}
       </View>
     </View>
   );
