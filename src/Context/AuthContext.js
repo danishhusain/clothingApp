@@ -55,14 +55,14 @@ export const AuthProvider = ({children}) => {
   const login = async (email, password) => {
  
 
-    console.log('here');
+    // console.log('here');
     try {
       await auth().signInWithEmailAndPassword(email, password);
-      console.log('login2  sucessfully ');
+      console.log('login  sucessfully ');
     } catch (e) {
       console.log('Please make account', e);
     }
-    console.log('there');
+    // console.log('there');
 
   };
  

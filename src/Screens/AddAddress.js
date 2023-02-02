@@ -219,7 +219,7 @@ const Addaddress = () => {
 
 
   return (
-    <View style={{ flex: 1,backgroundColor:theme.colors.danger }}>
+    <View style={{ flex: 1, }}>
 
       <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Fill Address</Text>

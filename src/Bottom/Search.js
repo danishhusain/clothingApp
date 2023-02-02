@@ -13,12 +13,11 @@ import { firebase } from '@react-native-firebase/auth';
 import { AuthContext } from '../Context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import ImageSliding from '../Components/ImageSliding';
-import Loader from '../Common/Loader';
 import Permissions from '../Permission/Permissions';
 import CustomColor, { theme } from '../CustomComponents/CustomColor';
 import CustomButton from '../CustomComponents/CustomButton';
 import ShareExample from '../Common/ShareExample';
-
+import LoadingSpinner from '../Common/Loader';
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const onChangeSearch = query => setSearchQuery(query);
@@ -124,10 +123,10 @@ const Search = () => {
       />
       <View>
         <Text style={{ alignSelf: 'center', marginTop: '10%' }}>NO data</Text>
-        <Button onPress={() => isSignedIn()}>isSignedIn</Button>
-        <Button onPress={() => getCurrentUserInfo()}>getCurrentUserInfo</Button>
+        {/* <Button onPress={() => isSignedIn()}>isSignedIn</Button>
+        <Button onPress={() => getCurrentUserInfo()}>getCurrentUserInfo</Button> */}
         {/* <Button onPress={() => getCurrentUserToken()}>getCurrentUserToken</Button> */}
-        <Button onPress={() => userData()}>userData</Button>
+        {/* <Button onPress={() => userData()}>userData</Button>
         <Button onPress={() => ResetEmailVerificationInside()}>
           ResetEmailVerificationInside
         </Button>
@@ -136,15 +135,16 @@ const Search = () => {
           ImageSliding
         </Button>
         <Button onPress={() => lo()}>loader</Button>
-        <Button onPress={() => navigation.navigate(Permissions)}>Permission</Button>
+        <Button onPress={() => navigation.navigate(Permissions)}>Permission</Button> */}
 
-        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.RED} onClick={() => console.log("jiji")} />
+        {/* <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.RED} onClick={() => console.log("jiji")} />
         <CustomButton title={"Button1"} mode={'contained'} ButtonColor={theme.colors.success} onClick={() => console.log("jiji")} />
         <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.TransParentColor} onClick={() => console.log("jiji")} />
         <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.e} onClick={() => console.log("jiji")} />
-        <CustomButton title={"Button4"} mode={'contained'} ButtonColor={CustomColor.g} onClick={() => console.log("jiji")} IconInButton={'share'} />
+        <CustomButton title={"Button4"} mode={'contained'} ButtonColor={CustomColor.g} onClick={() => console.log("jiji")} IconInButton={'share'} /> */}
         {/* <Text style={{color:theme.colors.success,fontSize:theme.textVariants.header.fontSize,fontFamily:'Helvetica'}}>DANISH Razik 2000</Text> */}
-        <ShareExample/>
+        {/* <ShareExample/> */}
+        <LoadingSpinner/>
       </View>
     </View>
   );

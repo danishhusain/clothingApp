@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { Button, TextInput, } from 'react-native-paper';
 import Loader from '../Common/Loader';
@@ -6,6 +6,8 @@ import { GoogleSignin, GoogleSigninButton, } from '@react-native-google-signin/g
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import auth from '@react-native-firebase/auth';
+import { color } from 'react-native-reanimated';
+import CustomColor from '../CustomComponents/CustomColor';
 
 const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -55,14 +57,14 @@ const LogIn = ({ navigation }) => {
 
   //validation
   const handleSubmit = () => {
-    if (!email.includes('@')) {
+    if (!email.includes('@gmail.com')) {
       setErrorMessage('Please enter a valid email address');
     } else if (password.length < 8) {
       setErrorMessage('Password must be at least 8 characters');
     } else {
       setErrorMessage('');
       // submit form data
-      login2(email, password);
+      login(email, password);
     }
   };
 
@@ -71,34 +73,34 @@ const LogIn = ({ navigation }) => {
     setHidePassword(hidePassword => !hidePassword);
   };
   return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
-      {/* <ImageBackground source={require('../Images/bgImage.webp')}  resizeMode='stretch' style={{ flex: 1, justifyContent: 'center' }}> */}
+    <View style={{ flex: 1, justifyContent: 'center', }}>
+      {/* <ImageBackground source={require('../Images/bgImage.webp')}  resizeMode='stretch' style={{ flex: 1, justifyContent: 'center' }}/> */}
       
-      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600' }}>
-        LogIn{' '}
-      </Text>
+      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600',color:CustomColor.AppColor }}> LogIn{' '}</Text>
 
       {/* EmailInput ,PasswordInput and toggle */}
       <View
         style={{ marginHorizontal: 10, justifyContent: 'space-between', marginBottom: 10, }}>
+        {/* <TextInput keyboardType="email-address" autoComplete="email" value={email} style={{ marginVertical: 5 }} mode="outlined" label={'Email'} left={<TextInput.Icon icon={'email'} />} onChangeText={txt => setEmail(txt)} /> */}
         <TextInput keyboardType="email-address" autoComplete="email" value={email} style={{ marginVertical: 5 }} mode="outlined" label={'Email'} left={<TextInput.Icon icon={'email'} />} onChangeText={txt => setEmail(txt)} />
-        <TextInput autoComplete="password" value={password} style={{ marginVertical: 5 }} mode="outlined" label={'password'} secureTextEntry={hidePassword} left={<TextInput.Icon icon={'key'} />} right={
+        <TextInput autoComplete="password" value={password} style={{ marginVertical: 5 }} mode="outlined" label={'Password'} secureTextEntry={hidePassword} left={<TextInput.Icon icon={'key'} />} right={
           <TextInput.Icon onPress={() => togglePasswordVisibility()} icon="eye" />}
+          // <TextInput.Icon onPress={() => togglePasswordVisibility()} {...hidePassword?icon="eye" :icon="heart" } />}
           onChangeText={txt => setpassword(txt)} />
         {errorMessage ? <Text>{errorMessage}</Text> : null}
 
         <TouchableOpacity style={{ alignItems: 'flex-end' }} onPress={() => { ResetEmailVerification(email); }}>
-          <Text style={{ color: 'blue' }} onPress={() => { ResetEmailVerification(email); }}>Forget?{' '}  </Text>
+          <Text style={{ color:CustomColor.AppColor  }} onPress={() => { ResetEmailVerification(email); }}>Forget?{' '}  </Text>
         </TouchableOpacity>
       </View>
 
       {/* LogIn,LogIn with Google and create new acc */}
       <View style={{ alignContent: 'center', justifyContent: 'center' }}>
-        <Button mode="contained" onPress={() => { handleSubmit(email, password); }} style={{ marginBottom: 10 }}>LogIn</Button>
+        <Button mode="contained" onPress={() => { handleSubmit(email, password); }} style={{ marginBottom: 10,width:'95%',alignSelf:'center' }}>LogIn</Button>
 
-        <GoogleSigninButton style={{ width: '100%', height: 48 }} onPress={() => onGoogleButtonPress()} />
+        <GoogleSigninButton style={{ width: '95%', height: 48,alignSelf:'center' }} onPress={() => onGoogleButtonPress()} />
 
-        <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline', }} onPress={() => navigation.navigate('SignIn')}>  Create New Account  </Text>
+        <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline', color:CustomColor.AppColor }} onPress={() => navigation.navigate('SignIn')}>  Create New Account  </Text>
       </View>
       {/* </ImageBackground> */}
 

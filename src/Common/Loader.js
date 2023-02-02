@@ -2,12 +2,12 @@ import React from 'react';
 import { View, Modal, ActivityIndicator, Alert } from 'react-native';
 
 const LoadingSpinner=()=> {
-  const [isVisible, setIsVisible] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [isVisible, setIsVisible] = React.useState(true);
 
-  setTimeout(()=>{
-    setIsLoading(false)
-  },4000)
+  // setTimeout(()=>{
+  //   setIsLoading(false)
+  // },4000)
   return (
     <View>
       <Modal

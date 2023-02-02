@@ -2,6 +2,7 @@ import { Text, View, } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { Button, TextInput, } from 'react-native-paper'
 import { AuthContext } from '../Context/AuthContext';
+import CustomColor from '../CustomComponents/CustomColor';
 
 
 const SignIn = ({ navigation }) => {
@@ -16,7 +17,7 @@ const SignIn = ({ navigation }) => {
   const handleSubmit = () => {
     if (!name) {
       setErrorMessage('Please enter your name');
-    } else if (!email.includes('@')) {
+    } else if (!email.includes('@gmail.com')) {
       setErrorMessage('Please enter a valid email address');
     } else if (password.length < 8) {
       setErrorMessage('Password must be at least 8 characters');
@@ -32,7 +33,7 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
-      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600' }}>SignIn</Text>
+      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600',color:CustomColor.AppColor }}>SignIn</Text>
       {/* Name, Email, Password,Confirm Pssword */}
       <View style={{ marginHorizontal: 10, justifyContent: 'space-between' }}>
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Name"} left={<TextInput.Icon icon={"home"} />}
@@ -46,7 +47,7 @@ const SignIn = ({ navigation }) => {
           autoComplete='email'
           onChangeText={(txt) => { setEmail(txt) }} />
 
-        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"password"} secureTextEntry left={<TextInput.Icon icon={"key"} />}
+        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Password"} secureTextEntry left={<TextInput.Icon icon={"key"} />}
           value={password}
           autoComplete='password'
 
@@ -60,7 +61,7 @@ const SignIn = ({ navigation }) => {
 
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => handleSubmit(email, password, name)}>Sign In</Button>
 
-        <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline' }}
+        <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline',color:CustomColor.AppColor  }}
           value={email}
           onPress={() => navigation.goBack()}>Alredy have Account</Text>
       </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, Share } from 'react-native';
+import { View, Button, Share, Image } from 'react-native';
 import CustomButton from '../CustomComponents/CustomButton';
 
 const ShareExample = ({ data }) => {
@@ -8,6 +8,8 @@ const ShareExample = ({ data }) => {
     try {
       const result = await Share.share({
         message: `ItemName:- ${data.ItemName},Code:- ${data.code},BrandName:- ${data.brand}`,
+        // url: `${data.url}`,
+        // title: 'Awesome Content',
       });
 
       if (result.action === Share.sharedAction) {
@@ -27,7 +29,7 @@ const ShareExample = ({ data }) => {
   return (
     <View>
       {/* <Button title="Share" onPress={onShare} /> */}
-      <CustomButton title={'Share'} IconInButton={'share'} onClick={() => onShare()} />
+      <CustomButton mode={'eleveted'} title={'Share'} IconInButton={'share'} onClick={() => onShare()} />
     </View>
   );
 };
