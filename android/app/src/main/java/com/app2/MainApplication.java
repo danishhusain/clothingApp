@@ -12,6 +12,8 @@ import com.facebook.soloader.SoLoader;
 import com.app2.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+// import org.devio.rn.splashscreen.SplashScreenReactPackage;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -29,6 +31,7 @@ public class MainApplication extends Application implements ReactApplication {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
           return packages;
+          
         }
 
         @Override

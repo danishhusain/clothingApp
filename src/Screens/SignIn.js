@@ -1,4 +1,4 @@
-import { Text, View, } from 'react-native'
+import { ImageBackground, Text, View, } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { Button, TextInput, } from 'react-native-paper'
 import { AuthContext } from '../Context/AuthContext';
@@ -33,6 +33,7 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
+      <ImageBackground source={require('../Images/BackgroundImage.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
       <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600',color:CustomColor.AppColor }}>SignIn</Text>
       {/* Name, Email, Password,Confirm Pssword */}
       <View style={{ marginHorizontal: 10, justifyContent: 'space-between' }}>
@@ -65,6 +66,7 @@ const SignIn = ({ navigation }) => {
           value={email}
           onPress={() => navigation.goBack()}>Alredy have Account</Text>
       </View>
+      </ImageBackground>
     </View>
 
   )
