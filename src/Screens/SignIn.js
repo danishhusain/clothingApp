@@ -33,7 +33,7 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
-      <ImageBackground source={require('../Images/BackgroundImage.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
+      <ImageBackground source={require('../Images/background.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
       <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600',color:CustomColor.AppColor }}>SignIn</Text>
       {/* Name, Email, Password,Confirm Pssword */}
       <View style={{ marginHorizontal: 10, justifyContent: 'space-between' }}>

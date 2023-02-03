@@ -6,7 +6,7 @@ import CustomColor from '../CustomComponents/CustomColor'
 
 const MyOrders = () => {
   return (
-    // <ImageBackground style={{flex:1}} source={{uri:'https://img.freepik.com/free-photo/solid-navy-blue-concrete-textured-wall_53876-124584.jpg?w=996&t=st=1673464134~exp=1673464734~hmac=da68e5be64cdd04f5d79e77e285a1f43b8a63fd6544a5afec032a0825e7f140a'}}>
+    <ImageBackground source={require('../Images/AllBg.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
       <View style={{ flex: 1, alignItems: 'center' }}>
         {/* header */}
         <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 1 }}>
@@ -14,7 +14,7 @@ const MyOrders = () => {
           {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, top: 3, paddingTop: 20, fontWeight: '600' }} onPress={() => setWishlist([])}>Clear Cart</Button> */}
         </View>
       </View>
-    // </ImageBackground>
+    </ImageBackground>
   )
 }
 

@@ -108,7 +108,7 @@
 
 
 //////////////////////////////////////////////
-import { View, Text, Alert } from 'react-native'
+import { View, Text, Alert, ImageBackground } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Button, TextInput } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -219,39 +219,42 @@ const Addaddress = () => {
 
 
   return (
-    <View style={{ flex: 1, }}>
+    <ImageBackground source={require('../Images/AllBg.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
 
-      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
-        <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Fill Address</Text>
-        <Button style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>
-      </View>
+      <View style={{ flex: 1, }}>
 
-      <View style={{ marginHorizontal: 10, marginTop: 30 }}>
-        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter city name"} left={<TextInput.Icon icon={"home"} />}
-          value={city}
-          onChangeText={(txt) => setCity(txt)} />
-        {badcity && <Text style={{ color: 'red' }}>Enter city name</Text>}
+        <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
+          <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Fill Address</Text>
+          <Button style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>
+        </View>
 
-        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter building name"} left={<TextInput.Icon icon={"home"} />}
-          value={building}
-          onChangeText={(txt) => setBuilding(txt)} />
-        {badbuilding && <Text style={{ color: 'red' }}>Enter building name</Text>}
+        <View style={{ marginHorizontal: 10, marginTop: 30 }}>
+          <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter city name"} left={<TextInput.Icon icon={"home"} />}
+            value={city}
+            onChangeText={(txt) => setCity(txt)} />
+          {badcity && <Text style={{ color: 'red' }}>Enter city name</Text>}
 
-        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter Pincode name"} left={<TextInput.Icon icon={"home"} />}
-          value={pincode}
-          onChangeText={(txt) => setPincode(txt)} />
-        {badpincode && <Text style={{ color: 'red' }}>Enter pincode</Text>}
-        <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Save Address</Button>
-        {/* <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLong()}>Save Address</Button>
+          <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter building name"} left={<TextInput.Icon icon={"home"} />}
+            value={building}
+            onChangeText={(txt) => setBuilding(txt)} />
+          {badbuilding && <Text style={{ color: 'red' }}>Enter building name</Text>}
+
+          <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter Pincode name"} left={<TextInput.Icon icon={"home"} />}
+            value={pincode}
+            onChangeText={(txt) => setPincode(txt)} />
+          {badpincode && <Text style={{ color: 'red' }}>Enter pincode</Text>}
+          <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Save Address</Button>
+          {/* <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLong()}>Save Address</Button>
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLongFromAdd()}>Save Address</Button>
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getAddFromLatLong()}>Save Address</Button> */}
 
 
+        </View>
+
+
       </View>
+    </ImageBackground>
 
-
-
-    </View>
   )
 }
 
