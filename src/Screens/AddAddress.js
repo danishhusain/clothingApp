@@ -219,7 +219,6 @@ const Addaddress = () => {
 
 
   return (
-    <ImageBackground source={require('../Images/AllBg.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
 
       <View style={{ flex: 1, }}>
 
@@ -253,7 +252,6 @@ const Addaddress = () => {
 
 
       </View>
-    </ImageBackground>
 
   )
 }

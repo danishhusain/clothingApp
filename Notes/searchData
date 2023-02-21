@@ -1,0 +1,184 @@
+import * as React from 'react';
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import { Button, Card, Searchbar } from 'react-native-paper';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import { useContext } from 'react';
+import { CartContext } from '../Context/CartContext';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { firebase } from '@react-native-firebase/auth';
+import { AuthContext } from '../Context/AuthContext';
+import { useNavigation } from '@react-navigation/native';
+import ImageSliding from '../Components/ImageSliding';
+import Permissions from '../Permission/Permissions';
+import CustomColor, { theme } from '../CustomComponents/CustomColor';
+import CustomButton from '../CustomComponents/CustomButton';
+import ShareExample from '../Common/ShareExample';
+import LoadingSpinner from '../Common/Loader';
+import { product, tshirt, jeans, jacket, shirt, lower, hoodie } from '../DataBase/Api';
+const Search = () => {
+  const [searchQuery, setSearchQuery] = React.useState('');
+  // const onChangeSearch = query => setSearchQuery(query);
+  const itemArray = [tshirt, jacket, jeans, shirt, lower, hoodie,]
+  const [filteredData, setFilteredData] = React.useState(tshirt);
+  const { isSignedIn, setisSignedIn } = useContext(CartContext)
+  const { s, sets } = useContext(CartContext);
+  const user = firebase.auth().currentUser;
+  const { userToken, setUserToken, isLoading, setIsLoading } =
+    useContext(AuthContext);
+  const navigation = useNavigation();
+
+
+  // Send the email verification
+  const email_verification = () => {
+    firebase
+      .auth()
+      .currentUser.sendEmailVerification()
+      .then(function () {
+        // Email verification sent!
+        alert('Email verification sent!');
+        console.log('Email verification sent!');
+        if (firebase.auth().currentUser.emailVerified) {
+          // The user's email is verified
+          alert("The user's email is verified");
+        } else {
+          // The user's email is not verified
+          alert("The user's email is not verified");
+        }
+      })
+      .catch(function (error) {
+        // An error happened.
+        console.log(error);
+      });
+  };
+
+  //User Data
+  const userData = () => {
+    console.log('current user', user);
+    if (user) {
+      console.log('User email: ', user.email);
+      console.log('User email: ', user.password);
+      console.log('User email: ', user.displayName);
+    }
+  };
+
+  //isSignedIn
+  //  isSignedIn = async () => {
+  //   const isSignedIn = await GoogleSignin.isSignedIn();
+  //   // this.setState({ isLoginScreenPresented: !isSignedIn });
+  //   console.log('isSignedIn', { isLoginScreenPresented: !isSignedIn });
+  // };
+  //getCurrentUserInfo
+  getCurrentUserInfo = async () => {
+    try {
+      const userInfo = await GoogleSignin.signInSilently();
+      // this.setState({ userInfo });
+      console.log('getCurrentUserInfo', userInfo);
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+        // user has not signed in yet
+        console.log('user has not signed in yet');
+      } else {
+        // some other error
+      }
+    }
+  };
+  //getUserToken
+  const getCurrentUserToken = async () => {
+    let userToken = await AsyncStorage.getItem('userToken');
+    console.log('saerch', userToken);
+  };
+
+  const onChangeSearch = (text) => {
+    setSearchQuery(text);
+    const newData = tshirt.filter((item) => {
+      const itemData = item.ItemName.toLowerCase();
+      const textData = text.toLowerCase();
+      return itemData.indexOf(textData) > -1;
+      // return itemData.indexOf(textData) > -1;
+    });
+    setFilteredData(newData);
+  }
+  // console.log("jj", filteredData)
+
+  const renderSearches = ({ item }) => {
+    // const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
+    const posterImg = item.url
+    // const backdropImg = `http://image.tmdb.org/t/p/w185/${item.backdrop_path}`
+    // console.log("render",movies)
+    return (
+      <>
+        <Card style={{ flexDirection: 'row', marginVertical: 2, }} >
+          <TouchableOpacity style={{ flexDirection: 'row', paddingRight: 250, }} >
+            <View style={{ flexDirection: 'row', marginVertical: 2, }}>
+              <View style={{ flexDirection: 'row' }}>
+                {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}
+                <Image style={{ height: 80, width: 120, borderBottomLeftRadius: 8, borderTopLeftRadius: 8 }} source={{ uri: posterImg }} />
+                {/* <Image style={{ height: 80, width: 120, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={{ uri: backdropImg }} /> */}
+              </View>
+              {/* <View style={{justifyContent:'space-between',flexDirection:'row',}}> */}
+                <View style={{ left: 5, justifyContent: 'center', }}>
+                  <Text style={{}} >{item.ItemName}</Text>
+                </View>
+                {/* <View style={{ backgroundColor: 'red', }}>
+                  <Text style={{}} >{item.ItemName}</Text>
+
+                </View> */}
+              {/* </View> */}
+            </View>
+          </TouchableOpacity>
+        </Card>
+
+      </>
+    )
+  }
+  return (
+    <View style={{ flex: 1 }}>
+      <Searchbar
+        placeholder="Search"
+        onChangeText={onChangeSearch}
+        value={searchQuery}
+        style={{ backgroundColor: CustomColor.AppColor, }}
+        iconColor={'white'}
+        placeholderTextColor={'white'}
+      />
+      <View>
+        {/* <Text style={{ alignSelf: 'center', marginTop: '10%' }}>No Data</Text> */}
+        {/* <Button onPress={() => isSignedIn()}>isSignedIn</Button>
+        <Button onPress={() => getCurrentUserInfo()}>getCurrentUserInfo</Button> */}
+        {/* <Button onPress={() => getCurrentUserToken()}>getCurrentUserToken</Button> */}
+        {/* <Button onPress={() => userData()}>userData</Button>
+        <Button onPress={() => ResetEmailVerificationInside()}>
+          ResetEmailVerificationInside
+        </Button>
+        <Button onPress={() => email_verification()}>email_verification</Button>
+        <Button onPress={() => navigation.navigate(ImageSliding)}>
+          ImageSliding
+        </Button>
+        <Button onPress={() => lo()}>loader</Button>
+        <Button onPress={() => navigation.navigate(Permissions)}>Permission</Button> */}
+        {/* <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.RED} onClick={() => console.log("jiji")} />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={theme.colors.success} onClick={() => console.log("jiji")} />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.TransParentColor} onClick={() => console.log("jiji")} />
+        <CustomButton title={"Button1"} mode={'contained'} ButtonColor={CustomColor.e} onClick={() => console.log("jiji")} />
+        <CustomButton title={"Button4"} mode={'contained'} ButtonColor={CustomColor.g} onClick={() => console.log("jiji")} IconInButton={'share'} /> */}
+        {/* <Text style={{color:theme.colors.success,fontSize:theme.textVariants.header.fontSize,fontFamily:'Helvetica'}}>DANISH Razik 2000</Text> */}
+        {/* <ShareExample/> */}
+        {/* <LoadingSpinner/> */}
+        <View style={{ justifyContent: 'space-between', margin: 5, }}>
+          <FlatList
+            data={filteredData}
+            renderItem={renderSearches}
+            keyExtractor={item => item.code}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
+
+export default Search;

@@ -11,7 +11,7 @@ import CustomColor from '../CustomComponents/CustomColor'
 const Header = () => {
     const { cart } = useContext(CartContext)
     const navigation = useNavigation();
-
+// console.log(cart.length)
     return (
         <View style={{
             width: '100%', height: 70, justifyContent: 'space-between',

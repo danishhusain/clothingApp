@@ -24,7 +24,6 @@ const LogIn = ({ navigation }) => {
         '662105668477-jg2e8sg8vfvph07meoof2ap6fpntpmqe.apps.googleusercontent.com',
       offlineAccess: true,
       // accountName:true,
-
     });
   });
 
@@ -52,8 +51,6 @@ const LogIn = ({ navigation }) => {
     //   .then(e => {
     //     console.log('userInfo error', e);
     //   });
-
-
   };
 
   //validation
@@ -76,7 +73,6 @@ const LogIn = ({ navigation }) => {
 
   };
   return (
-
     <View style={{ flex: 1, justifyContent: 'center', }}>
       {/* <ImageBackground source={require('../Images/BGImage.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}> */}
       <ImageBackground source={require('../Images/background.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
@@ -102,7 +98,7 @@ const LogIn = ({ navigation }) => {
         <View style={{ alignContent: 'center', justifyContent: 'center' }}>
           <Button mode="contained" onPress={() => { handleSubmit(email, password); }} style={{ marginBottom: 10, width: '95%', alignSelf: 'center' }}>LogIn</Button>
 
-          <GoogleSigninButton style={{ width: '95%', height: 48, alignSelf: 'center' }}  onPress={() => onGoogleButtonPress()} />
+          <GoogleSigninButton style={{ width: '95%', height: 48, alignSelf: 'center' }} onPress={() => onGoogleButtonPress()} />
 
           <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline', color: CustomColor.AppColor }} onPress={() => navigation.navigate('SignIn')}>  Create New Account  </Text>
         </View>

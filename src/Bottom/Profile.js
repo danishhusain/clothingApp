@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import {
   Button,
@@ -58,7 +58,9 @@ const Profile = () => {
   // console.log("profile",logout2)
 
   return (
+
     <View style={{ flex: 1 }}>
+
       <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 1 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Profile </Text>
         <IconButton icon={MORE_ICON} size={25} onPress={() => console.log('boom')} style={{ position: 'absolute', right: 5,  }} iconColor={'white'}></IconButton>
@@ -131,7 +133,9 @@ const Profile = () => {
         </Text>
       </View>
       {showLoader?<LoadingSpinner/>:null}
+    
     </View>
+
   );
 };
 

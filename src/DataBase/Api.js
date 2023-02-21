@@ -11,7 +11,7 @@ export const tshirt = [
   {
     brand: "LV", color: "Black", price: "100", code: "t1",
     url: 'https://img.freepik.com/free-psd/green-front-sweater-mockup_125540-575.jpg?t=st=1673014935~exp=1673015535~hmac=4dd0b3205df0d9ff39f7b487944d0ef5f5a922f9b6b3681de4ec3c703d38c3fb'
-    , decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    , decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit ",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -32,7 +32,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t2", url: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=415&q=80',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "Fit T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -47,7 +47,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t3", url: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -62,7 +62,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t4", url: 'https://img.freepik.com/free-psd/black-T-Shirt-mockup_125540-430.jpg?w=996&t=st=1673035682~exp=1673036282~hmac=79effc98648b4fd670293c3366c27e2d87295723d3fbe23ede45de8cf1625520',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular  T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -77,7 +77,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t5", url: 'https://img.freepik.com/free-psd/polo-shirt-mockup-psd-men-rsquo-s-casual-business-wear_53876-141843.jpg?w=996&t=st=1673036455~exp=1673037055~hmac=e2de4af254cf7f2987b7eb6e4270256a57b44db9cc5d00f0176036d9f4a61ab5',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "Daily Fit T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -92,7 +92,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t6", url: 'https://img.freepik.com/free-psd/white-T-Shirt-model-front-view-mockup_125540-861.jpg?w=996&t=st=1673036449~exp=1673037049~hmac=42ec0496a426db6d23e2ff4a3400228b1f8a86444cae8fc9d428fbfade64d2ba',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "Casual T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -107,7 +107,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t7", url: 'https://img.freepik.com/free-psd/sweater-mockup-front-back_125540-579.jpg?w=900&t=st=1673036572~exp=1673037172~hmac=5ed93329830475028275c4fa311f24405a4498426daf60a2747abe60bc05822f',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "Marvel  T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -122,7 +122,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t8", url: 'https://img.freepik.com/free-psd/black-T-Shirt-geometric-print-pattern-mockup_125540-865.jpg?w=826&t=st=1673036641~exp=1673037241~hmac=c8a1943e6319dee71a079db1f83e8dd982aa7a95bdc4bbf0108036fd9fb784ee',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "Avengers Fit T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -137,7 +137,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t9", url: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "Batman T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -151,8 +151,8 @@ export const tshirt = [
     }
   },
   {
-    brand: "LV", color: "Black", price: "100", code: "t9", url: 'https://img.freepik.com/free-psd/black-front-sweater-mockup_125540-570.jpg?t=st=1673008528~exp=1673009128~hmac=89409130b4edb196fc5a605a76ed2dd4763003395563d0f728aea64163b6e9c0',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    brand: "LV", color: "Black", price: "100", code: "t10", url: 'https://img.freepik.com/free-psd/black-front-sweater-mockup_125540-570.jpg?t=st=1673008528~exp=1673009128~hmac=89409130b4edb196fc5a605a76ed2dd4763003395563d0f728aea64163b6e9c0',
+    decription: ' what a product is and why its worth purchasing.', ItemName: "SuperMan  T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -167,7 +167,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t11", url: 'https://img.freepik.com/free-photo/black-front-sweater_125540-763.jpg?w=900&t=st=1673036772~exp=1673037372~hmac=4894c220905dc13399cea236badcde4ad2ac11b56f733ca3cab96d0700cb3e16',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "Spider Fit T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",
@@ -182,7 +182,7 @@ export const tshirt = [
   },
   {
     brand: "LV", color: "Black", price: "100", code: "t12", url: 'https://img.freepik.com/free-photo/pink-sweater-front_125540-746.jpg?w=900&t=st=1673036820~exp=1673037420~hmac=d7ea9855b5134a820166068d3addc81446946b02e1181b476477eec5a48edaf0',
-    decription: ' what a product is and why its worth purchasing.', ItemName: "Regular Fit T-Shirt",
+    decription: ' what a product is and why its worth purchasing.', ItemName: "IronMan Fit T-Shirt",
     ItemObject: {
       a: "Package Dimensions  : 35.7 x 26.1 x 5.4 cm; 250 Grams",
       b: "Date First Available :  22 November 2019",

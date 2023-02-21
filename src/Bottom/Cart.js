@@ -14,11 +14,8 @@ import { set } from 'react-native-reanimated'
 import RazorpayCheckout from 'react-native-razorpay';
 import CustomColor from '../CustomComponents/CustomColor'
 import CustomButton from '../CustomComponents/CustomButton'
-
-
-
-
-
+import { firebase } from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore';
 
 
 
@@ -27,15 +24,18 @@ const CartCard = ({ val }) => {
   const { cart, setcart, setItemDetail } = useContext(CartContext)
   // const {DetailsCartItem,setDetailsCartItem}=useContext(CartContext)
   const [DetailsCartItem, setDetailsCartItem] = useState([])
-
-
+  const db = firebase.firestore()
 
   const remove = () => {
-    let arr = cart.filter(function (item) {
-      return item.code !== val.code
-    }
-    )
-    setcart(arr)
+    db.collection('users').doc(firebase.auth().currentUser.uid).update({
+      myCartArray: firestore.FieldValue.arrayRemove(val)
+    })
+      .then(() => {
+        // console.log('Array element deleted successfully.');
+      })
+      .catch((error) => {
+        console.error('Error deleting array element: ', error);
+      });
   }
   // console.log(val.price,typeof val.price)
   return (
@@ -58,16 +58,12 @@ const CartCard = ({ val }) => {
           <IconButton icon={'delete'} iconColor={'white'} onPress={() => remove()}
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
-
           <Button textColor='#fff' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart, val]), navigation.navigate(BuyScreen) }}>Buy</Button>
 
         </View>
       </ScrollView>
 
-
     </View>
-
-
   )
 }
 
@@ -79,6 +75,7 @@ const Cart = () => {
   const [totalprice, setTotalprice] = useState()
   const [buyItem, setbuyItem] = useState()
   // const{adData,setAdData}=useContext(CartContext)
+  const db = firebase.firestore()
 
 
   let makePayment = () => {
@@ -127,15 +124,33 @@ const Cart = () => {
 
       }
     }
-    // console.log('>>>',total)
     setTotalprice(total)
   }
-  // console.log('maindata', CartAddress)
+  /// Getting the cart from the server
+  useEffect(() => {
+    db.collection('users').doc(firebase.auth().currentUser.uid).get().then((doc) => {
+      if (doc.exists) {
+        db.collection('users').doc(firebase.auth().currentUser.uid)
+          .onSnapshot(documentSnapshot => {
+            // console.log('User data: ', documentSnapshot.data().myCartArray);
+            setcart(documentSnapshot.data().myCartArray)
+          })
+          .then(() => {
+            console.log('Got It Whishlist Data!');
+          })
+          .catch(() => {
+            console.log('Error while Getting Whishlist Data!');
+          })
+      } else {
+        console.log('Else-getWhislist')
+      }
+    })
+  }, [])
   return (
     <View style={{ flex: 1, }}>
 
       {/* header */}
-      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 ,bottom:0.5}}>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5, bottom: 0.5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Your Cart</Text>
         <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button>
       </View>
@@ -169,14 +184,14 @@ const Cart = () => {
       {/* Total Balance */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, marginHorizontal: 5 }}>
         {/* <Text style={{color:'blue',fontWeight:'800'}}>Sub-Total: </Text> */}
-        <Text style={{ fontSize: 20, color: CustomColor.AppColor}}>Total: {totalprice}</Text>
+        <Text style={{ fontSize: 20, color: CustomColor.AppColor }}>Total: {totalprice}</Text>
       </View>
 
 
       {/* button */}
       <View style={{ flex: .07, marginTop: 3.5, marginHorizontal: 5, paddingBottom: 4 }}>
         {/* <Button mode='contained' onPress={() => { makePayment() }}>Place Order</Button> */}
-        <CustomButton mode={'contained'} title={"Place Order"} onClick={()=> makePayment()} />
+        <CustomButton mode={'contained'} title={"Place Order"} onClick={() => makePayment()} />
       </View>
 
     </View>

@@ -44,7 +44,6 @@ const MyAddress = () => {
   return (
     <View style={{ flex: 1 }}>
       
-      <ImageBackground source={require('../Images/AllBg.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
         <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
           <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>My Address</Text>
           <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(Addaddress)}>Add Address</Button>
@@ -68,7 +67,6 @@ const MyAddress = () => {
 
           />}
         </View>
-      </ImageBackground >
 
     </View>
 
