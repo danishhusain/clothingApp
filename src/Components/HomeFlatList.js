@@ -114,6 +114,7 @@ import {
   FlatList,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../Common/Header';
@@ -137,6 +138,8 @@ import { CustomButton } from '../CustomComponents/CustomButton';
 import CustomColor from '../CustomComponents/CustomColor';
 import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
+import ItemAlert from './Alert/Alert';
+
 
 export default function HomeFlatList({ item }) {
   const [iconSelected, setIconSelected] = useState(false);
@@ -153,9 +156,20 @@ export default function HomeFlatList({ item }) {
         db.collection('users').doc(firebase.auth().currentUser.uid)
           .update({
             myWhislistArray: firebase.firestore.FieldValue.arrayUnion(item)
+
           })
           .then(() => {
             // console.log('addWhishlist User Update!');
+            // alert
+            Alert.alert('Wishlist', 'Item Added', [
+              {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+              },
+              { text: 'OK', onPress: () => console.log('OK Pressed') },
+          ]);
+            
           })
           .catch(() => {
             console.log('Error while updating!');
@@ -167,6 +181,15 @@ export default function HomeFlatList({ item }) {
           })
           .then(() => {
             // console.log(' addWhishlist User Set!');
+            // alert
+            Alert.alert('Wishlist', 'Item Added', [
+              {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+              },
+              { text: 'OK', onPress: () => console.log('OK Pressed') },
+          ]);
           })
           .catch(err => {
             console.log('Error: ' + err)
@@ -183,10 +206,29 @@ export default function HomeFlatList({ item }) {
             myCartArray: firebase.firestore.FieldValue.arrayUnion(item)
           })
           .then(() => {
-            console.log('User Update!');
+            // console.log('User Update!');
+            // alert
+            Alert.alert('Cart', 'Item Added', [
+              {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+              },
+              { text: 'OK', onPress: () => console.log('OK Pressed') },
+          ]);
+
           })
           .catch(() => {
-            console.log('Error while updating!');
+            // console.log('Error while updating!');
+            // alert
+            Alert.alert('Cart', 'Item Added', [
+              {
+                  text: 'Cancel',
+                  onPress: () => console.log('Cancel Pressed'),
+                  style: 'cancel',
+              },
+              { text: 'OK', onPress: () => console.log('OK Pressed') },
+          ]);
           })
       } else {
         db.collection('users').doc(firebase.auth().currentUser.uid)
