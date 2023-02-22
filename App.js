@@ -1,19 +1,23 @@
-import {StyleSheet,} from 'react-native';
-import React, {} from 'react';
+import { StyleSheet, } from 'react-native';
+import React, { } from 'react';
 import CartContextProvider from './src/Context/CartContext';
-import {AuthProvider} from './src/Context/AuthContext';
+import { AuthProvider } from './src/Context/AuthContext';
 import Navigation from './src/Navigation';
 import SplashScreen from 'react-native-splash-screen'
 import { useEffect } from 'react';
+import { requestUserPermission, notificationListner } from './src/PushNotification/PushNotification_helper'
 
 const App = () => {
-  useEffect(()=>{
+  useEffect(() => {
     SplashScreen.hide();
-  },[])
+    requestUserPermission(),
+      notificationListner()
+
+  }, [])
   return (
     <CartContextProvider>
       <AuthProvider>
-        <Navigation/>
+        <Navigation />
       </AuthProvider>
     </CartContextProvider>
   );

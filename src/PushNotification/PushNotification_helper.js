@@ -1,50 +1,50 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { firebase } from '@react-native-firebase/auth';
 import messaging from '@react-native-firebase/messaging';
-import firebase from 'react-native-firebase';
 
+export const requestUserPermission = async () => {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+        authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+        authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
-// async function requestUserPermission() {
-//   const authStatus = await messaging().requestPermission();
-//   const enabled =
-//     authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-//     authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+    if (enabled) {
+        console.log('Authorization status:', authStatus);
+        getFcmToken()
+    }
+}
 
-//   if (enabled) {
-//     console.log('Authorization status:', authStatus);
-//     GetFCMToke()
-//   }
-// }
-
-
-// async function GetFCMToke(){
-//     let fcmtoken=await AsyncStorage.getItem("fcmtoken");
-//     if(!fcmtoken){
-//         try{
-//             const fcmtoken= await messaging().getToken();
-//             if(fcmtoken){
-//                 console.log("new token",fcmtoken)
-//                 await AsyncStorage.setItem("fcmtoken",fcmtoken)
-//             } 
-//         } catch(error){
-//             console.log("error fcm token",error)
-//         }
-//     }
-// }
+const getFcmToken = async () => {
+    let fcmToken = await AsyncStorage.getItem("fcmToken");
+    if (!fcmToken) {
+        try {
+            const fcmToken = await messaging().getToken();
+            if (fcmToken) {
+                console.log("new token", fcmToken)
+                await AsyncStorage.setItem("fcmToken", fcmToken)
+            }
+        } catch (error) {
+            console.log("error fcm token", error)
+        }
+    }
+}
 
 //  Get the FCM token
-firebase.messaging().getToken().then(fcmToken => {
-    if (fcmToken) {
-        // Display the FCM token in the console
-        console.log('FCM Token:', fcmToken);
-    } else {
-        // Request permission from the user
-        firebase.messaging().requestPermission().then(() => {
-            // User has authorised
-            console.log("user has authorised")
-        }).catch(error => {
-            // User has rejected permissions
-            console.log("User has rejected permissions")
-
+export const notificationListner = async () => {
+    firebase.messaging().onNotificationOpenedApp(remoteMessage => {
+        console.log("Notification caused app to open from background state", remoteMessage.notification)
+    })
+    messaging().onMessage(async remoteMessage => {
+        console.log("recived in foreground", remoteMessage)
+    })
+    messaging()
+        .getInitialNotification()
+        .then(remoteMessage => {
+            if (remoteMessage) {
+                console.log("Notification caused app to open from quite state", remoteMessage.notification)
+            }
         });
-    }
-});
+}
+
+
+
