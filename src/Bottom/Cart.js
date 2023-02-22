@@ -126,6 +126,18 @@ const Cart = () => {
     }
     setTotalprice(total)
   }
+    //Delete the Collection
+    const removeCart = async () => {
+      db.collection('users').doc(firebase.auth().currentUser.uid)
+        .get().then((doc) => {
+          if (doc.exists) {
+            db.collection('users').doc(firebase.auth().currentUser.uid)
+              .update({
+                myCartArray: firebase.firestore.FieldValue.delete()
+              });
+          }
+        })
+    }
   /// Getting the cart from the server
   useEffect(() => {
     db.collection('users').doc(firebase.auth().currentUser.uid).get().then((doc) => {
@@ -152,7 +164,8 @@ const Cart = () => {
       {/* header */}
       <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5, bottom: 0.5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Your Cart</Text>
-        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button>
+        {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button> */}
+        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => removeCart()}>Clear Cart</Button>
       </View>
 
       {/* location */}

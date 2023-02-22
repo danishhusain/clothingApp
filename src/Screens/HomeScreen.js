@@ -58,7 +58,7 @@ const HomeScreen = () => {
         
         <View >
           <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
-            {wishlist.length == 0 ? null :
+            {!wishlist  ? null :
               <Badge size={18} >{wishlist.length}</Badge>
             }
 

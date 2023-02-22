@@ -112,9 +112,58 @@ const CartWishlist = ({ val }) => {
   const [DetailsCartItem, setDetailsCartItem] = useState([])
   const { ItemDetail, setItemDetail } = useContext(CartContext)
   const db = firebase.firestore()
+  ///Add in Cart
+  const addCart = async () => {
+    db.collection('users').doc(firebase.auth().currentUser.uid).get().then((doc) => {
+      if (doc.exists) {
+        db.collection('users').doc(firebase.auth().currentUser.uid)
+          .update({
+            myCartArray: firebase.firestore.FieldValue.arrayUnion(val)
+          })
+          .then(() => {
+            // console.log('User Update!');
+            // alert
+            Alert.alert('Cart', 'Item Added', [
+              {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+              },
+              { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]);
+
+          })
+          .catch(() => {
+            // console.log('Error while updating!');
+            // alert
+            Alert.alert('Cart', 'Item Added', [
+              {
+                text: 'Cancel',
+                onPress: () => console.log('Cancel Pressed'),
+                style: 'cancel',
+              },
+              { text: 'OK', onPress: () => console.log('OK Pressed') },
+            ]);
+          })
+      } else {
+        db.collection('users').doc(firebase.auth().currentUser.uid)
+          .set({
+            myCartArray: firebase.firestore.FieldValue.arrayUnion(val)
+          })
+          .then(() => {
+            console.log('User Set!');
+            // setdocsId(null)
+          })
+          .catch(err => {
+            console.log('Error: ' + err)
+          })
+      }
+    })
+  }
+
+
 
   const remove = () => {
-
     db.collection('users').doc(firebase.auth().currentUser.uid).update({
       myWhislistArray: firestore.FieldValue.arrayRemove(val)
     })
@@ -143,7 +192,10 @@ const CartWishlist = ({ val }) => {
           <IconButton icon={"heart"} iconColor={'#1DA664'} onPress={() => remove(val)}
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
-          <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, bottom: 3, color: 'white', }} onPress={() => { setcart([...cart, val]), alert("Item Added") }}>Add Cart</Button>
+          <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, bottom: 3, color: 'white', }}
+            // onPress={() => { setcart([...cart, val]), alert("Item Added") }}
+            onPress={() => { addCart() }}
+          >Add Cart</Button>
         </View>
 
       </ScrollView>
@@ -159,6 +211,19 @@ const Wishlist = () => {
   const { wishlist, setWishlist } = useContext(CartContext)
   const userDocument = firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid)
   const db = firebase.firestore()
+
+  //Delete the Collection
+  const removeCart = async () => {
+    db.collection('users').doc(firebase.auth().currentUser.uid)
+      .get().then((doc) => {
+        if (doc.exists) {
+          db.collection('users').doc(firebase.auth().currentUser.uid)
+            .update({
+              myWhislistArray: firebase.firestore.FieldValue.delete()
+            });
+        }
+      })
+  }
 
   useEffect(() => {
     db.collection('users').doc(firebase.auth().currentUser.uid).get().then((doc) => {
@@ -195,7 +260,8 @@ const Wishlist = () => {
       {/* header */}
       <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Wishlist</Text>
-        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setWishlist([])}>Clear Cart</Button>
+        {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setWishlist([])}>Clear Cart</Button> */}
+        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => removeCart()}>Clear Cart</Button>
       </View>
       <View style={{ flex: 1, }}>
         <FlatList

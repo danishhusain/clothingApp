@@ -36,7 +36,7 @@ const Header = () => {
                 <IconButton icon={'cart'} size={30} iconColor='white' onPress={() => navigation.navigate(Cart)}></IconButton>
 
                 <View style={{ backgroundColor: 'red', position: 'absolute', right: 1, top: 1, borderRadius: 25, alignSelf: 'center' }}>
-                    {cart.length == 0 ? null :
+                    {!cart  ? null :
                         <Badge size={18} >{cart.length}</Badge>
                     }
                 </View>
