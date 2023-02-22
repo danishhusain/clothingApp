@@ -1,112 +1,3 @@
-// import { View, Text, Alert } from 'react-native'
-// import React, { useState ,useEffect} from 'react'
-// import { Button, TextInput } from 'react-native-paper'
-// import AsyncStorage from '@react-native-async-storage/async-storage'
-// import { useNavigation } from '@react-navigation/native'
-// // import MyAddress from './MyAddress'
-// import HomeScreen from './HomeScreen'
-// import Main from '../Bottom/Main'
-
-
-// const Addaddress = () => {
-
-
-//   const navigation = useNavigation();
-
-//   const [city, setCity] = useState("")
-//   const [building, setBuilding] = useState("")
-//   const [pincode, setPincode] = useState("")
-//   const [badcity, setBadCity] = useState(false)
-//   const [badbuilding, setBadBuilding] = useState(false)
-//   const [badpincode, setBadPincode] = useState(false)
-//   const [adstate,setAdstate]=useState([])
-
-// const data={
-//   "city":city,
-// "building":building,
-// "pincode":pincode
-// }
-// const getAddress=async()=>{
-//   let  data=await AsyncStorage.getItem("Address")
-
-//   setAdstate(JSON.parse(data))  }  
-
-//   const Validation = (txt) => {
-//     if (city.length == 0) {
-//       setBadCity(true)
-//     } else {
-//       setBadCity(false)
-//     }
-//     if (building.length == 0) {
-//       setBadBuilding(true)
-//     } else {
-//       setBadBuilding(false)
-//     }
-//     if (pincode.length == 0) {
-//       setBadPincode(true)
-//     } else {
-//       setBadPincode(false)
-//       saveAddress();
-//     }
-//   }
-//   const saveAddress = async () => {
-//     if (badcity === false && badbuilding === false && badpincode === false) {
-//    if(adstate!=null){
-//         await AsyncStorage.setItem('Address',JSON.stringify( [data,...adstate]))
-//    }else{
-//     await AsyncStorage.setItem('Address',JSON.stringify( [data]))
-//    }
-
-//       navigation.goBack()
-
-//     }
-//   }
-//   useEffect(()=>{
-//     getAddress()
-//   },[])
-
-//   return (
-//     <View style={{ flex: 1, }}>
-
-//       <View style={{
-//         width: '100%', height: 60, justifyContent: 'space-between',
-//         alignItems: 'center', flexDirection: 'row', borderBottomWidth: 0.2, left: 5, backgroundColor: `#6a5acd`
-//       }}>
-//         <Text style={{ fontSize: 22, fontWeight: '600', color: '#000' }}> Fill Address</Text>
-//         <Button onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>
-//       </View>
-
-
-
-//       <View style={{ marginHorizontal: 10, justifyContent: 'space-between', }}>
-//         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter city name"} left={<TextInput.Icon icon={"home"} />}
-//           value={city}
-//           onChangeText={(txt) => setCity(txt)} />
-//         {badcity && <Text style={{ color: 'red' }}>Enter city name</Text>}
-
-//         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter building name"} left={<TextInput.Icon icon={"home"} />}
-//           value={building}
-//           onChangeText={(txt) => setBuilding(txt)} />
-//         {badbuilding && <Text style={{ color: 'red' }}>Enter building name</Text>}
-
-//         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter Pincode name"} left={<TextInput.Icon icon={"home"} />}
-//           value={pincode}
-//           onChangeText={(txt) => setPincode(txt)} />
-//         {badpincode && <Text style={{ color: 'red' }}>Enter pincode</Text>}
-//         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Save Address</Button>
-
-//       </View>
-
-
-
-//     </View>
-//   )
-// }
-
-// export default Addaddress
-
-
-
 //////////////////////////////////////////////
 import { View, Text, Alert, ImageBackground } from 'react-native'
 import React, { useState, useEffect } from 'react'
@@ -117,14 +8,16 @@ import HomeScreen from './HomeScreen'
 import Geolocation from '@react-native-community/geolocation'
 import Geocoder from 'react-native-geocoding';
 import CustomColor, { theme } from '../CustomComponents/CustomColor'
+import { firebase } from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore';
+
 
 
 
 const Addaddress = () => {
-
-
   const navigation = useNavigation();
-
+  const [number, setNumber] = useState("")
+  const [badnumber, setBadNumber] = useState("")
   const [city, setCity] = useState("")
   const [building, setBuilding] = useState("")
   const [pincode, setPincode] = useState("")
@@ -132,8 +25,11 @@ const Addaddress = () => {
   const [badbuilding, setBadBuilding] = useState(false)
   const [badpincode, setBadPincode] = useState(false)
   const [adstate, setAdstate] = useState([])
+  const db = firebase.firestore()
+
 
   const data = {
+    "number": number,
     "city": city,
     "building": building,
     "pincode": pincode
@@ -143,8 +39,28 @@ const Addaddress = () => {
 
     setAdstate(JSON.parse(data))
   }
-
   const Validation = (txt) => {
+    if (number.length <= 10) {
+      setBadNumber(true)
+    } else {
+      setBadNumber(false)
+    }
+    if (city.length == 0) {
+      setBadCity(true)
+    } else {
+      setBadCity(false)
+    }
+    if (building.length == 0) {
+      setBadBuilding(true)
+    } else {
+      setBadBuilding(false)
+    }
+    if (pincode.length == 0) {
+      setBadPincode(true)
+    } else {
+      setBadPincode(false)
+      saveAddress();
+    }
     if (city.length == 0) {
       setBadCity(true)
     } else {
@@ -163,13 +79,38 @@ const Addaddress = () => {
     }
   }
   const saveAddress = async () => {
-    if (badcity === false && badbuilding === false && badpincode === false) {
-      if (adstate != null) {
-        hey = await AsyncStorage.setItem('Address', JSON.stringify([data, ...adstate]))
-      } else {
-        await AsyncStorage.setItem('Address', JSON.stringify([data]))
-      }
-
+    if (badnumber == false && badcity === false && badbuilding === false && badpincode === false) {
+      // if (adstate != null) {
+      //   hey = await AsyncStorage.setItem('Address', JSON.stringify([data, ...adstate]))
+      // } else {
+      //   await AsyncStorage.setItem('Address', JSON.stringify([data]))
+      // }
+      // navigation.goBack()
+      db.collection('users').doc(firebase.auth().currentUser.uid).get().then((doc) => {
+        if (doc.exists) {
+          db.collection('users').doc(firebase.auth().currentUser.uid)
+            .update({
+              myAddressArray: firebase.firestore.FieldValue.arrayUnion(data)
+            })
+            .then(() => {
+              // console.log('addWhishlist User Update!');
+            })
+            .catch(() => {
+              console.log('Error while updating!');
+            })
+        } else {
+          db.collection('users').doc(firebase.auth().currentUser.uid)
+            .set({
+              myAddressArray: firebase.firestore.FieldValue.arrayUnion(data)
+            })
+            .then(() => {
+              // console.log(' addWhishlist User Set!');
+            })
+            .catch(err => {
+              console.log('Error: ' + err)
+            })
+        }
+      })
       navigation.goBack()
 
     }
@@ -220,38 +161,43 @@ const Addaddress = () => {
 
   return (
 
-      <View style={{ flex: 1, }}>
+    <View style={{ flex: 1, }}>
 
-        <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
-          <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Fill Address</Text>
-          <Button style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>
-        </View>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
+        <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}> Fill Address</Text>
+        <Button style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => navigation.navigate(HomeScreen)}>Go Home</Button>
+      </View>
 
-        <View style={{ marginHorizontal: 10, marginTop: 30 }}>
-          <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter city name"} left={<TextInput.Icon icon={"home"} />}
-            value={city}
-            onChangeText={(txt) => setCity(txt)} />
-          {badcity && <Text style={{ color: 'red' }}>Enter city name</Text>}
+      <View style={{ marginHorizontal: 10, marginTop: 30 }}>
+        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter Phone Number"} left={<TextInput.Icon icon={"home"} />}
+          value={number}
+          onChangeText={(txt) => setNumber(txt)} />
+        {badcity && <Text style={{ color: 'red' }}>Enter Phone Number</Text>}
 
-          <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter building name"} left={<TextInput.Icon icon={"home"} />}
-            value={building}
-            onChangeText={(txt) => setBuilding(txt)} />
-          {badbuilding && <Text style={{ color: 'red' }}>Enter building name</Text>}
+        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter city name"} left={<TextInput.Icon icon={"home"} />}
+          value={city}
+          onChangeText={(txt) => setCity(txt)} />
+        {badcity && <Text style={{ color: 'red' }}>Enter city name</Text>}
 
-          <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter Pincode name"} left={<TextInput.Icon icon={"home"} />}
-            value={pincode}
-            onChangeText={(txt) => setPincode(txt)} />
-          {badpincode && <Text style={{ color: 'red' }}>Enter pincode</Text>}
-          <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Save Address</Button>
-          {/* <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLong()}>Save Address</Button>
+        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter Loacality"} left={<TextInput.Icon icon={"home"} />}
+          value={building}
+          onChangeText={(txt) => setBuilding(txt)} />
+        {badbuilding && <Text style={{ color: 'red' }}>Loacality</Text>}
+
+        <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Enter Pincode name"} left={<TextInput.Icon icon={"home"} />}
+          value={pincode}
+          onChangeText={(txt) => setPincode(txt)} />
+        {badpincode && <Text style={{ color: 'red' }}>Enter pincode</Text>}
+        <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => Validation()}>Save Address</Button>
+        {/* <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLong()}>Save Address</Button>
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getLatLongFromAdd()}>Save Address</Button>
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => getAddFromLatLong()}>Save Address</Button> */}
 
 
-        </View>
-
-
       </View>
+
+
+    </View>
 
   )
 }
