@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { FlatList, StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, ToastAndroid } from 'react-native'
 import React, { useContext, useState, useEffect } from 'react'
 import { CartContext } from '../Context/CartContext'
 import { Button, IconButton, Avatar, Card, Title, Paragraph } from 'react-native-paper'
@@ -37,7 +37,17 @@ const CartCard = ({ val }) => {
         console.error('Error deleting array element: ', error);
       });
   }
-  // console.log(val.price,typeof val.price)
+   // Tost
+   const showToast = ({ val }) => {
+    const a = val
+    ToastAndroid.showWithGravityAndOffset(
+      `${a}`,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      30,
+      50,
+    );
+  };
   return (
     <View style={{
       width: '100%',
@@ -55,7 +65,7 @@ const CartCard = ({ val }) => {
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 30, color: '#000', }}>Color:-{val.color}</Text>
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 50, color: '#000', }}>code:-{val.code}</Text>
           <Text style={{ fontSize: 16, fontWeight: '500', color: '#000', position: 'absolute', left: 120, top: 70, color: '#000', }}>Price:-{val.price}</Text>
-          <IconButton icon={'delete'} iconColor={'white'} onPress={() => remove()}
+          <IconButton icon={'delete'} iconColor={'white'} onPress={() => {remove(),showToast({val:'item deleted successfully'})}}
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
           <Button textColor='#fff' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart, val]), navigation.navigate(BuyScreen) }}>Buy</Button>
@@ -77,6 +87,17 @@ const Cart = () => {
   // const{adData,setAdData}=useContext(CartContext)
   const db = firebase.firestore()
 
+   // Tost
+   const showToast = ({ val }) => {
+    const a = val
+    ToastAndroid.showWithGravityAndOffset(
+      `${a}`,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      30,
+      50,
+    );
+  };
 
   let makePayment = () => {
     var options = {
@@ -126,7 +147,7 @@ const Cart = () => {
     }
     setTotalprice(total)
   }
-    //Delete the Collection
+  //Delete the Collection
     const removeCart = async () => {
       db.collection('users').doc(firebase.auth().currentUser.uid)
         .get().then((doc) => {
@@ -138,7 +159,7 @@ const Cart = () => {
           }
         })
     }
-  /// Getting the cart from the server
+/// Getting the cart from the server
   useEffect(() => {
     db.collection('users').doc(firebase.auth().currentUser.uid).get().then((doc) => {
       if (doc.exists) {
@@ -165,7 +186,7 @@ const Cart = () => {
       <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5, bottom: 0.5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Your Cart</Text>
         {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button> */}
-        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => removeCart()}>Clear Cart</Button>
+        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => {removeCart(),showToast({val:"clear cart successfully"})}}>Clear Cart</Button>
       </View>
 
       {/* location */}

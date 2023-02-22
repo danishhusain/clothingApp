@@ -87,7 +87,7 @@
 // export default Wishlist
 
 /////////////////////
-import { View, Text, FlatList, ScrollView, TouchableOpacity, Image, Alert, ImageBackground } from 'react-native'
+import { View, Text, FlatList, ScrollView, TouchableOpacity, Image, Alert, ImageBackground, ToastAndroid } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { CartContext } from '../Context/CartContext'
 import { Button, IconButton } from 'react-native-paper'
@@ -161,8 +161,6 @@ const CartWishlist = ({ val }) => {
     })
   }
 
-
-
   const remove = () => {
     db.collection('users').doc(firebase.auth().currentUser.uid).update({
       myWhislistArray: firestore.FieldValue.arrayRemove(val)
@@ -174,10 +172,20 @@ const CartWishlist = ({ val }) => {
         console.error('Error deleting array element: ', error);
       });
   }
+   // Tost
+   const showToast = ({ val }) => {
+    const a = val
+    ToastAndroid.showWithGravityAndOffset(
+      `${a}`,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      30,
+      50,
+    );
+  };
   return (
 
     <View style={{ width: '100%', height: 100, flexDirection: 'row', }}>
-
       <ScrollView style={{ width: '100%', backgroundColor: '#B0A0FF', marginVertical: 1, }} >
         <View style={{ justifyContent: 'center', alignContent: 'center', }}>
           <TouchableOpacity
@@ -189,7 +197,7 @@ const CartWishlist = ({ val }) => {
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 30, color: '#000', }}>Color:-{val.color}</Text>
           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 50, color: '#000', }}>code:-{val.code}</Text>
           <Text style={{ fontSize: 16, fontWeight: '500', color: '#000', position: 'absolute', left: 120, top: 70, color: '#000', }}>Price:-{val.price}</Text>
-          <IconButton icon={"heart"} iconColor={'#1DA664'} onPress={() => remove(val)}
+          <IconButton icon={"heart"} iconColor={'#1DA664'} onPress={() => {remove(val),showToast({val:'item deleted successfully'})}}
             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
           <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, bottom: 3, color: 'white', }}
@@ -197,12 +205,8 @@ const CartWishlist = ({ val }) => {
             onPress={() => { addCart() }}
           >Add Cart</Button>
         </View>
-
       </ScrollView>
-
     </View>
-
-
   )
 
 }
@@ -212,6 +216,17 @@ const Wishlist = () => {
   const userDocument = firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid)
   const db = firebase.firestore()
 
+   // Tost
+   const showToast = ({ val }) => {
+    const a = val
+    ToastAndroid.showWithGravityAndOffset(
+      `${a}`,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      30,
+      50,
+    );
+  };
   //Delete the Collection
   const removeCart = async () => {
     db.collection('users').doc(firebase.auth().currentUser.uid)
@@ -224,7 +239,6 @@ const Wishlist = () => {
         }
       })
   }
-
   useEffect(() => {
     db.collection('users').doc(firebase.auth().currentUser.uid).get().then((doc) => {
       if (doc.exists) {
@@ -261,7 +275,7 @@ const Wishlist = () => {
       <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Wishlist</Text>
         {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setWishlist([])}>Clear Cart</Button> */}
-        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => removeCart()}>Clear Cart</Button>
+        <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => {removeCart(),showToast({val:"clear whishlist successfully"})}}>Clear Cart</Button>
       </View>
       <View style={{ flex: 1, }}>
         <FlatList

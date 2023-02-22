@@ -115,6 +115,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Alert,
+  ToastAndroid,
 } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../Common/Header';
@@ -149,6 +150,18 @@ export default function HomeFlatList({ item }) {
   const { cart, setcart } = useContext(CartContext);
   const db = firebase.firestore()
 
+  // Tost
+  const showToast = ({ val }) => {
+    const a = val
+    ToastAndroid.showWithGravityAndOffset(
+      // 'item added in whishlist!',
+      `${a}`,
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      30,
+      50,
+    );
+  };
   // Add in WHislist
   const addWhishlist = async () => {
     db.collection('users').doc(firebase.auth().currentUser.uid).get().then((doc) => {
@@ -156,20 +169,11 @@ export default function HomeFlatList({ item }) {
         db.collection('users').doc(firebase.auth().currentUser.uid)
           .update({
             myWhislistArray: firebase.firestore.FieldValue.arrayUnion(item)
-
           })
           .then(() => {
             // console.log('addWhishlist User Update!');
             // alert
-            Alert.alert('Wishlist', 'Item Added', [
-              {
-                  text: 'Cancel',
-                  onPress: () => console.log('Cancel Pressed'),
-                  style: 'cancel',
-              },
-              { text: 'OK', onPress: () => console.log('OK Pressed') },
-          ]);
-            
+            showToast({ val: "item added in whishlist successfully" })
           })
           .catch(() => {
             console.log('Error while updating!');
@@ -182,14 +186,7 @@ export default function HomeFlatList({ item }) {
           .then(() => {
             // console.log(' addWhishlist User Set!');
             // alert
-            Alert.alert('Wishlist', 'Item Added', [
-              {
-                  text: 'Cancel',
-                  onPress: () => console.log('Cancel Pressed'),
-                  style: 'cancel',
-              },
-              { text: 'OK', onPress: () => console.log('OK Pressed') },
-          ]);
+            showToast({ val: "item added in whishlist successfully" })
           })
           .catch(err => {
             console.log('Error: ' + err)
@@ -208,27 +205,10 @@ export default function HomeFlatList({ item }) {
           .then(() => {
             // console.log('User Update!');
             // alert
-            Alert.alert('Cart', 'Item Added', [
-              {
-                  text: 'Cancel',
-                  onPress: () => console.log('Cancel Pressed'),
-                  style: 'cancel',
-              },
-              { text: 'OK', onPress: () => console.log('OK Pressed') },
-          ]);
-
+            showToast({ val: "item added in cart successfully" })
           })
           .catch(() => {
-            // console.log('Error while updating!');
-            // alert
-            Alert.alert('Cart', 'Item Added', [
-              {
-                  text: 'Cancel',
-                  onPress: () => console.log('Cancel Pressed'),
-                  style: 'cancel',
-              },
-              { text: 'OK', onPress: () => console.log('OK Pressed') },
-          ]);
+            console.log('Error while updating!');
           })
       } else {
         db.collection('users').doc(firebase.auth().currentUser.uid)
@@ -237,7 +217,8 @@ export default function HomeFlatList({ item }) {
           })
           .then(() => {
             console.log('User Set!');
-            // setdocsId(null)
+            // alert
+            showToast({ val: "item added in cart successfully" })
           })
           .catch(err => {
             console.log('Error: ' + err)

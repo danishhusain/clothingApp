@@ -13,12 +13,14 @@ import { AuthContext } from '../Context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import CustomColor, { theme } from '../CustomComponents/CustomColor';
 import {  tshirt, jeans, jacket, shirt, lower, hoodie } from '../DataBase/Api';
+import Details from '../Screens/Details';
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   // const onChangeSearch = query => setSearchQuery(query);
   const itemArray = [tshirt, jacket, jeans, shirt, lower, hoodie,]
   const [filteredData, setFilteredData] = React.useState(tshirt);
   const navigation = useNavigation();
+  const { ItemDetail,setItemDetail } = useContext(CartContext)
 
 
 
@@ -35,14 +37,11 @@ const Search = () => {
   // console.log("jj", filteredData)
 
   const renderSearches = ({ item }) => {
-    // const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
     const posterImg = item.url
-    // const backdropImg = `http://image.tmdb.org/t/p/w185/${item.backdrop_path}`
-    // console.log("render",movies)
     return (
       <>
         <Card style={{ flexDirection: 'row', marginVertical: 2, }} >
-          <TouchableOpacity style={{ flexDirection: 'row', paddingRight: 250, }} >
+          <TouchableOpacity style={{ flexDirection: 'row', paddingRight: 250, }} onPress={()=>{navigation.navigate(Details),setItemDetail(item)}}>
             <View style={{ flexDirection: 'row', marginVertical: 2, }}>
               <View style={{ flexDirection: 'row' }}>
                 {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}
