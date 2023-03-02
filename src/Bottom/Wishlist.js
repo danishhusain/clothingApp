@@ -270,7 +270,6 @@ const Wishlist = () => {
   return (
     <View style={{ flex: 1, }}>
 
-
       {/* header */}
       <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Wishlist</Text>
