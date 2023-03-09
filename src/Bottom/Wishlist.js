@@ -39,14 +39,14 @@
 //           >
 //             <Image style={{ height: 100, width: 100 }} source={{ uri: val.url }} />
 //           </TouchableOpacity>
-//           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 10, color: '#000', }}>Brand:-{val.brand}</Text>
-//           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 30, color: '#000', }}>Color:-{val.color}</Text>
-//           <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 50, color: '#000', }}>code:-{val.code}</Text>
-//           <Text style={{ fontSize: 16, fontWeight: '500', color: '#000', position: 'absolute', left: 120, top: 70, color: '#000', }}>Price:-{val.price}</Text>
+//           <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 10, color: theme.text, }}>Brand:-{val.brand}</Text>
+//           <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 30, color: theme.text, }}>Color:-{val.color}</Text>
+//           <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 50, color: theme.text, }}>code:-{val.code}</Text>
+//           <Text style={{ fontSize: 16, fontWeight: '500', color: theme.text, position: 'absolute', left: 120, top: 70, color: theme.text, }}>Price:-{val.price}</Text>
 //           <IconButton icon={"heart"} iconColor={'#1DA664'} onPress={() => remove()}
-//             style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
+//             style={{ fontSize: 16, fontWeight: '600', color: theme.text, position: 'absolute', right: 10, top: -3, color: 'white', }}
 //           />
-//           <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, bottom: 3, color: 'white', }} onPress={() => { setcart([...cart, val]), alert("Item Added") }}>Add Cart</Button>
+//           <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', color: theme.text, position: 'absolute', right: 10, bottom: 3, color: 'white', }} onPress={() => { setcart([...cart, val]), alert("Item Added") }}>Add Cart</Button>
 //         </View>
 
 //       </ScrollView>
@@ -98,6 +98,7 @@ import CustomColor from '../CustomComponents/CustomColor'
 import { useEffect } from 'react'
 import { firebase } from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import { StyleContext } from '../styles/context/StyleContext'
 
 
 
@@ -111,6 +112,7 @@ const CartWishlist = ({ val }) => {
   const navigation = useNavigation()
   const [DetailsCartItem, setDetailsCartItem] = useState([])
   const { ItemDetail, setItemDetail } = useContext(CartContext)
+  const { theme} = useContext(StyleContext);
   const db = firebase.firestore()
   ///Add in Cart
   const addCart = async () => {
@@ -193,14 +195,14 @@ const CartWishlist = ({ val }) => {
           >
             <Image style={{ height: 100, width: 100 }} source={{ uri: val.url }} />
           </TouchableOpacity>
-          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 10, color: '#000', }}>Brand:-{val.brand}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 30, color: '#000', }}>Color:-{val.color}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 50, color: '#000', }}>code:-{val.code}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '500', color: '#000', position: 'absolute', left: 120, top: 70, color: '#000', }}>Price:-{val.price}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 10, color: theme.text, }}>Brand:-{val.brand}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 30, color: theme.text, }}>Color:-{val.color}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 50, color: theme.text, }}>code:-{val.code}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '500', color: theme.text, position: 'absolute', left: 120, top: 70, color: theme.text, }}>Price:-{val.price}</Text>
           <IconButton icon={"heart"} iconColor={'#1DA664'} onPress={() => {remove(val),showToast({val:'item deleted successfully'})}}
-            style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
+            style={{ fontSize: 16, fontWeight: '600', color: theme.text, position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
-          <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, bottom: 3, color: 'white', }}
+          <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', color: theme.text, position: 'absolute', right: 10, bottom: 3, color: 'white', }}
             // onPress={() => { setcart([...cart, val]), alert("Item Added") }}
             onPress={() => { addCart() }}
           >Add Cart</Button>
@@ -213,6 +215,7 @@ const CartWishlist = ({ val }) => {
 
 const Wishlist = () => {
   const { wishlist, setWishlist } = useContext(CartContext)
+  const { theme} = useContext(StyleContext);
   const userDocument = firebase.firestore().collection('Users').doc(firebase.auth().currentUser.uid)
   const db = firebase.firestore()
 

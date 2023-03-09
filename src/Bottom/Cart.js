@@ -12,10 +12,10 @@ import DetailsCart from '../Screens/DetailsCart'
 import BuyScreen from '../Screens/BuyScreen'
 import { set } from 'react-native-reanimated'
 import RazorpayCheckout from 'react-native-razorpay';
-import CustomColor from '../CustomComponents/CustomColor'
 import CustomButton from '../CustomComponents/CustomButton'
 import { firebase } from '@react-native-firebase/auth'
 import firestore from '@react-native-firebase/firestore';
+import { StyleContext } from '../styles/context/StyleContext'
 
 
 
@@ -24,6 +24,8 @@ const CartCard = ({ val }) => {
   const { cart, setcart, setItemDetail } = useContext(CartContext)
   // const {DetailsCartItem,setDetailsCartItem}=useContext(CartContext)
   const [DetailsCartItem, setDetailsCartItem] = useState([])
+  const { theme} = useContext(StyleContext);
+
   const db = firebase.firestore()
 
   const remove = () => {
@@ -61,12 +63,12 @@ const CartCard = ({ val }) => {
           <TouchableOpacity onPress={() => { navigation.navigate(Details), setItemDetail(val) }} >
             <Image style={{ height: 100, width: 100 }} source={{ uri: val.url }} />
           </TouchableOpacity>
-          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 10, color: '#000', }}>Brand:-{val.brand}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 30, color: '#000', }}>Color:-{val.color}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '400', color: '#000', position: 'absolute', left: 120, top: 50, color: '#000', }}>code:-{val.code}</Text>
-          <Text style={{ fontSize: 16, fontWeight: '500', color: '#000', position: 'absolute', left: 120, top: 70, color: '#000', }}>Price:-{val.price}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 10, color: theme.text, }}>Brand:-{val.brand}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 30, color: theme.text, }}>Color:-{val.color}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '400', color: theme.text, position: 'absolute', left: 120, top: 50, color: theme.text, }}>code:-{val.code}</Text>
+          <Text style={{ fontSize: 16, fontWeight: '500', color: theme.text, position: 'absolute', left: 120, top: 70, color: theme.text, }}>Price:-{val.price}</Text>
           <IconButton icon={'delete'} iconColor={'white'} onPress={() => {remove(),showToast({val:'item deleted successfully'})}}
-            style={{ fontSize: 16, fontWeight: '600', color: '#000', position: 'absolute', right: 10, top: -3, color: 'white', }}
+            style={{ fontSize: 16, fontWeight: '600', color: theme.text, position: 'absolute', right: 10, top: -3, color: 'white', }}
           />
           <Button textColor='#fff' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 10, bottom: 3, }} onPress={() => { setcart([...cart, val]), navigation.navigate(BuyScreen) }}>Buy</Button>
 
@@ -84,6 +86,8 @@ const Cart = () => {
   const [CartAddress, setCartAddress] = useState()
   const [totalprice, setTotalprice] = useState()
   const [buyItem, setbuyItem] = useState()
+  const { theme} = useContext(StyleContext);
+
   // const{adData,setAdData}=useContext(CartContext)
   const db = firebase.firestore()
 
@@ -183,14 +187,14 @@ const Cart = () => {
     <View style={{ flex: 1, }}>
 
       {/* header */}
-      <View style={{ width: '100%', height: '6.80%', backgroundColor: CustomColor.AppColor, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5, bottom: 0.5 }}>
+      <View style={{ width: '100%', height: '6.80%', backgroundColor: theme.primary, elevation: 2, borderBottomLeftRadius: 5, borderBottomRightRadius: 5, bottom: 0.5 }}>
         <Text style={{ fontSize: 22, fontWeight: '600', position: 'absolute', left: 15, top: 10, color: `white`, fontWeight: '600' }}>Your Cart</Text>
         {/* <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => setcart([])}>Clear Cart</Button> */}
         <Button textColor='white' style={{ fontSize: 16, fontWeight: '600', position: 'absolute', right: 1, paddingTop: 14, fontWeight: '600' }} onPress={() => {removeCart(),showToast({val:"clear cart successfully"})}}>Clear Cart</Button>
       </View>
 
       {/* location */}
-      <View style={{ width: '100%', height: 45, backgroundColor: CustomColor.AppColor, flexDirection: 'row', justifyContent: 'space-between', }}>
+      <View style={{ width: '100%', height: 45, backgroundColor: theme.primary, flexDirection: 'row', justifyContent: 'space-between', }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '75%', left: -5 }}>
           <IconButton icon={'map-marker-outline'} iconColor={'#fff'} style={{}} />
 
@@ -218,7 +222,7 @@ const Cart = () => {
       {/* Total Balance */}
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 10, marginHorizontal: 5 }}>
         {/* <Text style={{color:'blue',fontWeight:'800'}}>Sub-Total: </Text> */}
-        <Text style={{ fontSize: 20, color: CustomColor.AppColor }}>Total: {totalprice}</Text>
+        <Text style={{ fontSize: 20, color: theme.primary }}>Total: {totalprice}</Text>
       </View>
 
 

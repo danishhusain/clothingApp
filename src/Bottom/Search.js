@@ -11,9 +11,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { firebase } from '@react-native-firebase/auth';
 import { AuthContext } from '../Context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
-import CustomColor, { theme } from '../CustomComponents/CustomColor';
 import {  tshirt, jeans, jacket, shirt, lower, hoodie } from '../DataBase/Api';
 import Details from '../Screens/Details';
+import { StyleContext } from '../styles/context/StyleContext';
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   // const onChangeSearch = query => setSearchQuery(query);
@@ -21,6 +21,8 @@ const Search = () => {
   const [filteredData, setFilteredData] = React.useState(tshirt);
   const navigation = useNavigation();
   const { ItemDetail,setItemDetail } = useContext(CartContext)
+  const { theme} = useContext(StyleContext);
+
 
 
 
@@ -70,7 +72,7 @@ const Search = () => {
         placeholder="Search"
         onChangeText={onChangeSearch}
         value={searchQuery}
-        style={{ backgroundColor: CustomColor.AppColor, }}
+        style={{ backgroundColor: theme.primary, }}
         iconColor={'white'}
         placeholderTextColor={'white'}
       />

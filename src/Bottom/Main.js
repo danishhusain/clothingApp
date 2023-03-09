@@ -27,6 +27,7 @@ import ImageSliding from '../Components/ImageSliding';
 import {CustomButton} from '../CustomComponents/CustomButton';
 import CustomColor from '../CustomComponents/CustomColor';
 import HomeFlatList from '../Components/HomeFlatList';
+import { StyleContext } from '../styles/context/StyleContext';
 
 const Main = () => {
   const navigation = useNavigation();
@@ -35,8 +36,11 @@ const Main = () => {
   const {cart, setcart} = useContext(CartContext);
   const {wishlist, setWishlist} = useContext(CartContext);
   const {setItemDetail} = useContext(CartContext);
+  const { theme} = useContext(StyleContext);
+
 
   return (
+    // <ScrollView>
     <View style={{flex: 1, paddingBottom: 53.5}}>
       <View style={{}}>
         <Header />
@@ -134,6 +138,7 @@ const Main = () => {
         />
       )}
     </View>
+    // {/* </ScrollView> */}
   );
 };
 

@@ -2,7 +2,7 @@ import { ImageBackground, Text, View, } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { Button, TextInput, } from 'react-native-paper'
 import { AuthContext } from '../Context/AuthContext';
-import CustomColor from '../CustomComponents/CustomColor';
+import { StyleContext } from '../styles/context/StyleContext';
 
 
 const SignIn = ({ navigation }) => {
@@ -11,6 +11,7 @@ const SignIn = ({ navigation }) => {
   const [name, setName] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const { register, } = useContext(AuthContext)
+  const { theme} = useContext(StyleContext);
   const [errorMessage, setErrorMessage] = useState('');
 
   // Handle submit Validation
@@ -34,7 +35,7 @@ const SignIn = ({ navigation }) => {
   return (
     <View style={{ flex: 1, justifyContent: 'center' }}>
       <ImageBackground source={require('../Images/background.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
-      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600',color:CustomColor.AppColor }}>SignIn</Text>
+      <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600',color:theme.primary }}>SignIn</Text>
       {/* Name, Email, Password,Confirm Pssword */}
       <View style={{ marginHorizontal: 10, justifyContent: 'space-between' }}>
         <TextInput style={{ marginVertical: 5 }} mode='outlined' label={"Name"} left={<TextInput.Icon icon={"home"} />}
@@ -62,7 +63,7 @@ const SignIn = ({ navigation }) => {
 
         <Button style={{ marginVertical: 5 }} mode='contained' onPress={() => handleSubmit(email, password, name)}>Sign In</Button>
 
-        <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline',color:CustomColor.AppColor  }}
+        <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline',color:theme.primary  }}
           value={email}
           onPress={() => navigation.goBack()}>Alredy have Account</Text>
       </View>

@@ -7,14 +7,15 @@ import { AuthContext } from '../Context/AuthContext';
 import { useContext } from 'react';
 import auth from '@react-native-firebase/auth';
 import { color } from 'react-native-reanimated';
-import CustomColor from '../CustomComponents/CustomColor';
 import LoadingSpinner from '../Common/Loader';
+import { StyleContext } from '../styles/context/StyleContext';
 
 const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const { login, ResetEmailVerification, showLoader, setShowLoader } = useContext(AuthContext);
+  const { theme} = useContext(StyleContext);
   const [hidePassword, setHidePassword] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   ////UseEfffect for google signIn
@@ -35,14 +36,14 @@ const LogIn = ({ navigation }) => {
     // Get the users ID token
     const { idToken } = await GoogleSignin.signIn();
     console.log('Id Token 1', idToken);
-    // Create a Google credential with the token
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    console.log('Succesfuuly Create a Google credential with the token  token:', googleCredential);
+    // Create a Google cprimaryential with the token
+    const googleCprimaryential = auth.GoogleAuthProvider.cprimaryential(idToken);
+    console.log('Succesfuuly Create a Google cprimaryential with the token  token:', googleCprimaryential);
     setShowLoader(false)
-    // Sign-in the user with the credential
-    return auth().signInWithCredential(googleCredential);
-    // const user_signin_in = auth().signInWithCredential(googleCredential);
-    // console.log('Sign-in the user with the credential');
+    // Sign-in the user with the cprimaryential
+    return auth().signInWithCprimaryential(googleCprimaryential);
+    // const user_signin_in = auth().signInWithCprimaryential(googleCprimaryential);
+    // console.log('Sign-in the user with the cprimaryential');
 
     // user_signin_in
     //   .then(user => {
@@ -76,7 +77,7 @@ const LogIn = ({ navigation }) => {
     <View style={{ flex: 1, justifyContent: 'center', }}>
       {/* <ImageBackground source={require('../Images/BGImage.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}> */}
       <ImageBackground source={require('../Images/background.png')} resizeMode='cover' style={{ flex: 1, justifyContent: 'center' }}>
-        <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600', color: CustomColor.AppColor }}>LogIn</Text>
+        <Text style={{ alignSelf: 'center', fontSize: 25, fontWeight: '600', color: theme.primary }}>LogIn</Text>
 
         {/* EmailInput ,PasswordInput and toggle */}
         <View
@@ -90,7 +91,7 @@ const LogIn = ({ navigation }) => {
           {errorMessage ? <Text>{errorMessage}</Text> : null}
 
           <TouchableOpacity style={{ alignItems: 'flex-end' }} onPress={() => { ResetEmailVerification(email); }}>
-            <Text style={{ color: CustomColor.AppColor }} onPress={() => { ResetEmailVerification(email); }}>Forget?{' '}  </Text>
+            <Text style={{ color: theme.primary }} onPress={() => { ResetEmailVerification(email); }}>Forget?{' '}  </Text>
           </TouchableOpacity>
         </View>
 
@@ -100,7 +101,7 @@ const LogIn = ({ navigation }) => {
 
           <GoogleSigninButton style={{ width: '95%', height: 48, alignSelf: 'center' }} onPress={() => onGoogleButtonPress()} />
 
-          <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline', color: CustomColor.AppColor }} onPress={() => navigation.navigate('SignIn')}>  Create New Account  </Text>
+          <Text style={{ fontSize: 25, fontWeight: '400', alignSelf: 'center', textDecorationLine: 'underline', color: theme.primary }} onPress={() => navigation.navigate('SignIn')}>  Create New Account  </Text>
         </View>
         {/* </ImageBackground> */}
         {showLoader ? <LoadingSpinner /> : null}

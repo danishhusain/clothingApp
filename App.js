@@ -6,6 +6,7 @@ import Navigation from './src/Navigation';
 import SplashScreen from 'react-native-splash-screen'
 import { useEffect } from 'react';
 import { requestUserPermission, notificationListner } from './src/PushNotification/PushNotification_helper'
+import StyleContextProvider from './src/styles/context/StyleContext';
 
 const App = () => {
   useEffect(() => {
@@ -17,9 +18,11 @@ const App = () => {
   return (
     <CartContextProvider>
       <AuthProvider>
-        <Navigation />
+        <StyleContextProvider>
+          <Navigation />
+        </StyleContextProvider>
       </AuthProvider>
-    </CartContextProvider>
+    </CartContextProvider >
   );
 };
 

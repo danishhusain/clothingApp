@@ -12,12 +12,13 @@ import MyOrders from './MyOrders'
 import Camera from '../Common/LaunchCamera'
 import Permissions from '../Permission/Permissions'
 import LoadingSpinner from '../Common/Loader'
-import CustomColor from '../CustomComponents/CustomColor'
+import { StyleContext } from '../styles/context/StyleContext'
 
 
 const HomeScreen = () => {
   const [selectedTab, setSelectedTab] = useState(0)
   const { cart, setCart } = useContext(CartContext)
+  const { theme} = useContext(StyleContext);
   const { wishlist, setWishlist } = useContext(CartContext)
 
 
@@ -32,7 +33,7 @@ const HomeScreen = () => {
 
       {/* </View> */}
       <View style={{flex: 1, position: 'absolute', bottom: 0, flexDirection: 'row',
-        justifyContent: 'space-evenly', width: "100%", elevation: 1, backgroundColor: CustomColor.AppColor
+        justifyContent: 'space-evenly', width: "100%", elevation: 1, backgroundColor: theme.primary
       }}>
 
         <IconButton icon="home"
