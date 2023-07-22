@@ -25,12 +25,13 @@ const Details = ({ value }) => {
     const { ItemDetail, } = useContext(CartContext)
     // const { Addaddress, seAddaddress } = useContext(CartContext)
     const [DetailAddress, setDetailAddress] = useState([])
+    const [size,setSize] = useState('m')
     const navigation = useNavigation()
     const isFocused = useIsFocused()
     const [selectedItem, setSelectedItem] = useState(0)
     const [isFullScreen, setIsFullScreen] = useState(false);
 
-
+console.log("size: " + size)
 
     const getAddress = async () => {
         let ddata = await AsyncStorage.getItem("Address")
@@ -42,7 +43,7 @@ const Details = ({ value }) => {
 
     // console.log("data", ItemDetail)
     // console.log("A", DetailAddress)
-   
+
     return (
         <View style={{ flex: 1 }}>
 
@@ -107,7 +108,7 @@ const Details = ({ value }) => {
                     <View>
                         <Text style={{ right: 5, fontSize: 20, fontWeight: '600', color: '#000' }}>₹{ItemDetail.price}</Text>
                         <Text style={{ right: 5, fontSize: 14, color: '#000' }}>Inclusive of all taxes</Text>
-                        <ShareExample data={ItemDetail}/>
+                        <ShareExample data={ItemDetail} />
                     </View>
                 </View>
 
@@ -117,11 +118,11 @@ const Details = ({ value }) => {
                         <Text style={{ color: 'red' }}>Select size name:</Text>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <CustomButton mode={'eleveted'} title={"S"} ButtonColor={CustomColor.ButtonColor} onClick={() => console.log("size")} />
-                        <CustomButton mode={'eleveted'} title={"M"} ButtonColor={CustomColor.ButtonColor} onClick={() => console.log("size")} />
-                        <CustomButton mode={'eleveted'} title={"L"} ButtonColor={CustomColor.ButtonColor} onClick={() => console.log("size")} />
-                        <CustomButton mode={'eleveted'} title={"XL"} ButtonColor={CustomColor.ButtonColor} onClick={() => console.log("size")} />
-                        <CustomButton mode={'eleveted'} title={"XXL"} ButtonColor={CustomColor.ButtonColor} onClick={() => console.log("size")} />
+                        <CustomButton mode={'eleveted'} size={size} title={"S"} ButtonColor={CustomColor.ButtonColor} onClick={() =>{ setSize("S")}} />
+                        <CustomButton mode={'eleveted'} size={size} title={"M"} ButtonColor={CustomColor.ButtonColor} onClick={() => {setSize("M")}} />
+                        <CustomButton mode={'eleveted'} size={size} title={"L"} ButtonColor={CustomColor.ButtonColor} onClick={() => {setSize("L")}} />
+                        <CustomButton mode={'eleveted'} size={size} title={"XL"} ButtonColor={CustomColor.ButtonColor} onClick={() => {setSize("XL")}} />
+                        <CustomButton mode={'eleveted'} size={size} title={"XXL"} ButtonColor={CustomColor.ButtonColor} onClick={() => {setSize("XXL")}} />
                     </View>
                 </View>
 
@@ -139,7 +140,7 @@ const Details = ({ value }) => {
                 <View style={{}}>
                     {/* <Button mode='contained'  onPress={() => setcart(...cart ,ItemDetail)}>Add Cart</Button> */}
                     {/* <Button mode='contained' onPress={() => navigation.navigate(BuyScreen)}>Buy Now</Button> */}
-                    <CustomButton mode={'contained'} title={'Buy Now'} onClick={() => navigation.navigate(BuyScreen)} />
+                    <CustomButton mode={'contained'}   title={'Buy Now'} onClick={() => navigation.navigate(BuyScreen)} />
                     {/* <Button mode='contained'>height</Button> */}
                 </View>
                 <Text style={{ fontSize: 20 }}>Recommended</Text>
@@ -147,26 +148,31 @@ const Details = ({ value }) => {
                 {/* {selectedItem==0?():selectedItem==1?():selectedItem==2?():selectedItem==3?():selectedItem==4?():selectedItem==?4():null} */}
 
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', }}>
-                    <FlatList horizontal={true} style={{}} data={tshirt} renderItem={({ item }) =>
-                        <View style={{ marginHorizontal: 1, paddingHorizontal: 1, }}>
-                            <Card style={{ height: 300, width: '100%' }}>
-                                <Card.Cover style={{ height: 200, width: '100%' }} source={{ uri: item.url }} />
-                                <Card.Content>
-                                    <Text variant="titleLarge">{item.ItemName}</Text>
-                                    <Text variant="bodyMedium">{item.brand}</Text>
-                                    {/* <Text variant="bodyMedium">{item.code}</Text> */}
-                                </Card.Content>
-                                <Card.Actions style={{ justifyContent: 'space-between', marginHorizontal: 5, }}>
-                                    <Button>Cart</Button>
-                                    <Button>Buy</Button>
-                                    {/* <CustomButton mode={'outlined'} title={"Cart"} ButtonColor={CustomColor.ButtonColor} onClick={() => console.log("size")} />
+                    <FlatList
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        style={{}}
+                        data={tshirt}
+                        renderItem={({ item }) =>
+                            <View style={{ flex: 1, marginVertical: 2, paddingHorizontal: 2, paddingVertical: 1 }}>
+                                <Card style={{ height: 300, width: '100%' }}>
+                                    <Card.Cover elevation={2} style={{ width: '100%' }} source={{ uri: item.url }} />
+                                    <Card.Content>
+                                        <Text variant="titleLarge">{item.ItemName}</Text>
+                                        <Text variant="bodyMedium">{item.brand}</Text>
+                                        {/* <Text variant="bodyMedium">{item.code}</Text> */}
+                                    </Card.Content>
+                                    <Card.Actions style={{ justifyContent: 'space-between', marginHorizontal: 5, }}>
+                                        <Button>Cart</Button>
+                                        <Button>Buy</Button>
+                                        {/* <CustomButton mode={'outlined'} title={"Cart"} ButtonColor={CustomColor.ButtonColor} onClick={() => console.log("size")} />
                                     <CustomButton mode={'contained'} title={"Cart"}  onClick={() => console.log("size")} /> */}
 
 
-                                </Card.Actions>
-                            </Card>
-                        </View>
-                    } />
+                                    </Card.Actions>
+                                </Card>
+                            </View>
+                        } />
                 </View>
 
             </ScrollView>

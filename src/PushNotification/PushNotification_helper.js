@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { firebase } from '@react-native-firebase/auth';
 import messaging from '@react-native-firebase/messaging';
+import { useEffect } from 'react';
 
 export const requestUserPermission = async () => {
     const authStatus = await messaging().requestPermission();
@@ -47,4 +48,18 @@ export const notificationListner = async () => {
 }
 
 
+
+
+const PushNotification_helper = () => {
+    useEffect(() => {
+        const unsubscribe = messaging().onMessage(async remoteMessage => {
+            Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+
+        });
+
+        // return unsubscribe;
+    }, []);
+}
+
+export default PushNotification_helper
 

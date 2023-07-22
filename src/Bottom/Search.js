@@ -11,17 +11,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { firebase } from '@react-native-firebase/auth';
 import { AuthContext } from '../Context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
-import {  tshirt, jeans, jacket, shirt, lower, hoodie } from '../DataBase/Api';
+import { tshirt, jeans, jacket, shirt, lower, hoodie } from '../DataBase/Api';
 import Details from '../Screens/Details';
 import { StyleContext } from '../styles/context/StyleContext';
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
+  const [noData, setNoData] = React.useState(false);
   // const onChangeSearch = query => setSearchQuery(query);
   const itemArray = [tshirt, jacket, jeans, shirt, lower, hoodie,]
   const [filteredData, setFilteredData] = React.useState(tshirt);
   const navigation = useNavigation();
-  const { ItemDetail,setItemDetail } = useContext(CartContext)
-  const { theme} = useContext(StyleContext);
+  const { ItemDetail, setItemDetail } = useContext(CartContext)
+  const { theme } = useContext(StyleContext);
 
 
 
@@ -34,7 +35,16 @@ const Search = () => {
       return itemData.indexOf(textData) > -1;
       // return itemData.indexOf(textData) > -1;
     });
-    setFilteredData(newData);
+
+    if (newData.length == 0) {
+      setNoData(true);
+    } else {
+      setFilteredData(newData);
+      setNoData(false);
+
+
+    }
+
   }
   // console.log("jj", filteredData)
 
@@ -43,7 +53,7 @@ const Search = () => {
     return (
       <>
         <Card style={{ flexDirection: 'row', marginVertical: 2, }} >
-          <TouchableOpacity style={{ flexDirection: 'row', paddingRight: 250, }} onPress={()=>{navigation.navigate(Details),setItemDetail(item)}}>
+          <TouchableOpacity style={{ flexDirection: 'row', paddingRight: 250, }} onPress={() => { navigation.navigate(Details), setItemDetail(item) }}>
             <View style={{ flexDirection: 'row', marginVertical: 2, }}>
               <View style={{ flexDirection: 'row' }}>
                 {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}
@@ -51,12 +61,11 @@ const Search = () => {
                 {/* <Image style={{ height: 80, width: 120, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }} source={{ uri: backdropImg }} /> */}
               </View>
               {/* <View style={{justifyContent:'space-between',flexDirection:'row',}}> */}
-                <View style={{ left: 5, justifyContent: 'center', }}>
+              <View style={{ left: 5, justifyContent: 'center', }}>
+                <Text style={{}} >{item.ItemName}</Text>
+              </View>
+              {/* <View style={{ backgroundColor: 'red', }}>
                   <Text style={{}} >{item.ItemName}</Text>
-                </View>
-                {/* <View style={{ backgroundColor: 'red', }}>
-                  <Text style={{}} >{item.ItemName}</Text>
-
                 </View> */}
               {/* </View> */}
             </View>
@@ -77,17 +86,23 @@ const Search = () => {
         placeholderTextColor={'white'}
       />
       <View>
-        <Text style={{fontSize:20,}}>Poupular Search</Text>
+        <Text style={{ fontSize: 20, }}>Poupular Search</Text>
       </View>
-      <View>
-        <View style={{ justifyContent: 'space-between', margin: 5, }}>
-          <FlatList
-            data={filteredData}
-            renderItem={renderSearches}
-            keyExtractor={item => item.code}
-            showsVerticalScrollIndicator={false}
-          />
-        </View>
+      <View style={{ flex: 1, }}>
+        {noData ?
+          (<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>No data</Text>
+          </View>) 
+          :
+          <View style={{ flex: 1, justifyContent: 'space-between', margin: 5, }}>
+            <FlatList
+              data={filteredData}
+              renderItem={renderSearches}
+              keyExtractor={item => item.code}
+              showsVerticalScrollIndicator={false}
+            />
+          </View>
+        }
       </View>
     </View>
   );

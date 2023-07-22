@@ -122,12 +122,12 @@ export default function HomeFlatList({ item }) {
     })
   }
   return (
-    <View style={{ borderRadius: 10, padding: 0.5 }}>
+    <View style={{ flex:1,borderRadius: 10, padding: 0.5 }}>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate(Details), setItemDetail(item);
         }}>
-        <Image style={{ height: 150, width: 195 }} source={{ uri: item.url }} />
+        <Image style={{ height: 150, }} source={{ uri: item.url }} />
       </TouchableOpacity>
 
       <IconButton

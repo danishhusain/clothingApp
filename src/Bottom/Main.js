@@ -75,6 +75,7 @@ const Main = () => {
           keyExtractor={item => item.code}
           horizontal={false}
           numColumns={2}
+          showsVerticalScrollIndicator={false}
         />
       )}
 

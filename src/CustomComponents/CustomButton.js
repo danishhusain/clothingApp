@@ -1,11 +1,10 @@
-import { IconButton,Button } from "react-native-paper";
+import { IconButton, Button } from "react-native-paper";
 import { View, Text } from 'react-native'
 import React from 'react'
-import { Icon } from "react-native-paper/lib/typescript/components/Avatar/Avatar";
 
-const CustomButton = ({title,ButtonColor,onClick,height,width,mode,IconInButton}) => {
+const CustomButton = ({ title, ButtonColor, onClick, height, width, mode, IconInButton, size,ButtonSize }) => {
   return (
-   <Button mode={mode} buttonColor={ButtonColor} onPress={()=>onClick()} labelStyle={{fontSize: 16}} icon={IconInButton} style={{height:height,width:width}} >{title}</Button>
+    <Button disabled={size == title ? true : false} mode={mode} buttonColor={ButtonColor} onPress={() => onClick()} labelStyle={{ fontSize: 16 }} icon={IconInButton} style={{ height: height, width: width }} >{title}</Button>
   )
 }
 
